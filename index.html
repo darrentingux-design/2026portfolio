@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Darren Ting — UX Designer</title>
+<meta name="description" content="Portfolio of Darren Ting, UX Designer based in Toronto.">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap">
+  <style>
+    html,body,a,*{cursor:none!important;}
+    body{margin:0;}
+    a{color:rgb(0,100,135);text-decoration:none;}
+    a:hover{color:rgb(0,75,102);}
+    @keyframes orbit-a{from{transform:rotate(0deg) translateX(70px) rotate(0deg);}to{transform:rotate(360deg) translateX(70px) rotate(-360deg);}}
+    @keyframes chibi-idle-jump{0%,80%,86%,92%,100%{transform:translateY(0) rotate(5deg);}83%,89%{transform:translateY(-8px) rotate(5deg);}}
+    @keyframes peel-off{
+      0%{transform:rotate(5deg) scale(1);}
+      35%{transform:rotate(14deg) scale(1.08);}
+      65%{transform:rotate(-8deg) scale(1.08);}
+      100%{transform:rotate(5deg) scale(1);}
+    }
+    .df-nav{grid-template-columns:1fr auto 1fr;width:auto!important;height:auto!important;}
+    .df-nav-menu-light:hover{background-color:rgba(240,239,239,0.5);}
+    .df-nav-menu-dark:hover{background-color:#1D2833;}
+    .df-nav-links a{font-size:24px;}
+    .df-nav-menu{width:250px;}
+    .df-nav-menu span:first-child{font-size:20px;}
+    .df-hero{flex-direction:row;height:450px;}
+    .df-hero-col{width:50%;}
+    .df-hero-heading{font-size:32px;line-height:36px;max-width:465px;width:100%;}
+    .df-hero-greet{font-size:32px;}
+    .df-clock-time{font-size:48px;}
+    .df-clock-loc{font-size:22px;}
+    .df-chibi-box{width:385px;height:345px;}
+
+    .df-pillar-grid{grid-template-columns:repeat(2,1fr);}
+    .df-acer-bridge{grid-template-columns:1fr auto 1fr;}
+    .df-about-heading{font-size:36px;}
+    .df-about-body{font-size:18px;}
+    .df-footer-row{flex-direction:row;height:180px;}
+    .df-footer-row span{font-size:24px;}
+    @media (max-width:900px){
+      .df-nav{grid-template-columns:1fr;justify-items:center;row-gap:16px;padding-bottom:16px;}
+      .df-nav-links{justify-self:center!important;}
+      .df-nav-links a{font-size:18px;}
+      .df-hero{flex-direction:column;height:auto;}
+      .df-hero-col{width:100%;}
+      .df-chibi-box{width:260px;height:233px;}
+      .df-hero-heading{font-size:24px;line-height:30px;width:100%;}
+      .df-hero-greet{font-size:24px;}
+      .df-clock-time{font-size:36px;}
+      .df-clock-loc{font-size:18px;}
+      .df-case-grid{grid-template-columns:1fr;}
+      .df-pillar-grid{grid-template-columns:1fr;}
+      .df-connect-cell{grid-column:span 1!important;}
+      .df-acer-bridge{grid-template-columns:1fr;}
+      .df-acer-bridge > div:nth-child(2){align-items:flex-start!important;}
+      .df-about-heading{font-size:28px;}
+      .df-about-body{font-size:16px;}
+      .df-footer-row{flex-direction:column;height:auto;gap:8px;align-items:flex-start;padding:16px 0 32px;}
+      .df-footer-row span{font-size:16px;}
+    }
+    @media (max-width:520px){
+      .df-nav-menu{width:100%;}
+      .df-nav-links{gap:16px!important;}
+      .df-nav-links a{font-size:15px;}
+      .df-nav-links a svg{width:18px!important;height:18px!important;}
+      .df-chibi-box{width:200px;height:179px;}
+    }
+  </style>
+  <script src="./image-slot.js"></script>
+</helmet>
+
+<div style="position:relative;width:100%;min-height:100vh;overflow:hidden;background-color:{{ t.bgPage }};transition:background-color 0.3s ease;font-family:'Instrument Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">
+
+<div style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;padding:0 24px;max-width:1440px;margin:0 auto;box-sizing:border-box;">
+
+  <div class="df-nav" style="grid-column: 1 / -1; display: grid; align-items: center; padding-top: 43px;">
+    <a href="#" onclick="{{ goHome }}" style="font-weight: 500; font-size: 28px; line-height: 24px; color: {{ t.navLogo }}">Darren Ting</a>
+    <div class="df-nav-menu" style="position:relative;border-radius: 12px; background-color: {{ t.navMenuBg }}; padding: 4px; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center;">
+      <div style="position:absolute;top:4px;left:4px;bottom:4px;width:calc(50% - 4px);border-radius:8px;background-color:{{ t.navMenuSelectedBg }};transform:{{ navSliderTransform }};transition:transform 0.35s cubic-bezier(0.65,0,0.35,1);"></div>
+      <a href="#" onclick="{{ goHome }}" class="{{ navHoverClassWork }}" style="position:relative;z-index:1;border-radius: 8px; display: flex; flex-direction: column; align-items: center; padding: 12px 24px; box-sizing: border-box; width: 100%; gap: 6px; transition: background-color 0.2s ease;">
+        <span style="font-weight: 600; font-size: 20px; line-height: 24px; color: {{ t.navMenuText }}">Work</span>
+        <span style="font-weight: 600; font-size: 16px; line-height: 16px; color: {{ t.navMenuSubtext }}">9 - 5 PM</span>
+      </a><a href="#" onclick="{{ goAbout }}" class="{{ navHoverClassPlay }}" style="position:relative;z-index:1;border-radius: 8px; display: flex; flex-direction: column; align-items: center; padding: 12px 24px; box-sizing: border-box; width: 100%; gap: 6px; transition: background-color 0.2s ease;">
+        <span style="font-weight: 600; font-size: 20px; line-height: 24px; color: {{ t.navMenuText }}">Play</span>
+        <span style="font-weight: 600; font-size: 16px; line-height: 16px; color: {{ t.navMenuSubtext }}">5 - 9 AM</span>
+      </a>
+    </div>
+    <div class="df-nav-links" style="display:flex;flex-direction:row;gap:32px;align-items:center;justify-self:end;flex-wrap:wrap;">
+      <a href="./assets/resume.pdf" target="_blank" style="display: flex; align-items: center; gap: 2px; font-weight: 400; line-height: 24px; padding-bottom: 4px; background-image: linear-gradient({{ t.navLinkText }}, {{ t.navLinkText }}); background-repeat: no-repeat; background-position: left bottom; background-size: 0% 2px; transition: background-size 0.3s ease; color: {{ t.navLinkText }}" style-hover="background-size: 100% 2px;">
+        Resume
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgb(0,100,135)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px; stroke: {{ t.navLinkText }}"><path d="M7 17L17 7M17 7H8M17 7V16"></path></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/darrenting-a20000403" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 2px; font-weight: 400; line-height: 24px; padding-bottom: 4px; background-image: linear-gradient({{ t.navLinkText }}, {{ t.navLinkText }}); background-repeat: no-repeat; background-position: left bottom; background-size: 0% 2px; transition: background-size 0.3s ease; color: {{ t.navLinkText }}" style-hover="background-size: 100% 2px;">
+        LinkedIn
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgb(0,100,135)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px; stroke: {{ t.navLinkText }}"><path d="M7 17L17 7M17 7H8M17 7V16"></path></svg>
+      </a>
+    </div>
+  </div>
+
+  <div style="grid-column: 2 / 12; display: flex; flex-direction: column; gap: 53px; padding-top: 55px;">
+
+    <sc-if value="{{ isHeroPage }}" hint-placeholder-val="{{ true }}">
+    <div class="df-hero" style="border-radius: 12px; background-color: {{ t.cardBg }}; transition: background-color 0.3s ease; box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.1); padding: 24px; display: flex; gap: 32px;">
+      <div class="df-hero-col" style="display:flex;align-items:center;justify-content:center;">
+        <div class="df-chibi-box" onmouseenter="{{ onToggleEnter }}" onmouseleave="{{ onToggleLeave }}" style="position:relative;filter: drop-shadow(0px 12px 20px rgba(0,0,0,0.25)); transition: filter 0.25s ease;" style-hover="filter: drop-shadow(0px 18px 28px rgba(0,0,0,0.32));">
+          <div onclick="{{ chibiClick }}" style="position:absolute;inset:0;background-image: url(./assets/sticker-day.png); background-size: contain; background-position: center; background-repeat: no-repeat; cursor: pointer; -webkit-tap-highlight-color: transparent; outline: none; animation: {{ chibiAnim }}; opacity: {{ dayOpacity }}; transition: opacity 0.2s ease;"></div>
+          <div onclick="{{ chibiClick }}" style="position:absolute;inset:0;background-image: url(./assets/sticker-night.png); background-size: contain; background-position: center; background-repeat: no-repeat; cursor: pointer; -webkit-tap-highlight-color: transparent; outline: none; animation: {{ chibiAnim }}; opacity: {{ nightOpacity }}; transition: opacity 0.2s ease;"></div>
+        </div>
+      </div>
+      <div class="df-hero-col" style="display:flex;flex-direction:column;gap:40px;justify-content:center;opacity:{{ contentOpacity }};transition:opacity 0.2s ease;">
+        <div style="display: flex; flex-direction: column; gap: 24px">
+          <span class="df-hero-greet" style="font-weight: 600; line-height: 32px; color: {{ t.headingText }}">{{ heroGreet }}</span>
+          <span class="df-hero-heading" style="font-weight: 600; line-height: 40px; color: {{ t.headingText }}; text-align: left">{{ heroHeading }}</span>
+        </div>
+        <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+              <span class="df-clock-loc" style="font-weight: 600; color: rgb(116,159,174); display: flex; align-items: center; gap: 10px"><span>{{ timeIcon }}</span>{{ locationWeather }}</span>
+              <span class="df-clock-time" style="font-weight: 600; line-height: 40px; color: {{ t.headingText }}">{{ clockTime }}</span>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isAcer }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:64px;opacity:{{ contentOpacity }};transition:opacity 0.2s ease;">
+
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href="#" onclick="{{ goHome }}" style="font-weight:600;font-size:16px;color:{{ t.navMenuSubtext }};">&#8592; Back to work</a>
+          <span style="font-weight:600;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};padding-top:12px;">Web and Mobile Design</span>
+          <span class="df-about-heading" style="font-weight:600;line-height:1.15;color:{{ t.headingText }};">Acer Health Management Center</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Role</span>
+            <span style="font-weight:600;font-size:18px;line-height:1.5;color:{{ t.caseTitleText }};">Lead UX Designer</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Team</span>
+            <span style="font-weight:600;font-size:18px;line-height:1.5;color:{{ t.caseTitleText }};">Eason Xing (PM)<br>Gene Wang (SWE)</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Tools Used</span>
+            <span style="font-weight:600;font-size:18px;line-height:1.5;color:{{ t.caseTitleText }};">Figma<br>Attention Insight</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Timeline</span>
+            <span style="font-weight:600;font-size:18px;line-height:1.5;color:{{ t.caseTitleText }};">Summer 2023</span>
+          </div>
+        </div>
+
+        <img src="./assets/acer-hero.png" width="2463" height="1541" alt="Acer Health Management Center" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">At a glance</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">During the summer of 2023, I got the amazing chance to intern at Acer Inc. as a UX/UI Designer. While I was there, I was the sole UX designer for this project and responsible for the design direction of the POC.</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">This project is a collaboration between Acer and National Taiwan University Hospital (NTUH), the No. 1 Hospital in Taiwan, and our goal was to digitize and transform healthcare services in Taiwan.</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Process</span>
+          <img src="./assets/acer-process.png" width="1787" height="88" alt="Design process diagram" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:20px;color:{{ t.headingText }};">Conceptualization</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.8;color:{{ t.caseTitleText }};">User Flows<br>Information Architecture</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:20px;color:{{ t.headingText }};">Design</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.8;color:{{ t.caseTitleText }};">Prototyping</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:20px;color:{{ t.headingText }};">Iteration</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.8;color:{{ t.caseTitleText }};">AI Testing<br>Final POC Design</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Impact</span>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;gap:16px;align-items:flex-start;">
+              <img src="./assets/icon-arrow-up.svg" alt="" loading="lazy" style="width:24px;height:24px;flex-shrink:0;margin-top:2px;">
+              <span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};"><strong>Increased</strong> satisfaction amongst stakeholders securing project development</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;gap:16px;align-items:flex-start;">
+              <img src="./assets/icon-arrow-up.svg" alt="" loading="lazy" style="width:24px;height:24px;flex-shrink:0;margin-top:2px;">
+              <span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};"><strong>Increased</strong> readability and accessibility of key patient information to doctors and nurses</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;gap:16px;align-items:flex-start;">
+              <img src="./assets/icon-cross.svg" alt="" loading="lazy" style="width:24px;height:24px;flex-shrink:0;margin-top:2px;">
+              <span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};"><strong>Refined</strong> patient log-in user flows, <strong>reducing user confusion</strong> and providing seamless <strong>health data integration</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <img src="./assets/acer-showcase-mobile.png" width="996" height="948" alt="Mobile application screens" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+          <img src="./assets/acer-showcase-web.png" width="2101" height="2274" alt="Web platform screens" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Context</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">In Taiwan, accessing personalized risk predictions and timely interventions often proves challenging for individuals. Simultaneously, healthcare institutions face hurdles in efficiently analyzing incoming data and delivering personalized care recommendations to patients.</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">For Acer and NTUH, they recognized this as an opportunity to bridge this gap. Our solution aimed to democratize access to predictive healthcare insights while streamlining the workflow for healthcare professionals.</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Objective</span>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;gap:16px;align-items:flex-start;">
+              <span style="font-weight:600;font-size:18px;color:{{ t.navMenuSubtext }};flex-shrink:0;">01</span>
+              <span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};">Design a B2C mobile application aimed to provide users with the ability to conduct health risk predictions based on NTUH's risk prediction model</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;gap:16px;align-items:flex-start;">
+              <span style="font-weight:600;font-size:18px;color:{{ t.navMenuSubtext }};flex-shrink:0;">02</span>
+              <span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};">Design a B2B web application software that intakes data from the app and displays health information to the doctors at NTUH for analysis and diagnosis of health status</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:32px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Conceptualize</span>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <span style="font-weight:600;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Mobile</span>
+            <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">For the mobile aspect of this ecosystem, I first started with establishing a general user flow of what logging-in would look like. This was establish through repeated iterations and communication with business stakeholders.</span>
+            <img src="./assets/acer-flow-mobile.png" width="2127" height="7820" alt="Mobile log-in user flow" loading="lazy" style="display:block;width:100%;height:auto;background:#fff;padding:16px;box-sizing:border-box;border-radius:12px;">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <span style="font-weight:600;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Web</span>
+            <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">For the web aspect of this ecosystem, not only was the visualization of information important to nail but also how the user actually access the information and whether or not the information hierarchy was intuitive. This was difficult due to the sheer amount of information there is but in the end we were able to reach a structure that made sense to our stakeholders.</span>
+            <a href="./assets/acer-ia-web.png" target="_blank" rel="noopener" style="display:block;"><img src="./assets/acer-ia-web.png" width="10912" height="6628" alt="Web application information architecture" loading="lazy" style="display:block;width:100%;height:auto;background:#fff;padding:16px;box-sizing:border-box;border-radius:12px;"></a>
+            <span style="font-weight:400;font-size:14px;color:{{ t.navMenuSubtext }};">Open the full information architecture diagram &#8599;</span>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:32px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Prototyping</span>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <span style="font-weight:600;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Mobile</span>
+            <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">With the foundations laid out, I moved forward with creating the first set of wireframes and iterated from there.</span>
+            <img src="./assets/acer-wireframe-mobile.png" width="1560" height="1640" alt="Mobile wireframes" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <span style="font-weight:600;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Web</span>
+            <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">As well as the web applications.</span>
+            <img src="./assets/acer-wireframe-web.png" width="2978" height="3303" alt="Web application wireframes" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Iteration</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">After creating the first version of the prototypes the next step is to iterate on my designs... but how? As some other UX designers may have experienced before, sometimes it is very hard push PMs and executives to allocate time and effort to usability test.</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">How did I overcome this? I was able to <strong>utilize AI</strong> to help me identify hot spots where users would gravitate towards and some places they did not.</span>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <img src="./assets/acer-heatmap-1.png" width="1482" height="1048" alt="AI attention heatmap analysis" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+            <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Optimal clarity = 58% (below average)</span>
+          </div>
+          <img src="./assets/acer-heatmap-2.png" width="1536" height="1048" alt="AI attention heatmap analysis after iteration" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Results</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">While serving as a great tool to explain design rationale to stakeholders. Through this iterative process, I was able to get continuous feedback and improve my designs.</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">In the end, the results look something like this...</span>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;">
+            <img src="./assets/acer-result-1.png" width="1506" height="1848" alt="Final design" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+            <img src="./assets/acer-result-2.png" width="1506" height="1848" alt="Final design" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+            <img src="./assets/acer-result-3.png" width="1181" height="1449" alt="Final design" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+            <img src="./assets/acer-result-4.png" width="1905" height="2603" alt="Final design" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+            <img src="./assets/acer-result-5.png" width="2701" height="1703" alt="Final design" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+            <img src="./assets/acer-result-6.png" width="3817" height="2689" alt="Final design" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Takeaways</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">Coming from a background where most of my design skills came from an academic environment, it is very easy to go overboard and create something that is nearly impossible to implement. From working with developers and business stakeholders I've learned to create designs that balance feasibility and aesthetics.</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">Having the chance to work with both Acer and NTUH provided valuable exposure to interdisciplinary collaboration. This experience enhanced my ability to communicate effectively across different teams with varying expertise, fostering a more holistic approach to problem-solving.</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">When designing an ecosystem that includes both mobile and web applications, I learned that it is very important to fully understand who the users are and think about how the data is shared and visualized between the two systems.</span>
+        </div>
+
+        <div style="border-radius:12px;background-color:{{ t.contactBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;">
+          <span style="font-weight:600;font-size:24px;line-height:1.3;color:{{ t.contactText }};">More projects</span>
+          <a href="#" onclick="{{ goCaseUoft }}" style="font-weight:600;font-size:20px;color:{{ t.contactText }};padding-bottom:4px;background-image:linear-gradient({{ t.contactText }},{{ t.contactText }});background-repeat:no-repeat;background-position:left bottom;background-size:0% 2px;transition:background-size 0.3s ease;" style-hover="background-size:100% 2px;">UofT School of Graduate Studies &#8594;</a>
+        </div>
+
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isBmo }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:64px;opacity:{{ contentOpacity }};transition:opacity 0.2s ease;">
+
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href="#" onclick="{{ goHome }}" style="font-weight:600;font-size:16px;color:{{ t.navMenuSubtext }};">&#8592; Back to work</a>
+          <span style="font-weight:600;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};padding-top:12px;">Web Design</span>
+          <span class="df-about-heading" style="font-weight:600;line-height:1.15;color:{{ t.headingText }};">An Innovation Sprint Platform for 300+ Participants</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.navMenuSubtext }};">2024 BMO Destination Digital</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Role</span>
+            <span style="font-weight:600;font-size:18px;line-height:1.5;color:{{ t.caseTitleText }};">Lead UX Designer</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Timeline</span>
+            <span style="font-weight:600;font-size:18px;line-height:1.5;color:{{ t.caseTitleText }};">8 months</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Skills</span>
+            <span style="font-weight:600;font-size:18px;line-height:1.5;color:{{ t.caseTitleText }};">Information Architecture<br>Persona<br>Web Design<br>Prototyping</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Team</span>
+            <span style="font-weight:600;font-size:18px;line-height:1.5;color:{{ t.caseTitleText }};">Research Team<br>Developers<br>Project Managers<br>Business Analysts</span>
+          </div>
+        </div>
+
+        <img src="./assets/bmo-hero.png" alt="BMO Destination Digital platform" width="2894" height="2509" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">At a glance</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">During the Fall of 2023, I had an amazing opportunity to work for BMO that lasted 8 months. In my role as a UX Design Intern, I was engaged in several projects that demanded seamless collaboration across various teams, including Research, Digital Core, Capital Markets T&amp;O, B2C Collections, and more.</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Project Overview</span>
+          <span style="font-weight:600;font-size:28px;line-height:1.35;color:{{ t.headingText }};text-wrap:pretty;">Cultivating innovation at the Bank of Montreal</span>
+          <img src="./assets/bmo-wrapup.png" alt="BMO Destination Digital 2024 wrap-up" width="1200" height="627" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">Despite the numerous projects I got to work on during my time at BMO, I want to highlight the last project I took part in. <a href="https://about.bmo.com/bmos-30-hour-innovation-sprint-destination-digital-returns/" target="_blank" rel="noopener" style="color:{{ t.navLinkText }};font-weight:600;">BMO Destination Digital 2024</a> is a 30-hour innovation sprint where BMO employees form cross-functional teams to develop solutions to real-world business problems, focusing on rapid ideation and prototyping supported by mentors and tech partners. The event aims to foster creativity and innovation within the bank, driving impactful solutions aligned with BMO&rsquo;s strategic priorities</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">The goal of the design team was to create and design a platform for the participants, judges, and admins of the event. As the lead UX designer on the team I had the chance to lead design reviews to improve navigation, button design, and information architecture. Below are some of my contributions to the project. (Please note that due to NDA, these are recreations of my work at BMO)</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Impact</span>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;gap:16px;align-items:flex-start;">
+              <img src="./assets/icon-arrow-up.svg" alt="" width="24" height="24" loading="lazy" style="width:24px;height:24px;flex-shrink:0;margin-top:2px;">
+              <span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};">Increased user satisfaction and navigation capabilities amongst 300+ users</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;gap:16px;align-items:flex-start;">
+              <img src="./assets/icon-arrow-up.svg" alt="" width="24" height="24" loading="lazy" style="width:24px;height:24px;flex-shrink:0;margin-top:2px;">
+              <span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};">Redesigned buttons to prevent submission errors amongst our participants</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;gap:16px;align-items:flex-start;">
+              <img src="./assets/icon-arrow-up.svg" alt="" width="24" height="24" loading="lazy" style="width:24px;height:24px;flex-shrink:0;margin-top:2px;">
+              <span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};">Held design reviews with project managers and developers to align on design direction and to provide design feedback</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Improved Navigation</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">During the development phase of the platform, the navigation between different pages was very choppy with the navigation menu changing with each page. I proposed a newly designed global navigation menu integrating drop-down selection and new overarching topics to nest our old menu items in.</span>
+          <img src="./assets/bmo-nav.png" alt="Redesigned global navigation menu" width="1447" height="1128" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Button Redesigns</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">For our participants to successfully submit their project proposals and innovative ideas. We needed to make sure that the submission user flows was direct and easy to understand. To ensure this, I redesigned the primary and secondary buttons used for the submission user flow to better represent its function.</span>
+          <img src="./assets/bmo-buttons.png" alt="Primary and secondary button redesigns" width="1195" height="681" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Preventing Information overload</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">We had a lot of topics our participants could choose from which also made it overwhelming at times. To prevent information overload, I created drop down menu's to nest topics inside the event themes.</span>
+          <img src="./assets/bmo-dropdown.png" alt="Drop-down menus nesting topics inside event themes" width="1312" height="534" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+        </div>
+
+        <div style="border-radius:12px;background-color:{{ t.contactBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:40px;box-sizing:border-box;display:flex;flex-direction:column;gap:24px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.35;color:{{ t.contactText }};text-wrap:pretty;">Thanks for stopping by! Checkout my other projects</span>
+          <div style="display:flex;gap:32px;flex-wrap:wrap;">
+            <a href="#" onclick="{{ goCaseAcer }}" style="font-weight:600;font-size:20px;color:{{ t.contactText }};padding-bottom:4px;background-image:linear-gradient({{ t.contactText }},{{ t.contactText }});background-repeat:no-repeat;background-position:left bottom;background-size:0% 2px;transition:background-size 0.3s ease;" style-hover="background-size:100% 2px;">Acer Health Management Center &#8594;</a>
+            <a href="#" onclick="{{ goCaseUoft }}" style="font-weight:600;font-size:20px;color:{{ t.contactText }};padding-bottom:4px;background-image:linear-gradient({{ t.contactText }},{{ t.contactText }});background-repeat:no-repeat;background-position:left bottom;background-size:0% 2px;transition:background-size 0.3s ease;" style-hover="background-size:100% 2px;">UofT School of Graduate Studies &#8594;</a>
+          </div>
+        </div>
+
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isUoft }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:64px;opacity:{{ contentOpacity }};transition:opacity 0.2s ease;">
+
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href="#" onclick="{{ goHome }}" style="font-weight:600;font-size:16px;color:{{ t.navMenuSubtext }};">&#8592; Back to work</a>
+          <span style="font-weight:600;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};padding-top:12px;">Web Design</span>
+          <span class="df-about-heading" style="font-weight:600;line-height:1.15;color:{{ t.headingText }};">UofT School of Graduate Studies</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Role</span>
+            <span style="font-weight:600;font-size:18px;line-height:1.5;color:{{ t.caseTitleText }};">Project Manager<br>UX Designer</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Team</span>
+            <span style="font-weight:600;font-size:18px;line-height:1.5;color:{{ t.caseTitleText }};">Erica Lee (UXR)<br>Valerie Wu (UXD)<br>Colin Xiao (UXD/Client Contact)<br>Lu Liu (UXD)</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Tools Used</span>
+            <span style="font-weight:600;font-size:18px;line-height:1.5;color:{{ t.caseTitleText }};">Figma<br>Canva<br>Miro</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Timeline</span>
+            <span style="font-weight:600;font-size:18px;line-height:1.5;color:{{ t.caseTitleText }};">Winter 2024 (4-Month)</span>
+          </div>
+        </div>
+
+        <img src="./assets/sgs-hero.png" alt="UofT School of Graduate Studies redesign" width="2931" height="2050" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">At a glance</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">During winter 2024 I had the pleasure of working with the School of Graduate Studies and lead the redesigning efforts of the website. The University of Toronto&rsquo;s School of Graduate Studies (SGS) website serves as a pivotal platform to provide comprehensive information and resources at every phase and aspect of the graduate learning journey.</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">This redesign project focuses on making improvements to the navigation design and most frequently sought-after user paths/flows, such as program applications for prospective students and writing support for current students and employees.</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Process</span>
+          <img src="./assets/acer-process.png" alt="Design process diagram" width="1787" height="88" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:20px;color:{{ t.headingText }};">Research</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.8;color:{{ t.caseTitleText }};">Questionnaires<br>Moderated Interview<br>Observation</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:20px;color:{{ t.headingText }};">Ideation</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.8;color:{{ t.caseTitleText }};">Brainstorming<br>Prototyping<br>Storyboarding</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:20px;color:{{ t.headingText }};">Testing</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.8;color:{{ t.caseTitleText }};">Usability Testing<br>Feedback<br>Accessibility</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Impact</span>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;gap:16px;align-items:flex-start;">
+              <img src="./assets/icon-arrow-up.svg" alt="" width="24" height="24" loading="lazy" style="width:24px;height:24px;flex-shrink:0;margin-top:2px;">
+              <span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};"><strong>Increased</strong> average user satisfaction of website from <strong>6.12/10 to 9.05/10</strong></span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;gap:16px;align-items:flex-start;">
+              <img src="./assets/icon-arrow-down.svg" alt="" width="24" height="24" loading="lazy" style="width:24px;height:24px;flex-shrink:0;margin-top:2px;">
+              <span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};"><strong>Reduced</strong> average search time for key resources <strong>by 86%</strong></span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;gap:16px;align-items:flex-start;">
+              <img src="./assets/icon-cross.svg" alt="" width="24" height="24" loading="lazy" style="width:24px;height:24px;flex-shrink:0;margin-top:2px;">
+              <span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};"><strong>Eliminated</strong> content redundancies across crucial workflows, <strong>reducing user confusion</strong> and <strong>increasing clarity of information</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Problem</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">Despite the university's reputation for excellence, its graduate studies website fails to meet users' needs due to design inconsistencies and content redundancy from multiple developer iterations. This results in poor information findability and inconsistent elements, significantly impacting the user experience for prospective students, current students, and staff.</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">Addressing these issues is crucial to align with SGS's mission of providing comprehensive information and enhancing the graduate school's reputation.</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Alignment</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">Prior to starting our research it is crucial to understand first and foremost what are our client's objectives. We prioritized uncovering this during our first meeting with the clients.</span>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:18px;color:{{ t.headingText }};">Client Objective 1</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};">To promote and support the work and supports offered by the SGS centres by ensuring their services are easy for students to find and they understand the benefits.</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:18px;color:{{ t.headingText }};">Client Objective 2</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};">To support administrative staff and departments with the tools, messages and information they need to support their students.</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:18px;color:{{ t.headingText }};">Client Objective 3</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};">To promote and support the communications needs and priorities of the Dean and Vice-Deans.</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="border-radius:12px;background-color:{{ t.contactBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:40px;box-sizing:border-box;">
+          <span style="font-weight:600;font-size:28px;line-height:1.35;color:{{ t.contactText }};text-wrap:pretty;">How might we improve the SGS website's navigation to ensure that it effectively meets its user groups' diverse needs by enhancing the findability of key application resources and educational support?</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:32px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Research</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">In our research, we identified three primary user groups for the SGS website: <strong>prospective students</strong>, <strong>current students</strong>, and <strong>staff</strong>. Through 13 interviews, we discovered that current students often bypass the website, relying on direct emails or faculty-specific sites. As a result, we focused our redesign on addressing the shared needs of staff and prospective students, while considering current students as secondary users.</span>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;">
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;align-items:flex-start;">
+              <img src="./assets/icon-person-m.svg" alt="" width="32" height="32" loading="lazy" style="width:32px;height:32px;">
+              <span style="font-weight:600;font-size:18px;color:{{ t.caseTitleText }};">4 Prospective Students</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;align-items:flex-start;">
+              <img src="./assets/icon-person-w.svg" alt="" width="32" height="32" loading="lazy" style="width:32px;height:32px;">
+              <span style="font-weight:600;font-size:18px;color:{{ t.caseTitleText }};">4 Staff</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;align-items:flex-start;">
+              <img src="./assets/icon-person-m.svg" alt="" width="32" height="32" loading="lazy" style="width:32px;height:32px;">
+              <span style="font-weight:600;font-size:18px;color:{{ t.caseTitleText }};">5 Current Students</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:18px;color:{{ t.headingText }};">1. Questionnaires</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};">Survey capturing background and demographic information such as student status, faculty, etc...</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:18px;color:{{ t.headingText }};">2. Moderated Interview</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};">15-30 min. interview session consisting of questions uncovering their main goals on the site, their experience, and any frustrations they experienced.</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:18px;color:{{ t.headingText }};">3. Observation</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};">Participants were given two different tasks based on which user group they belong to:<br><br><strong>Students</strong> - Find the program requirements for your program, and find out how to apply.<br><br><strong>Current Students and Staff</strong> - Can you find the writing support contact for grad students?</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">Affinity Diagram</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">Following the research conducted, our next steps were to categorize the information and consolidate the main themes identified into artifacts such as personas and as-is scenarios. Not only was this useful for us in determining our scope, this was also extremely helpful in communicating with our client.</span>
+          <img src="./assets/sgs-affinity.png" alt="Affinity diagram" width="1115" height="1027" loading="lazy" style="display:block;width:100%;height:auto;background:#fff;padding:16px;box-sizing:border-box;border-radius:12px;">
+          <span style="font-weight:400;font-size:14px;color:{{ t.navMenuSubtext }};">Theme &#8594; Pain-point &#8594; User Quotes</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">Prioritization Grid</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">Due to the strict 4-month timeframe of this project and the sheer size of the website, we needed a way to prioritize all the identified these and polish our focus and scope. We utilized a prioritization grid to plot all of our identified themes based on feasibility and impact.</span>
+          <img src="./assets/sgs-priority-grid.png" alt="Prioritization grid" width="1259" height="937" loading="lazy" style="display:block;width:100%;height:auto;background:#fff;padding:16px;box-sizing:border-box;border-radius:12px;">
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.35;color:{{ t.headingText }};text-wrap:pretty;">Through this process of categorizing and prioritizing, we were able to identify five main pain points for our users...</span>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:16px;color:{{ t.navMenuSubtext }};">Pain Point 1</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};">Poor information hierarchy and organization of informatio</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:16px;color:{{ t.navMenuSubtext }};">Pain Point 2</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};">No assistance when scrolling up large amounts of content</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:16px;color:{{ t.navMenuSubtext }};">Pain Point 3</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};">Sections within web pages are hard to distinguish and navigate through</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:16px;color:{{ t.navMenuSubtext }};">Pain Point 4</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};">Information overload due to overwhelming amount of information and poor layout design</span>
+            </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:16px;color:{{ t.navMenuSubtext }};">Pain Point 5</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};">Links, headings, buttons, and menu items lack context which confuses users</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">Personas</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">From our identified themes, we wanted to create two personas that embodied the frustrations of both students and staff at UofT. Incorporating insights from our interview, survey, and pain points, our personas allowed for a more focused and effective redesign of our ideal user.</span>
+          <img src="./assets/sgs-personas.png" alt="User personas" width="2236" height="3219" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">As-Is Scenario</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">Alongside our personas, we created As-Is scenarios capturing what our users are doing, feeling, thinking, and the pain points their experiencing throughout their user journey of the SGS Site. This highlighted for us what steps of the user flow are going wrong, which in turn increased our focus and efficiency on problem solving.</span>
+          <img src="./assets/sgs-asis.png" alt="As-is scenario" width="2236" height="3219" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:32px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Ideation</span>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">Brainstorming</span>
+            <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">For ideation, we needed to start brainstorming solutions for the problems identified in our research and thanks to the prioritization grid created previously we had a good sense of issues to focus on.</span>
+            <img src="./assets/sgs-brainstorm.png" alt="Brainstorming board" width="1259" height="937" loading="lazy" style="display:block;width:100%;height:auto;background:#fff;padding:16px;box-sizing:border-box;border-radius:12px;">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:24px;">
+            <span style="font-weight:600;font-size:28px;line-height:1.35;color:{{ t.headingText }};text-wrap:pretty;">Here are the solutions we felt were "No Brainers" based on its impact and feasibility...</span>
+            <img src="./assets/sgs-nobrainers.png" alt="No-brainer solutions" width="746" height="847" loading="lazy" style="display:block;width:100%;height:auto;background:#fff;padding:16px;box-sizing:border-box;border-radius:12px;">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">Mid-Fidelity</span>
+            <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">For our medium-fidelity designs we wanted to make sure we nailed our user needs identified in our research and bring some of our "No Brainer" solution to life. Below are some of the designs we came up with:</span>
+            <a href="https://www.figma.com/design/F1Lt7SiuanRY1LnlEiErDo/SGS-Portfolio-Piece-Exhib.?node-id=8-7" target="_blank" rel="noopener" style="font-weight:600;font-size:16px;color:{{ t.navLinkText }};">Figma File &#8599;</a>
+            <img src="./assets/sgs-midfi.png" alt="Mid-fidelity designs" width="4980" height="7065" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">High-Fidelity</span>
+            <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">In the High-Fidelity Prototype stage, we meticulously translated our mid-fidelity designs into polished, visually compelling interfaces. This phase emphasized precise visual details, advanced interactive elements, and seamless user experiences. The high-fidelity prototype served as a near-final representation, allowing stakeholders to visualize the end product with clarity and confidence.</span>
+            <a href="https://www.figma.com/design/F1Lt7SiuanRY1LnlEiErDo/SGS-Portfolio-Piece-Exhib.?node-id=352-16233" target="_blank" rel="noopener" style="font-weight:600;font-size:16px;color:{{ t.navLinkText }};">Figma File &#8599;</a>
+            <img src="./assets/sgs-hifi.jpg" alt="High-fidelity designs" width="3486" height="4655" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">Storyboarding</span>
+            <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">Following our high-fidelity prototypes, we created storyboards to contextualize our designs. This not only helped in communicating with our clients but also served as a point of comparison with our as-is scenario. Below is a brief summary of the user flow, for the full walkthrough please click the Figma link below.</span>
+            <a href="https://www.figma.com/proto/NWhAo633OzGPMv3vbcpx61/2192-SGS-Storyboard?page-id=0%3A1&amp;node-id=1-18" target="_blank" rel="noopener" style="font-weight:600;font-size:16px;color:{{ t.navLinkText }};">Full Storyboard Walkthrough &#8599;</a>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:32px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Final Design</span>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">Usability Testing</span>
+            <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">With our prototypes done, we moved towards usability testing. This iterative process ensured that the final design was both intuitive and effective, meeting the high standards required for the SGS website.</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">Major Improvements</span>
+            <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">Thanks to our participants, we were able to uncover some flaws in our design and iterate on those. Here are some of the major changes...</span>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
+              <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:18px;color:{{ t.headingText }};">Prioritizing support over marketing</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};">Removing marketing material such as quotes and replacing them with resources such as news report carousels</span>
+            </div>
+              <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:18px;color:{{ t.headingText }};">Polishing workflows</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};">Removing unnecessary tutorials on program applications, allowing users to be taken straight to application page straight from program information page.</span>
+            </div>
+              <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-weight:600;font-size:18px;color:{{ t.headingText }};">White space management</span>
+              <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};">We felt like the side-menu on the program information page allowed for a lot of unused white space, so we explored other designs and layout to figure out how to better utilize it.</span>
+            </div>
+            </div>
+            <a href="https://www.figma.com/proto/F1Lt7SiuanRY1LnlEiErDo/SGS-Portfolio-Piece-Exhib.?page-id=352%3A2036&amp;node-id=352-12438" target="_blank" rel="noopener" style="font-weight:600;font-size:16px;color:{{ t.navLinkText }};">Final Design &#8599;</a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">Accessibility Considerations</span>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;"><span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};">Colour contrast fulfills WCAG AAA Requirements</span></div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;"><span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};">Line spacing is at least space-and-a-half within paragraphs, and paragraph spacing is at least 1.5 times larger than the line spacing</span></div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;"><span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};">The purpose of each link can be determined from the link text alone or from the link text together</span></div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;"><span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};">Proper headings and clear/concise content in the pages for optimized screen reader capabilities</span></div>
+          </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:32px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Reflection</span>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">Take-aways</span>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;"><span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};">Learning the importance of efficient project management as it ensured smooth team coordination, timely completion, and effective communication throughout the project</span></div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;"><span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};">Having design artifacts and utilizing them as a tool for communication with clients</span></div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;"><span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};">Taking the proper time and due diligence to really understand the wants and needs of your client is crucial</span></div>
+          </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">Next Steps</span>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;"><span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};">Conduct second round of user-testing of final design</span></div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;"><span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};">Expand design decisions and improvements to other areas of the site</span></div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:24px;box-sizing:border-box;"><span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.caseTitleText }};">Hand-off to development team at SGS for implementation</span></div>
+          </div>
+          </div>
+        </div>
+
+        <div style="border-radius:12px;background-color:{{ t.contactBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;">
+          <span style="font-weight:600;font-size:24px;line-height:1.3;color:{{ t.contactText }};">More projects</span>
+          <a href="#" onclick="{{ goCaseAcer }}" style="font-weight:600;font-size:20px;color:{{ t.contactText }};padding-bottom:4px;background-image:linear-gradient({{ t.contactText }},{{ t.contactText }});background-repeat:no-repeat;background-position:left bottom;background-size:0% 2px;transition:background-size 0.3s ease;" style-hover="background-size:100% 2px;">Acer Health Management Center &#8594;</a>
+        </div>
+
+      </div>
+    </sc-if>
+
+
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;gap:24px;opacity:{{ contentOpacity }};transition:opacity 0.2s ease;">
+        <span style="font-weight: 600; font-size: 32px; color: {{ t.headingText }}">My Work</span>
+        <div class="df-case-grid" onmousemove="{{ onCaseGridMove }}" onmouseleave="{{ onCaseGridLeave }}" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+
+          <div style="position:relative;aspect-ratio:1/1;">
+            <div class="df-case-cell" style="position:absolute;inset:0;border-radius:12px;overflow:hidden;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);background:url(./assets/case-bmo.jpg) center / cover no-repeat;">
+              <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,20,28,0.85), rgba(0,20,28,0.15) 55%, transparent 80%);opacity:1;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;box-sizing:border-box;gap:12px;">
+                <span style="font-weight:600;font-size:20px;line-height:1.2;color:rgb(255,255,255);">Award-winning digital banking platform (Coming soon)</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="position:relative;aspect-ratio:1/1;">
+            <div data-case-id="4" onclick="{{ goCaseBmo }}" class="df-case-cell" style="position:absolute;inset:0;border-radius:12px;overflow:hidden;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);background:url(./assets/bmo-wrapup.png) center / cover no-repeat;">
+              <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,20,28,0.85), rgba(0,20,28,0.15) 55%, transparent 80%);opacity:0;transition:opacity 0.25s ease;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;box-sizing:border-box;gap:12px;" style-hover="opacity:1;">
+                <span style="font-weight:600;font-size:20px;line-height:1.2;color:rgb(255,255,255);">An Innovation Sprint Platform for 300+ Participants</span>
+                <div style="display:flex;gap:4px;flex-wrap:wrap;">
+                  <div style="border-radius:24px;background-color:rgba(255,255,255,0.15);padding:6px 14px;box-sizing:border-box;white-space:nowrap;font-weight:600;font-size:14px;color:rgb(255,255,255);">Bank of Montreal</div>
+                  <div style="border-radius:24px;background-color:rgba(255,255,255,0.15);padding:6px 14px;box-sizing:border-box;white-space:nowrap;font-weight:600;font-size:14px;color:rgb(255,255,255);">Shipped 2024</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="position:relative;aspect-ratio:1/1;">
+            <div data-case-id="2" onclick="{{ goCaseAcer }}" class="df-case-cell" style="position:absolute;inset:0;border-radius:12px;overflow:hidden;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);background:url(./assets/case-acer.png) center / cover no-repeat;">
+              <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,20,28,0.85), rgba(0,20,28,0.15) 55%, transparent 80%);opacity:0;transition:opacity 0.25s ease;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;box-sizing:border-box;gap:12px;" style-hover="opacity:1;">
+                <span style="font-weight:600;font-size:20px;line-height:1.2;color:rgb(255,255,255);">Designing a Dual-Platform Health Informatics Ecosystem</span>
+                <div style="display:flex;gap:4px;flex-wrap:wrap;">
+                  <div style="border-radius:24px;background-color:rgba(255,255,255,0.15);padding:6px 14px;box-sizing:border-box;white-space:nowrap;font-weight:600;font-size:14px;color:rgb(255,255,255);">Acer</div>
+                  <div style="border-radius:24px;background-color:rgba(255,255,255,0.15);padding:6px 14px;box-sizing:border-box;white-space:nowrap;font-weight:600;font-size:14px;color:rgb(255,255,255);">Handed off 2024</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="position:relative;aspect-ratio:1/1;">
+            <div data-case-id="3" onclick="{{ goCaseUoft }}" class="df-case-cell" style="position:absolute;inset:0;border-radius:12px;overflow:hidden;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);background:url(./assets/case-uoft.png) center / cover no-repeat;">
+              <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,20,28,0.85), rgba(0,20,28,0.15) 55%, transparent 80%);opacity:0;transition:opacity 0.25s ease;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;box-sizing:border-box;gap:12px;" style-hover="opacity:1;">
+                <span style="font-weight:600;font-size:20px;line-height:1.2;color:rgb(255,255,255);">Higher Education Navigation Overhaul</span>
+                <div style="display:flex;gap:4px;flex-wrap:wrap;">
+                  <div style="border-radius:24px;background-color:rgba(255,255,255,0.15);padding:6px 14px;box-sizing:border-box;white-space:nowrap;font-weight:600;font-size:14px;color:rgb(255,255,255);">University of Toronto</div>
+                  <div style="border-radius:24px;background-color:rgba(255,255,255,0.15);padding:6px 14px;box-sizing:border-box;white-space:nowrap;font-weight:600;font-size:14px;color:rgb(255,255,255);">Handed off 2023</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="df-case-cell df-connect-cell" style="position: relative; grid-column: span 2; border-radius: 12px; overflow: hidden; box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.1); background-color: {{ t.contactBg }}; transition: background-color 0.3s ease; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; gap: 32px; align-items: flex-start; padding-top: 40px; padding-right: 40px; padding-bottom: 40px; padding-left: 40px">
+            <span style="font-weight: 600; font-size: 32px; line-height: 32px; color: {{ t.contactText }}">Let's connect.</span>
+            <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 16px; justify-content: center; align-items: flex-start"><div style="display:flex;flex-direction:column;gap:12px;">
+              <a href="mailto:darrentingux@gmail.com" style="font-weight: 400; font-size: 24px; line-height: 1.4; color: {{ t.contactText }}; text-decoration: underline">darrentingux@gmail.com</a>
+              <a href="https://www.linkedin.com/in/darrenting-a20000403" target="_blank" rel="noopener" style="font-weight: 400; font-size: 24px; line-height: 1.4; color: {{ t.contactText }}; text-decoration: underline">LinkedIn</a>
+            </div></div>
+          </div>
+
+        </div>
+      </div>
+
+      
+    </sc-if>
+
+    <div style="{{ cursorLabelStyle }}">{{ cursorLabelText }}</div>
+
+    <div style="{{ customCursorStyle }}">
+      <svg width="24" height="24" viewBox="0 0 24 22" fill="{{ cursorFill }}" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.4 1.2c-1.1-0.5-2.2 0.6-1.7 1.7l7.8 17.3c0.6 1.3 2.4 1.2 2.9-0.1l2.6-6.9 6.9-2.6c1.3-0.5 1.4-2.3 0.1-2.9L2.4 1.2z" stroke="{{ cursorStroke }}" stroke-width="{{ cursorStrokeWidth }}" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:64px;opacity:{{ contentOpacity }};transition:opacity 0.2s ease;">
+
+        <span class="df-about-heading" style="font-weight:600;line-height:1.25;color:{{ t.headingText }};text-wrap:pretty;">Hey, I'm Darren Ting, your UX maestro &#9787; infusing design with life's fun. When I'm not crafting interactive adventures &#10042;, I'm performing music and documenting my life through videography.</span>
+
+        <img src="./assets/about-portrait.jpeg" alt="Darren Ting" width="1616" height="1080" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);">
+
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Design Pillars</span>
+          <div class="df-pillar-grid" style="display:grid;gap:16px;">
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;align-items:flex-start;">
+            <span style="display:flex;color:{{ t.headingText }};"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"></circle><path d="M14.9999 14H8.99991C6.23848 14 3.76499 16.5498 5.58239 18.6289C6.81829 20.0428 8.86211 21 11.9999 21C15.1377 21 17.1815 20.0428 18.4174 18.6289C20.2348 16.5498 17.7613 14 14.9999 14Z" stroke="currentColor" stroke-width="2"></path></svg></span>
+            <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.headingText }};">User-Centric Focus</span>
+            <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};text-wrap:pretty;">Placing users at the core, ensuring each design resonates with their needs and desires.</span>
+          </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;align-items:flex-start;">
+            <span style="display:flex;color:{{ t.headingText }};"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10 13C10 11.3431 11.3431 10 13 10H18C19.6569 10 21 11.3431 21 13V18C21 19.6569 19.6569 21 18 21H13C11.3431 21 10 19.6569 10 18V13Z" stroke="currentColor" stroke-width="2"></path><path d="M14 6.20833V6C14 4.34315 12.6569 3 11 3H6C4.34315 3 3 4.34315 3 6V11C3 12.6569 4.34315 14 6 14H6.20833" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></span>
+            <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.headingText }};">Seamless Functionality</span>
+            <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};text-wrap:pretty;">Engineering designs that not only look good but work effortlessly for a flawless experience.</span>
+          </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;align-items:flex-start;">
+            <span style="display:flex;color:{{ t.headingText }};"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 3H14.3575C13.5255 3 12.765 3.47005 12.3929 4.21417C12.231 4.53795 11.769 4.53795 11.6071 4.21417C11.235 3.47005 10.4745 3 9.64251 3H8" stroke="currentColor" stroke-width="2"></path><path d="M19 12V6C19 4.34315 17.6569 3 16 3H8C6.34315 3 5 4.34315 5 6V18C5 19.6569 6.34315 21 8 21H10" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><circle cx="16" cy="18" r="3" stroke="currentColor" stroke-width="2"></circle></svg></span>
+            <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.headingText }};">Innovative Design</span>
+            <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};text-wrap:pretty;">Unleashing creativity in every pixel, creating designs that captivate and innovate.</span>
+          </div>
+            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;align-items:flex-start;">
+            <span style="display:flex;color:{{ t.headingText }};"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.1389 4.25972C16.5998 4.07988 16.0328 4.00024 15.4649 4.00024C14 4.00023 12.9999 4.74047 12 5.50009C11.0176 4.75134 10 4.00024 8.55296 4.00024C7.99669 4.00024 7.41614 4.06017 6.88887 4.24093C3.53101 5.33339 2.33402 8.95705 3.35101 12.1244C3.92701 13.743 4.8549 15.2112 6.06088 16.4182C7.87741 18.1602 9.85555 19.6799 12 21.0001C14.1404 19.7148 16.1547 18.1553 17.9498 16.4271C19.1638 15.2201 20.0908 13.743 20.6578 12.1244C21.6577 8.95705 20.4607 5.33339 17.1389 4.25972Z" stroke="currentColor" stroke-width="2"></path></svg></span>
+            <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.headingText }};">Delightful Experiences</span>
+            <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};text-wrap:pretty;">Infusing a touch of joy and surprise into every interaction, making moments memorable.</span>
+          </div>
+          </div>
+        </div>
+
+      </div>
+    </sc-if>
+
+  </div>
+
+  <div class="df-footer-row" style="grid-column: 2 / 12; display: flex; justify-content: space-between; align-items: center; padding: 16px 0 32px;">
+    <span style="font-weight: 600; line-height: 24px; color: {{ t.footerText }};">Built with Figma + Claude</span>
+    <span style="font-weight: 600; line-height: 24px; color: {{ t.footerText }};">© 2026 Darren Ting. All Rights Reserved.</span>
+  </div>
+
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { clockTime: this.formatTime(), weather: null, dark: this.getInitialDark(), peeling: false, page: this.getInitialPage(), navSlide: this.getInitialPage() === 'about' ? 'play' : 'work', contentFading: false, cursorX: 0, cursorY: 0, activeCase: null, mouseX: -100, mouseY: -100 };
+
+  onGlobalMouseMove = (e) => this.setState({ mouseX: e.clientX, mouseY: e.clientY, cursorOut: false });
+
+  leaveViewport = () => {
+    this.stopTyping();
+    this.setState({ cursorOut: true, activeCase: null, hoveringToggle: false });
+  };
+
+  onDocMouseOut = (e) => { if (!e.relatedTarget && !e.toElement) this.leaveViewport(); };
+  onWinBlur = () => this.leaveViewport();
+
+  hideNativeCursor = () => {
+    document.documentElement.style.setProperty('cursor', 'none', 'important');
+    document.body.style.setProperty('cursor', 'none', 'important');
+  };
+
+  onCaseGridMove = (e) => {
+    // Ignore moves once a navigation is underway; the grid unmounts without
+    // ever firing mouseleave, which would leave the label stuck on screen.
+    if (this.state.contentFading || this.state.page !== 'home') return;
+    const target = e.target.closest('[data-case-id]');
+    const id = target ? Number(target.getAttribute('data-case-id')) : null;
+    if (id !== this.state.activeCase) {
+      this.setState({ activeCase: id });
+      if (id) this.startTyping('View project'); else if (!this.state.hoveringToggle) this.stopTyping();
+    }
+  };
+
+  onCaseGridLeave = () => {
+    this.setState({ activeCase: null });
+    if (!this.state.hoveringToggle) this.stopTyping();
+  };
+
+  onToggleEnter = () => {
+    this.setState({ hoveringToggle: true });
+    this.startTyping(this.state.dark ? 'Wake me up' : 'Take a break');
+  };
+
+  onToggleLeave = () => {
+    this.setState({ hoveringToggle: false });
+    if (!this.state.activeCase) this.stopTyping();
+  };
+
+  startTyping(text) {
+    clearInterval(this._typeTimer);
+    this.setState({ typedText: '' });
+    let i = 0;
+    this._typeTimer = setInterval(() => {
+      i++;
+      this.setState({ typedText: text.slice(0, i) });
+      if (i >= text.length) clearInterval(this._typeTimer);
+    }, 25);
+  }
+
+  stopTyping() {
+    clearInterval(this._typeTimer);
+    this.setState({ typedText: '' });
+  }
+
+  caseLabelStyle() {
+    const visible = !this.state.cursorOut && (!!this.state.activeCase || this.state.hoveringToggle);
+    return {
+      position: 'fixed',
+      left: this.state.mouseX,
+      top: this.state.mouseY,
+      transform: 'translate(15px, 15px)',
+      pointerEvents: 'none',
+      opacity: visible ? 1 : 0,
+      transition: 'opacity 0.15s ease',
+      background: 'rgb(255,255,255)',
+      color: 'rgb(0,20,28)',
+      fontWeight: 600,
+      fontSize: '14px',
+      padding: '10px 18px',
+      borderRadius: '999px',
+      whiteSpace: 'nowrap',
+      zIndex: 999
+    };
+  }
+
+  cursorLabelText() {
+    return this.state.typedText || '';
+  }
+
+  pageFromHash(hash) {
+    if (hash === '#about') return 'about';
+    if (hash === '#acer') return 'acer';
+    if (hash === '#uoft') return 'uoft';
+    if (hash === '#bmo') return 'bmo';
+    return 'home';
+  }
+
+  getInitialPage() {
+    return this.pageFromHash(location.hash);
+  }
+
+  getInitialDark() {
+    const day = this.isDayTime();
+    const saved = localStorage.getItem('df-dark-mode');
+    const savedPeriod = localStorage.getItem('df-dark-mode-period');
+    // Manual choice only sticks within the same day/night period; otherwise time wins.
+    if (saved !== null && savedPeriod === (day ? 'day' : 'night')) return saved === 'true';
+    return !day;
+  }
+
+  switchPage = (page, hash, navSlide) => {
+    if (this.state.page === page) return;
+    history.pushState(null, '', hash);
+    this.stopTyping();
+    this.setState({ contentFading: true, activeCase: null, hoveringToggle: false });
+    setTimeout(() => {
+      this.setState({ page, navSlide, contentFading: false });
+      window.scrollTo(0, 0);
+    }, 200);
+  };
+
+  goHome = (e) => {
+    if (e) e.preventDefault();
+    this.switchPage('home', '#', 'work');
+  };
+
+  goAbout = (e) => {
+    if (e) e.preventDefault();
+    this.switchPage('about', '#about', 'play');
+  };
+
+  goCaseAcer = (e) => {
+    if (e) e.preventDefault();
+    this.stopTyping();
+    this.setState({ activeCase: null });
+    this.switchPage('acer', '#acer', 'work');
+  };
+
+  goCaseUoft = (e) => {
+    if (e) e.preventDefault();
+    this.stopTyping();
+    this.setState({ activeCase: null });
+    this.switchPage('uoft', '#uoft', 'work');
+  };
+
+  goCaseBmo = (e) => {
+    if (e) e.preventDefault();
+    this.stopTyping();
+    this.setState({ activeCase: null });
+    this.switchPage('bmo', '#bmo', 'work');
+  };
+
+  toggleDark = () => this.setState(s => {
+    const dark = !s.dark;
+    localStorage.setItem('df-dark-mode', String(dark));
+    localStorage.setItem('df-dark-mode-period', this.isDayTime() ? 'day' : 'night');
+    if (s.hoveringToggle) this.startTyping(dark ? 'Wake me up' : 'Take a break');
+    return { dark };
+  });
+
+  chibiClick = () => {
+    if (this.state.peeling) return;
+    this.setState({ peeling: true });
+    setTimeout(() => this.toggleDark(), 250);
+    setTimeout(() => this.setState({ peeling: false }), 500);
+  };
+
+  THEME = {
+    light: {
+      bgPage: 'rgb(243,254,255)',
+      navMenuBg: 'rgb(237,250,255)', navMenuSelectedBg: 'rgb(254,255,255)',
+      navMenuText: 'rgb(0,100,135)', navMenuSubtext: 'rgb(116,159,174)',
+      cardBg: 'rgb(254,255,255)', headingText: 'rgb(0,100,135)', navLogo: 'rgb(0,100,135)',
+      caseTitleText: 'rgb(0,100,135)', tagBg: 'rgb(254,255,255)', tagText: 'rgb(0,100,135)',
+      ctaText: 'rgb(255,255,255)', footerText: 'rgb(0,100,135)', navLinkText: 'rgb(0,100,135)', contactBg: 'rgb(254,255,255)', contactText: 'rgb(0,100,135)'
+    },
+    dark: {
+      bgPage: 'rgb(16,17,20)',
+      navMenuBg: 'rgb(21,28,38)', navMenuSelectedBg: 'rgb(31,48,71)',
+      navMenuText: 'rgb(122,193,255)', navMenuSubtext: 'rgb(194,226,255)',
+      cardBg: 'rgb(31,48,71)', headingText: '#C2E2FF', navLogo: '#C2E2FF',
+      caseTitleText: 'rgb(241,241,241)', tagBg: 'rgb(254,255,255)', tagText: 'rgb(0,100,135)',
+      ctaText: 'rgb(240,240,240)', footerText: '#C2E2FF', navLinkText: '#C2E2FF', contactBg: 'rgb(31,48,71)', contactText: '#C2E2FF'
+    }
+  };
+
+  WEATHER_CODES = {
+    0: ['Clear'], 1: ['Mostly clear'], 2: ['Partly cloudy'], 3: ['Overcast'],
+    45: ['Foggy'], 48: ['Foggy'], 51: ['Light drizzle'], 53: ['Drizzle'], 55: ['Heavy drizzle'],
+    61: ['Light rain'], 63: ['Rain'], 65: ['Heavy rain'], 71: ['Light snow'], 73: ['Snow'], 75: ['Heavy snow'],
+    80: ['Rain showers'], 81: ['Rain showers'], 82: ['Violent showers'], 95: ['Thunderstorm'], 96: ['Thunderstorm'], 99: ['Thunderstorm']
+  };
+
+  formatTime() {
+    return new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'America/Toronto' });
+  }
+
+  async fetchWeather() {
+    try {
+      const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=43.6532&longitude=-79.3832&current_weather=true');
+      const data = await res.json();
+      const cw = data.current_weather;
+      if (cw) {
+        const [desc] = this.WEATHER_CODES[cw.weathercode] ?? ['Weather unavailable'];
+        this.setState({ weather: `${Math.round(cw.temperature)}\u00b0C, ${desc}` });
+      }
+    } catch (e) {
+      this.setState({ weather: null });
+    }
+  }
+
+  componentDidMount() {
+    this._timer = setInterval(() => this.setState({ clockTime: this.formatTime() }), 1000);
+    this.fetchWeather();
+    this._weatherTimer = setInterval(() => this.fetchWeather(), 15 * 60 * 1000);
+    ['./assets/sticker-night.png', './assets/sticker-day.png'].forEach(src => { const img = new Image(); img.src = src; });
+    window.addEventListener('hashchange', () => {
+      const page = this.pageFromHash(location.hash);
+      this.setState({ page, navSlide: page === 'about' ? 'play' : 'work' });
+    });
+    window.addEventListener('mousemove', this.onGlobalMouseMove);
+    document.addEventListener('mouseout', this.onDocMouseOut);
+    window.addEventListener('blur', this.onWinBlur);
+    this.hideNativeCursor();
+    document.addEventListener('mouseover', this.hideNativeCursor);
+    window.addEventListener('focus', this.hideNativeCursor);
+    document.addEventListener('visibilitychange', this.hideNativeCursor);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._timer);
+    clearInterval(this._weatherTimer);
+    window.removeEventListener('mousemove', this.onGlobalMouseMove);
+    document.removeEventListener('mouseout', this.onDocMouseOut);
+    window.removeEventListener('blur', this.onWinBlur);
+    document.removeEventListener('mouseover', this.hideNativeCursor);
+    window.removeEventListener('focus', this.hideNativeCursor);
+    document.removeEventListener('visibilitychange', this.hideNativeCursor);
+  }
+
+  isDayTime() {
+    const hour = parseInt(new Date().toLocaleString('en-US', { hour: 'numeric', hour12: false, timeZone: 'America/Toronto' }), 10);
+    return hour >= 9 && hour < 17;
+  }
+
+  renderVals() {
+    const t = this.THEME[this.state.dark ? 'dark' : 'light'];
+    const page = this.state.page;
+    const isHome = page === 'home';
+    const isAbout = page === 'about';
+    const caseKey = page === 'acer' || page === 'uoft' || page === 'bmo' ? page : null;
+    return {
+      isBmo: page === 'bmo',
+      goCaseBmo: this.goCaseBmo,
+      isCase: !!caseKey,
+      isAcer: page === 'acer',
+      isUoft: page === 'uoft',
+      isHeroPage: isHome || isAbout,
+      goCaseAcer: this.goCaseAcer,
+      goCaseUoft: this.goCaseUoft,
+      clockTime: this.state.clockTime,
+      locationWeather: `Toronto${this.state.weather ? ` \u00b7 ${this.state.weather}` : ''}`,
+      t,
+      timeIcon: this.isDayTime() ? '\u2600\ufe0f' : '\ud83c\udf19',
+      dayOpacity: this.state.dark ? 0 : 1,
+      nightOpacity: this.state.dark ? 1 : 0,
+      chibiClick: this.chibiClick,
+      chibiAnim: this.state.peeling ? 'peel-off 0.5s ease' : 'chibi-idle-jump 4s ease-in-out infinite',
+      navSliderTransform: this.state.navSlide === 'work' ? 'translateX(0%)' : 'translateX(100%)',
+      navHoverClassWork: this.state.navSlide === 'work' ? '' : (this.state.dark ? 'df-nav-menu-dark' : 'df-nav-menu-light'),
+      navHoverClassPlay: this.state.navSlide === 'play' ? '' : (this.state.dark ? 'df-nav-menu-dark' : 'df-nav-menu-light'),
+      goHome: this.goHome,
+      goAbout: this.goAbout,
+      isHome,
+      isAbout,
+      heroGreet: isHome ? 'Nice to meet you! \ud83d\udc4b' : 'A bit about me',
+      heroHeading: isHome ? "I'm Darren, currently working as a UX Designer at BMO" : "Outside of work I'm usually sketching, gaming, or trying a new coffee shop around Toronto",
+      contentOpacity: this.state.contentFading ? 0 : 1,
+      onCaseGridMove: this.onCaseGridMove, onCaseGridLeave: this.onCaseGridLeave,
+      cursorLabelStyle: this.caseLabelStyle(),
+      cursorLabelText: this.cursorLabelText(),
+      onToggleEnter: this.onToggleEnter,
+      onToggleLeave: this.onToggleLeave,
+      customCursorStyle: {
+        position: 'fixed', left: this.state.mouseX, top: this.state.mouseY,
+        transform: 'translate(-2px, -2px) rotate(20deg)', transformOrigin: '2px 2px', pointerEvents: 'none', zIndex: 9999,
+        opacity: this.state.cursorOut ? 0 : 1, transition: 'opacity 0.15s ease'
+      },
+      cursorFill: '#00384B',
+      cursorStroke: 'rgb(255,255,255)',
+      cursorStrokeWidth: 1.5
+    };
+  }
+}
+</script>
+</body>
+</html>
