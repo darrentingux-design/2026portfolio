@@ -13,7 +13,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap">
   <style>
-    html,body,a,*{cursor:none!important;}
+    @media (hover:hover) and (pointer:fine){
+      body:not([data-dc-editor-on]) .df-root,body:not([data-dc-editor-on]) .df-root *{cursor:none!important;}
+    }
+    body[data-dc-editor-on] .df-cursor{display:none!important;}
+    @media not all and (pointer:fine){
+      .df-chibi-box>div{cursor:pointer;}
+    }
+    .df-cursor{display:none;}
+    @media (hover:hover) and (pointer:fine){.df-cursor{display:block;}}
     body{margin:0;}
     a{color:rgb(0,100,135);text-decoration:none;}
     a:hover{color:rgb(0,75,102);}
@@ -39,7 +47,20 @@
     .df-clock-loc{font-size:22px;}
     .df-chibi-box{width:385px;height:345px;}
 
+    .df-about-carousel{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center;}
+    .df-carousel{position:relative;display:flex;align-items:center;justify-content:center;--card-w:56%;padding:3% 0;}
+    .df-carousel-sizer{width:var(--card-w);aspect-ratio:3/4;visibility:hidden;}
+    .df-carousel-card{width:var(--card-w);}
+    .df-slide-title{font-size:34px;}
+    @media (max-width:900px){
+      .df-about-carousel{grid-template-columns:1fr;gap:32px;}
+      .df-carousel{--card-w:56%;}
+      .df-slide-title{font-size:26px;}
+    }
+    @media (max-width:600px){.df-carousel{--card-w:68%;}}
     .df-pillar-grid{grid-template-columns:repeat(2,1fr);}
+    .df-exp-row{display:grid;grid-template-columns:210px 1fr;gap:24px;}
+    @media (max-width:900px){.df-exp-row{grid-template-columns:1fr;gap:8px;}}
     .df-acer-bridge{grid-template-columns:1fr auto 1fr;}
     .df-about-heading{font-size:36px;}
     .df-about-body{font-size:18px;}
@@ -79,7 +100,7 @@
 
 <div style="position:relative;width:100%;min-height:100vh;overflow:hidden;background-color:{{ t.bgPage }};transition:background-color 0.3s ease;font-family:'Instrument Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">
 
-<div style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;padding:0 24px;max-width:1440px;margin:0 auto;box-sizing:border-box;">
+<div class="df-root" style="display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;padding:0 24px;max-width:1440px;margin:0 auto;box-sizing:border-box;">
 
   <div class="df-nav" style="grid-column: 1 / -1; display: grid; align-items: center; padding-top: 43px;">
     <a href="#" onclick="{{ goHome }}" style="font-weight: 500; font-size: 28px; line-height: 24px; color: {{ t.navLogo }}">Darren Ting</a>
@@ -111,17 +132,27 @@
     <div class="df-hero" style="border-radius: 12px; background-color: {{ t.cardBg }}; transition: background-color 0.3s ease; box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.1); padding: 24px; display: flex; gap: 32px;">
       <div class="df-hero-col" style="display:flex;align-items:center;justify-content:center;">
         <div class="df-chibi-box" onmouseenter="{{ onToggleEnter }}" onmouseleave="{{ onToggleLeave }}" style="position:relative;filter: drop-shadow(0px 12px 20px rgba(0,0,0,0.25)); transition: filter 0.25s ease;" style-hover="filter: drop-shadow(0px 18px 28px rgba(0,0,0,0.32));">
-          <div onclick="{{ chibiClick }}" style="position:absolute;inset:0;background-image: url(./assets/sticker-day.png); background-size: contain; background-position: center; background-repeat: no-repeat; cursor: pointer; -webkit-tap-highlight-color: transparent; outline: none; animation: {{ chibiAnim }}; opacity: {{ dayOpacity }}; transition: opacity 0.2s ease;"></div>
-          <div onclick="{{ chibiClick }}" style="position:absolute;inset:0;background-image: url(./assets/sticker-night.png); background-size: contain; background-position: center; background-repeat: no-repeat; cursor: pointer; -webkit-tap-highlight-color: transparent; outline: none; animation: {{ chibiAnim }}; opacity: {{ nightOpacity }}; transition: opacity 0.2s ease;"></div>
+          <div onclick="{{ chibiClick }}" style="position:absolute;inset:0;background-image: url(./assets/sticker-day.png); background-size: contain; background-position: center; background-repeat: no-repeat; cursor: inherit; -webkit-tap-highlight-color: transparent; outline: none; animation: {{ chibiAnim }}; opacity: {{ dayOpacity }}; transition: opacity 0.2s ease;"></div>
+          <div onclick="{{ chibiClick }}" style="position:absolute;inset:0;background-image: url(./assets/sticker-night.png); background-size: contain; background-position: center; background-repeat: no-repeat; cursor: inherit; -webkit-tap-highlight-color: transparent; outline: none; animation: {{ chibiAnim }}; opacity: {{ nightOpacity }}; transition: opacity 0.2s ease;"></div>
         </div>
       </div>
-      <div class="df-hero-col" style="display:flex;flex-direction:column;gap:40px;justify-content:center;opacity:{{ contentOpacity }};transition:opacity 0.2s ease;">
-        <div style="display: flex; flex-direction: column; gap: 24px">
-          <span class="df-hero-greet" style="font-weight: 600; line-height: 32px; color: {{ t.headingText }}">{{ heroGreet }}</span>
-          <span class="df-hero-heading" style="font-weight: 600; line-height: 40px; color: {{ t.headingText }}; text-align: left">{{ heroHeading }}</span>
-        </div>
+      <div class="df-hero-col" style="display: flex; flex-direction: column; gap: 40px; justify-content: center; opacity: {{ contentOpacity }}; transform: {{ contentShift }}; transition: opacity 0.42s ease, transform 0.52s cubic-bezier(0.22,1,0.36,1); align-items: flex-start">
         <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-          <div style="display:flex;flex-direction:column;gap:4px;">
+          <div style="display: flex; flex-direction: column; gap: 24px; align-self: flex-start">
+            <span class="df-hero-greet" style="font-weight: 600; line-height: 32px; color: {{ t.headingText }}">{{ heroGreet }}</span>
+            <span class="df-hero-heading" style="font-weight: 600; line-height: 40px; color: {{ t.headingText }}; text-align: left">{{ heroHeading }}</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 20px; align-items: flex-start; align-self: flex-start; width: 100%; max-width: 459px; min-width: 0">
+            
+            <span aria-hidden="true" style="font-weight: 600; font-size: 96px; line-height: 0.6; height: 23px; color: {{ t.headingText }}; opacity: 0.18; width: 52px">“</span><span class="df-hero-heading" style="font-weight: 500; line-height: 1.35; color: {{ t.headingText }}; text-align: left; text-wrap: pretty; font-size: clamp(28px, 3.6vw, 46px); width: 100%; max-width: 452px">I'll play first, and I'll tell you about it later. Maybe.</span>
+            
+            <span aria-hidden="true" style="font-weight: 600; font-size: 96px; line-height: 0.6; height: 35px; color: {{ t.headingText }}; opacity: 0.18; align-self: flex-end; width: 48px">”</span><span style="font-weight:600;font-size:15px;letter-spacing:0.06em;text-transform:uppercase;color:{{ t.navMenuSubtext }};"><i>- MILES DAVIS</i></span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:4px;align-self:flex-start;">
             <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
               <span class="df-clock-loc" style="font-weight: 600; color: rgb(116,159,174); display: flex; align-items: center; gap: 10px"><span>{{ timeIcon }}</span>{{ locationWeather }}</span>
               <span class="df-clock-time" style="font-weight: 600; line-height: 40px; color: {{ t.headingText }}">{{ clockTime }}</span>
@@ -133,12 +164,14 @@
     </sc-if>
 
     <sc-if value="{{ isAcer }}" hint-placeholder-val="{{ false }}">
-      <div style="display:flex;flex-direction:column;gap:64px;opacity:{{ contentOpacity }};transition:opacity 0.2s ease;">
+      <div style="display:flex;flex-direction:column;gap:64px;opacity:{{ contentOpacity }};transition:opacity 0.42s ease;">
 
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          <a href="#" onclick="{{ goHome }}" style="font-weight:600;font-size:16px;color:{{ t.navMenuSubtext }};">&#8592; Back to work</a>
-          <span style="font-weight:600;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};padding-top:12px;">Web and Mobile Design</span>
-          <span class="df-about-heading" style="font-weight:600;line-height:1.15;color:{{ t.headingText }};">Acer Health Management Center</span>
+        <div style="display:flex;flex-direction:column;gap:54px;">
+          <a href="#" onclick="{{ goHome }}" style="align-self: flex-start; font-weight: 600; font-size: 16px; padding-bottom: 4px; background-image: linear-gradient({{ t.navMenuSubtext }}, {{ t.navMenuSubtext }}); background-repeat: no-repeat; background-position: left bottom; background-size: 0% 2px; transition: background-size 0.3s ease; color: {{ t.navMenuSubtext }}" style-hover="background-size: 100% 2px;">← Back to work</a>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <span style="font-weight:600;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Web and Mobile Design</span>
+            <span class="df-about-heading" style="font-weight:600;line-height:1.15;color:{{ t.headingText }};">Acer Health Management Center</span>
+          </div>
         </div>
 
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;">
@@ -241,7 +274,7 @@
             <span style="font-weight:600;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Web</span>
             <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">For the web aspect of this ecosystem, not only was the visualization of information important to nail but also how the user actually access the information and whether or not the information hierarchy was intuitive. This was difficult due to the sheer amount of information there is but in the end we were able to reach a structure that made sense to our stakeholders.</span>
             <a href="./assets/acer-ia-web.png" target="_blank" rel="noopener" style="display:block;"><img src="./assets/acer-ia-web.png" width="10912" height="6628" alt="Web application information architecture" loading="lazy" style="display:block;width:100%;height:auto;background:#fff;padding:16px;box-sizing:border-box;border-radius:12px;"></a>
-            <span style="font-weight:400;font-size:14px;color:{{ t.navMenuSubtext }};">Open the full information architecture diagram &#8599;</span>
+            <span style="font-weight:400;font-size:14px;color:{{ t.navMenuSubtext }};">Open the full information architecture diagram ↗</span>
           </div>
         </div>
 
@@ -293,20 +326,20 @@
 
         <div style="border-radius:12px;background-color:{{ t.contactBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;">
           <span style="font-weight:600;font-size:24px;line-height:1.3;color:{{ t.contactText }};">More projects</span>
-          <a href="#" onclick="{{ goCaseUoft }}" style="font-weight:600;font-size:20px;color:{{ t.contactText }};padding-bottom:4px;background-image:linear-gradient({{ t.contactText }},{{ t.contactText }});background-repeat:no-repeat;background-position:left bottom;background-size:0% 2px;transition:background-size 0.3s ease;" style-hover="background-size:100% 2px;">UofT School of Graduate Studies &#8594;</a>
+          <a href="#" onclick="{{ goCaseUoft }}" style="font-weight:400;font-size:20px;color:{{ t.contactText }};padding-bottom:4px;background-image:linear-gradient({{ t.contactText }},{{ t.contactText }});background-repeat:no-repeat;background-position:left bottom;background-size:0% 2px;transition:background-size 0.3s ease;" style-hover="background-size:100% 2px;">UofT School of Graduate Studies →</a>
         </div>
 
       </div>
     </sc-if>
 
     <sc-if value="{{ isBmo }}" hint-placeholder-val="{{ false }}">
-      <div style="display:flex;flex-direction:column;gap:64px;opacity:{{ contentOpacity }};transition:opacity 0.2s ease;">
+      <div style="display:flex;flex-direction:column;gap:64px;opacity:{{ contentOpacity }};transition:opacity 0.42s ease;">
 
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          <a href="#" onclick="{{ goHome }}" style="font-weight:600;font-size:16px;color:{{ t.navMenuSubtext }};">&#8592; Back to work</a>
-          <span style="font-weight:600;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};padding-top:12px;">Web Design</span>
-          <span class="df-about-heading" style="font-weight:600;line-height:1.15;color:{{ t.headingText }};">An Innovation Sprint Platform for 300+ Participants</span>
-          <span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.navMenuSubtext }};">2024 BMO Destination Digital</span>
+        <div style="display: flex; flex-direction: column; gap: 54px">
+          <a href="#" onclick="{{ goHome }}" style="align-self: flex-start; font-weight: 600; font-size: 16px; padding-bottom: 4px; background-image: linear-gradient({{ t.navMenuSubtext }}, {{ t.navMenuSubtext }}); background-repeat: no-repeat; background-position: left bottom; background-size: 0% 2px; transition: background-size 0.3s ease; color: {{ t.navMenuSubtext }}" style-hover="background-size: 100% 2px;">← Back to work</a>
+          <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; justify-content: normal; align-items: normal"><span style="font-weight:600;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Web Design</span><span class="df-about-heading" style="font-weight:600;line-height:1.15;color:{{ t.headingText }};">An Innovation Sprint Platform for 300+ Participants</span><span class="df-about-body" style="font-weight:400;line-height:1.6;color:{{ t.navMenuSubtext }};">2024 BMO Destination Digital</span></div>
+          
+          
         </div>
 
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;">
@@ -339,7 +372,7 @@
           <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Project Overview</span>
           <span style="font-weight:600;font-size:28px;line-height:1.35;color:{{ t.headingText }};text-wrap:pretty;">Cultivating innovation at the Bank of Montreal</span>
           <img src="./assets/bmo-wrapup.png" alt="BMO Destination Digital 2024 wrap-up" width="1200" height="627" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
-          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">Despite the numerous projects I got to work on during my time at BMO, I want to highlight the last project I took part in. <a href="https://about.bmo.com/bmos-30-hour-innovation-sprint-destination-digital-returns/" target="_blank" rel="noopener" style="color:{{ t.navLinkText }};font-weight:600;">BMO Destination Digital 2024</a> is a 30-hour innovation sprint where BMO employees form cross-functional teams to develop solutions to real-world business problems, focusing on rapid ideation and prototyping supported by mentors and tech partners. The event aims to foster creativity and innovation within the bank, driving impactful solutions aligned with BMO&rsquo;s strategic priorities</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">Despite the numerous projects I got to work on during my time at BMO, I want to highlight the last project I took part in. <a href="https://about.bmo.com/bmos-30-hour-innovation-sprint-destination-digital-returns/" target="_blank" rel="noopener" style="color:{{ t.navLinkText }};font-weight:600;">BMO Destination Digital 2024</a> is a 30-hour innovation sprint where BMO employees form cross-functional teams to develop solutions to real-world business problems, focusing on rapid ideation and prototyping supported by mentors and tech partners. The event aims to foster creativity and innovation within the bank, driving impactful solutions aligned with BMO’s strategic priorities</span>
           <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">The goal of the design team was to create and design a platform for the participants, judges, and admins of the event. As the lead UX designer on the team I had the chance to lead design reviews to improve navigation, button design, and information architecture. Below are some of my contributions to the project. (Please note that due to NDA, these are recreations of my work at BMO)</span>
         </div>
 
@@ -382,8 +415,8 @@
         <div style="border-radius:12px;background-color:{{ t.contactBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:40px;box-sizing:border-box;display:flex;flex-direction:column;gap:24px;">
           <span style="font-weight:600;font-size:28px;line-height:1.35;color:{{ t.contactText }};text-wrap:pretty;">Thanks for stopping by! Checkout my other projects</span>
           <div style="display:flex;gap:32px;flex-wrap:wrap;">
-            <a href="#" onclick="{{ goCaseAcer }}" style="font-weight:600;font-size:20px;color:{{ t.contactText }};padding-bottom:4px;background-image:linear-gradient({{ t.contactText }},{{ t.contactText }});background-repeat:no-repeat;background-position:left bottom;background-size:0% 2px;transition:background-size 0.3s ease;" style-hover="background-size:100% 2px;">Acer Health Management Center &#8594;</a>
-            <a href="#" onclick="{{ goCaseUoft }}" style="font-weight:600;font-size:20px;color:{{ t.contactText }};padding-bottom:4px;background-image:linear-gradient({{ t.contactText }},{{ t.contactText }});background-repeat:no-repeat;background-position:left bottom;background-size:0% 2px;transition:background-size 0.3s ease;" style-hover="background-size:100% 2px;">UofT School of Graduate Studies &#8594;</a>
+            <a href="#" onclick="{{ goCaseAcer }}" style="font-weight:400;font-size:20px;color:{{ t.contactText }};padding-bottom:4px;background-image:linear-gradient({{ t.contactText }},{{ t.contactText }});background-repeat:no-repeat;background-position:left bottom;background-size:0% 2px;transition:background-size 0.3s ease;" style-hover="background-size:100% 2px;">Acer Health Management Center →</a>
+            <a href="#" onclick="{{ goCaseUoft }}" style="font-weight:400;font-size:20px;color:{{ t.contactText }};padding-bottom:4px;background-image:linear-gradient({{ t.contactText }},{{ t.contactText }});background-repeat:no-repeat;background-position:left bottom;background-size:0% 2px;transition:background-size 0.3s ease;" style-hover="background-size:100% 2px;">UofT School of Graduate Studies →</a>
           </div>
         </div>
 
@@ -391,12 +424,14 @@
     </sc-if>
 
     <sc-if value="{{ isUoft }}" hint-placeholder-val="{{ false }}">
-      <div style="display:flex;flex-direction:column;gap:64px;opacity:{{ contentOpacity }};transition:opacity 0.2s ease;">
+      <div style="display:flex;flex-direction:column;gap:64px;opacity:{{ contentOpacity }};transition:opacity 0.42s ease;">
 
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          <a href="#" onclick="{{ goHome }}" style="font-weight:600;font-size:16px;color:{{ t.navMenuSubtext }};">&#8592; Back to work</a>
-          <span style="font-weight:600;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};padding-top:12px;">Web Design</span>
-          <span class="df-about-heading" style="font-weight:600;line-height:1.15;color:{{ t.headingText }};">UofT School of Graduate Studies</span>
+        <div style="display:flex;flex-direction:column;gap:54px;">
+          <a href="#" onclick="{{ goHome }}" style="align-self: flex-start; font-weight: 600; font-size: 16px; padding-bottom: 4px; background-image: linear-gradient({{ t.navMenuSubtext }}, {{ t.navMenuSubtext }}); background-repeat: no-repeat; background-position: left bottom; background-size: 0% 2px; transition: background-size 0.3s ease; color: {{ t.navMenuSubtext }}" style-hover="background-size: 100% 2px;">← Back to work</a>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <span style="font-weight:600;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Web Design</span>
+            <span class="df-about-heading" style="font-weight:600;line-height:1.15;color:{{ t.headingText }};">UofT School of Graduate Studies</span>
+          </div>
         </div>
 
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;">
@@ -422,7 +457,7 @@
 
         <div style="display:flex;flex-direction:column;gap:16px;">
           <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">At a glance</span>
-          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">During winter 2024 I had the pleasure of working with the School of Graduate Studies and lead the redesigning efforts of the website. The University of Toronto&rsquo;s School of Graduate Studies (SGS) website serves as a pivotal platform to provide comprehensive information and resources at every phase and aspect of the graduate learning journey.</span>
+          <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">During winter 2024 I had the pleasure of working with the School of Graduate Studies and lead the redesigning efforts of the website. The University of Toronto’s School of Graduate Studies (SGS) website serves as a pivotal platform to provide comprehensive information and resources at every phase and aspect of the graduate learning journey.</span>
           <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">This redesign project focuses on making improvements to the navigation design and most frequently sought-after user paths/flows, such as program applications for prospective students and writing support for current students and employees.</span>
         </div>
 
@@ -529,7 +564,7 @@
           <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">Affinity Diagram</span>
           <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">Following the research conducted, our next steps were to categorize the information and consolidate the main themes identified into artifacts such as personas and as-is scenarios. Not only was this useful for us in determining our scope, this was also extremely helpful in communicating with our client.</span>
           <img src="./assets/sgs-affinity.png" alt="Affinity diagram" width="1115" height="1027" loading="lazy" style="display:block;width:100%;height:auto;background:#fff;padding:16px;box-sizing:border-box;border-radius:12px;">
-          <span style="font-weight:400;font-size:14px;color:{{ t.navMenuSubtext }};">Theme &#8594; Pain-point &#8594; User Quotes</span>
+          <span style="font-weight:400;font-size:14px;color:{{ t.navMenuSubtext }};">Theme → Pain-point → User Quotes</span>
         </div>
 
         <div style="display:flex;flex-direction:column;gap:16px;">
@@ -590,19 +625,19 @@
           <div style="display:flex;flex-direction:column;gap:16px;">
             <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">Mid-Fidelity</span>
             <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">For our medium-fidelity designs we wanted to make sure we nailed our user needs identified in our research and bring some of our "No Brainer" solution to life. Below are some of the designs we came up with:</span>
-            <a href="https://www.figma.com/design/F1Lt7SiuanRY1LnlEiErDo/SGS-Portfolio-Piece-Exhib.?node-id=8-7" target="_blank" rel="noopener" style="font-weight:600;font-size:16px;color:{{ t.navLinkText }};">Figma File &#8599;</a>
+            <a href="https://www.figma.com/design/F1Lt7SiuanRY1LnlEiErDo/SGS-Portfolio-Piece-Exhib.?node-id=8-7" target="_blank" rel="noopener" style="font-weight:600;font-size:16px;color:{{ t.navLinkText }};">Figma File ↗</a>
             <img src="./assets/sgs-midfi.png" alt="Mid-fidelity designs" width="4980" height="7065" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
           </div>
           <div style="display:flex;flex-direction:column;gap:16px;">
             <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">High-Fidelity</span>
             <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">In the High-Fidelity Prototype stage, we meticulously translated our mid-fidelity designs into polished, visually compelling interfaces. This phase emphasized precise visual details, advanced interactive elements, and seamless user experiences. The high-fidelity prototype served as a near-final representation, allowing stakeholders to visualize the end product with clarity and confidence.</span>
-            <a href="https://www.figma.com/design/F1Lt7SiuanRY1LnlEiErDo/SGS-Portfolio-Piece-Exhib.?node-id=352-16233" target="_blank" rel="noopener" style="font-weight:600;font-size:16px;color:{{ t.navLinkText }};">Figma File &#8599;</a>
+            <a href="https://www.figma.com/design/F1Lt7SiuanRY1LnlEiErDo/SGS-Portfolio-Piece-Exhib.?node-id=352-16233" target="_blank" rel="noopener" style="font-weight:600;font-size:16px;color:{{ t.navLinkText }};">Figma File ↗</a>
             <img src="./assets/sgs-hifi.jpg" alt="High-fidelity designs" width="3486" height="4655" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
           </div>
           <div style="display:flex;flex-direction:column;gap:16px;">
             <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">Storyboarding</span>
             <span class="df-about-body" style="font-weight:400;line-height:1.7;color:{{ t.caseTitleText }};text-wrap:pretty;">Following our high-fidelity prototypes, we created storyboards to contextualize our designs. This not only helped in communicating with our clients but also served as a point of comparison with our as-is scenario. Below is a brief summary of the user flow, for the full walkthrough please click the Figma link below.</span>
-            <a href="https://www.figma.com/proto/NWhAo633OzGPMv3vbcpx61/2192-SGS-Storyboard?page-id=0%3A1&amp;node-id=1-18" target="_blank" rel="noopener" style="font-weight:600;font-size:16px;color:{{ t.navLinkText }};">Full Storyboard Walkthrough &#8599;</a>
+            <a href="https://www.figma.com/proto/NWhAo633OzGPMv3vbcpx61/2192-SGS-Storyboard?page-id=0%3A1&amp;node-id=1-18" target="_blank" rel="noopener" style="font-weight:600;font-size:16px;color:{{ t.navLinkText }};">Full Storyboard Walkthrough ↗</a>
           </div>
         </div>
 
@@ -629,7 +664,7 @@
               <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};">We felt like the side-menu on the program information page allowed for a lot of unused white space, so we explored other designs and layout to figure out how to better utilize it.</span>
             </div>
             </div>
-            <a href="https://www.figma.com/proto/F1Lt7SiuanRY1LnlEiErDo/SGS-Portfolio-Piece-Exhib.?page-id=352%3A2036&amp;node-id=352-12438" target="_blank" rel="noopener" style="font-weight:600;font-size:16px;color:{{ t.navLinkText }};">Final Design &#8599;</a>
+            <a href="https://www.figma.com/proto/F1Lt7SiuanRY1LnlEiErDo/SGS-Portfolio-Piece-Exhib.?page-id=352%3A2036&amp;node-id=352-12438" target="_blank" rel="noopener" style="font-weight:600;font-size:16px;color:{{ t.navLinkText }};">Final Design ↗</a>
           </div>
           <div style="display:flex;flex-direction:column;gap:16px;">
             <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.caseTitleText }};">Accessibility Considerations</span>
@@ -664,7 +699,7 @@
 
         <div style="border-radius:12px;background-color:{{ t.contactBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;">
           <span style="font-weight:600;font-size:24px;line-height:1.3;color:{{ t.contactText }};">More projects</span>
-          <a href="#" onclick="{{ goCaseAcer }}" style="font-weight:600;font-size:20px;color:{{ t.contactText }};padding-bottom:4px;background-image:linear-gradient({{ t.contactText }},{{ t.contactText }});background-repeat:no-repeat;background-position:left bottom;background-size:0% 2px;transition:background-size 0.3s ease;" style-hover="background-size:100% 2px;">Acer Health Management Center &#8594;</a>
+          <a href="#" onclick="{{ goCaseAcer }}" style="font-weight:600;font-size:20px;color:{{ t.contactText }};padding-bottom:4px;background-image:linear-gradient({{ t.contactText }},{{ t.contactText }});background-repeat:no-repeat;background-position:left bottom;background-size:0% 2px;transition:background-size 0.3s ease;" style-hover="background-size:100% 2px;">Acer Health Management Center →</a>
         </div>
 
       </div>
@@ -672,7 +707,7 @@
 
 
     <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-      <div style="display:flex;flex-direction:column;gap:24px;opacity:{{ contentOpacity }};transition:opacity 0.2s ease;">
+      <div style="display:flex;flex-direction:column;gap:24px;opacity:{{ contentOpacity }};transition:opacity 0.42s ease;">
         <span style="font-weight: 600; font-size: 32px; color: {{ t.headingText }}">My Work</span>
         <div class="df-case-grid" onmousemove="{{ onCaseGridMove }}" onmouseleave="{{ onCaseGridLeave }}" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
 
@@ -736,42 +771,100 @@
 
     <div style="{{ cursorLabelStyle }}">{{ cursorLabelText }}</div>
 
-    <div style="{{ customCursorStyle }}">
-      <svg width="24" height="24" viewBox="0 0 24 22" fill="{{ cursorFill }}" xmlns="http://www.w3.org/2000/svg">
+    <div onclick="{{ chibiClick }}" onmouseenter="{{ onMiniEnter }}" onmouseleave="{{ onMiniLeave }}" style="{{ miniToggleStyle }}">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:{{ dayOpacity }};transition:opacity 0.2s ease;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="{{ t.headingText }}" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2"></circle>
+          <path d="M12 2.4v2.4M12 19.2v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.4 12h2.4M19.2 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"></path>
+        </svg>
+      </div>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:{{ nightOpacity }};transition:opacity 0.2s ease;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="{{ t.headingText }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20.5 14.5A8.6 8.6 0 0 1 9.5 3.5a8.6 8.6 0 1 0 11 11z"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="df-cursor" style="{{ customCursorStyle }}">
+      <svg width="24" height="24" viewBox="0 0 24 22" fill="{{ cursorFill }}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M2.4 1.2c-1.1-0.5-2.2 0.6-1.7 1.7l7.8 17.3c0.6 1.3 2.4 1.2 2.9-0.1l2.6-6.9 6.9-2.6c1.3-0.5 1.4-2.3 0.1-2.9L2.4 1.2z" stroke="{{ cursorStroke }}" stroke-width="{{ cursorStrokeWidth }}" stroke-linejoin="round"></path>
       </svg>
     </div>
 
     <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
-      <div style="display:flex;flex-direction:column;gap:64px;opacity:{{ contentOpacity }};transition:opacity 0.2s ease;">
+      <div style="display:flex;flex-direction:column;gap:64px;opacity:{{ contentOpacity }};transition:opacity 0.42s ease;">
 
-        <span class="df-about-heading" style="font-weight:600;line-height:1.25;color:{{ t.headingText }};text-wrap:pretty;">Hey, I'm Darren Ting, your UX maestro &#9787; infusing design with life's fun. When I'm not crafting interactive adventures &#10042;, I'm performing music and documenting my life through videography.</span>
+        <div class="df-about-carousel">
 
-        <img src="./assets/about-portrait.jpeg" alt="Darren Ting" width="1616" height="1080" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);">
+          <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start;">
+            
+            <span class="df-slide-title" style="font-weight: 400; line-height: 1.2; color: {{ t.headingText }}; text-wrap: pretty; font-size: 26px">Hey, I'm Darren! Thanks for popping by.<br><br>I'm a designer that specializes in financial workflows for business clients, and when I'm not designing you can usually catch me training, playing guitar, or filming.</span>
+            
+          </div>
+
+          <div class="df-carousel" ref="{{ fanRef }}" onclick="{{ onCarouselClick }}">
+            <div class="df-carousel-sizer"></div>
+            <sc-for list="{{ cards }}" as="card" hint-placeholder-count="3">
+              <div class="df-carousel-card" style="position:absolute;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:#d9d9d9;box-shadow:0px 10px 34px rgba(0,0,0,0.24);transition:{{ card.transition }};transform:{{ card.transform }};z-index:{{ card.z }};opacity:{{ card.opacity }};">
+                <sc-if value="{{ card.isImg }}" hint-placeholder-val="{{ true }}">
+                  <img src="{{ card.src }}" alt="{{ card.alt }}" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+                </sc-if>
+                <sc-if value="{{ card.isVid }}" hint-placeholder-val="{{ false }}">
+                  <video data-fan-index="{{ $index }}" data-src="{{ card.src }}" muted="{{ true }}" loop="{{ true }}" playsinline="" preload="metadata" style="display:block;width:100%;height:100%;object-fit:cover;"></video>
+                  <div onclick="{{ toggleVideoSound }}" style="position:absolute;left:12px;bottom:12px;width:40px;height:40px;border-radius:999px;background:rgba(0,20,28,0.55);display:flex;align-items:center;justify-content:center;cursor:inherit;z-index:2;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(255,255,255)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;opacity:{{ mutedIconOpacity }};transition:opacity 0.2s ease;" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z"></path><path d="M17 9l4 6M21 9l-4 6"></path></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(255,255,255)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;opacity:{{ soundIconOpacity }};transition:opacity 0.2s ease;" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z"></path><path d="M16 8.5a4.5 4.5 0 0 1 0 7M19 6a8 8 0 0 1 0 12"></path></svg>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+
+        </div>
 
         <div style="display:flex;flex-direction:column;gap:24px;">
-          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Design Pillars</span>
-          <div class="df-pillar-grid" style="display:grid;gap:16px;">
-            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;align-items:flex-start;">
-            <span style="display:flex;color:{{ t.headingText }};"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"></circle><path d="M14.9999 14H8.99991C6.23848 14 3.76499 16.5498 5.58239 18.6289C6.81829 20.0428 8.86211 21 11.9999 21C15.1377 21 17.1815 20.0428 18.4174 18.6289C20.2348 16.5498 17.7613 14 14.9999 14Z" stroke="currentColor" stroke-width="2"></path></svg></span>
-            <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.headingText }};">User-Centric Focus</span>
-            <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};text-wrap:pretty;">Placing users at the core, ensuring each design resonates with their needs and desires.</span>
-          </div>
-            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;align-items:flex-start;">
-            <span style="display:flex;color:{{ t.headingText }};"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10 13C10 11.3431 11.3431 10 13 10H18C19.6569 10 21 11.3431 21 13V18C21 19.6569 19.6569 21 18 21H13C11.3431 21 10 19.6569 10 18V13Z" stroke="currentColor" stroke-width="2"></path><path d="M14 6.20833V6C14 4.34315 12.6569 3 11 3H6C4.34315 3 3 4.34315 3 6V11C3 12.6569 4.34315 14 6 14H6.20833" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></span>
-            <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.headingText }};">Seamless Functionality</span>
-            <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};text-wrap:pretty;">Engineering designs that not only look good but work effortlessly for a flawless experience.</span>
-          </div>
-            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;align-items:flex-start;">
-            <span style="display:flex;color:{{ t.headingText }};"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 3H14.3575C13.5255 3 12.765 3.47005 12.3929 4.21417C12.231 4.53795 11.769 4.53795 11.6071 4.21417C11.235 3.47005 10.4745 3 9.64251 3H8" stroke="currentColor" stroke-width="2"></path><path d="M19 12V6C19 4.34315 17.6569 3 16 3H8C6.34315 3 5 4.34315 5 6V18C5 19.6569 6.34315 21 8 21H10" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><circle cx="16" cy="18" r="3" stroke="currentColor" stroke-width="2"></circle></svg></span>
-            <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.headingText }};">Innovative Design</span>
-            <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};text-wrap:pretty;">Unleashing creativity in every pixel, creating designs that captivate and innovate.</span>
-          </div>
-            <div style="border-radius:12px;background-color:{{ t.cardBg }};transition:background-color 0.3s ease;box-shadow:0px 1px 5px 0px rgba(0,0,0,0.1);padding:32px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;align-items:flex-start;">
-            <span style="display:flex;color:{{ t.headingText }};"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.1389 4.25972C16.5998 4.07988 16.0328 4.00024 15.4649 4.00024C14 4.00023 12.9999 4.74047 12 5.50009C11.0176 4.75134 10 4.00024 8.55296 4.00024C7.99669 4.00024 7.41614 4.06017 6.88887 4.24093C3.53101 5.33339 2.33402 8.95705 3.35101 12.1244C3.92701 13.743 4.8549 15.2112 6.06088 16.4182C7.87741 18.1602 9.85555 19.6799 12 21.0001C14.1404 19.7148 16.1547 18.1553 17.9498 16.4271C19.1638 15.2201 20.0908 13.743 20.6578 12.1244C21.6577 8.95705 20.4607 5.33339 17.1389 4.25972Z" stroke="currentColor" stroke-width="2"></path></svg></span>
-            <span style="font-weight:600;font-size:20px;line-height:1.3;color:{{ t.headingText }};">Delightful Experiences</span>
-            <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};text-wrap:pretty;">Infusing a touch of joy and surprise into every interaction, making moments memorable.</span>
-          </div>
+          <span style="font-weight:600;font-size:28px;line-height:1.3;color:{{ t.headingText }};">Experience</span>
+          <div style="display:flex;flex-direction:column;">
+            <div class="df-exp-row" style="padding:24px 0;border-top:1px solid {{ t.hairline }};">
+              <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Oct 2024 &mdash; Present</span>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <span style="font-weight:600;font-size:20px;line-height:1.35;color:{{ t.headingText }};">UX Designer</span>
+                <span style="font-weight:600;font-size:16px;line-height:1.4;color:{{ t.navMenuSubtext }};">Bank of Montreal, Commercial Banking</span>
+                <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};text-wrap:pretty;">Most senior designer on the SMB commercial banking platform, designing across six Agile squads covering payments, fraud prevention, account administration, and registration. I own the administration and entitlement experience, led the platform-wide integration of Positive Pay, and govern a 15+ pattern library extending BMO&rsquo;s enterprise design system.</span>
+              </div>
+            </div>
+            <div class="df-exp-row" style="padding:24px 0;border-top:1px solid {{ t.hairline }};">
+              <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Sep 2023 &mdash; Apr 2024</span>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <span style="font-weight:600;font-size:20px;line-height:1.35;color:{{ t.headingText }};">UX Design Intern</span>
+                <span style="font-weight:600;font-size:16px;line-height:1.4;color:{{ t.navMenuSubtext }};">Bank of Montreal, Technology &amp; Operations</span>
+                <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};text-wrap:pretty;">Designed internal tooling for BMO employees, including the platform behind Destination Digital, a bank-wide hackathon covering team registration, judging, and theme browsing. It stayed in active use for later cycles.</span>
+              </div>
+            </div>
+            <div class="df-exp-row" style="padding:24px 0;border-top:1px solid {{ t.hairline }};">
+              <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Jun &mdash; Aug 2023</span>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <span style="font-weight:600;font-size:20px;line-height:1.35;color:{{ t.headingText }};">UX Design Intern</span>
+                <span style="font-weight:600;font-size:16px;line-height:1.4;color:{{ t.navMenuSubtext }};">Acer</span>
+                <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};text-wrap:pretty;">Designed a proof-of-concept remote patient monitoring system spanning a patient mobile app and a clinician web portal, using predictive attention modelling to raise the predicted attention score on priority elements by 15%.</span>
+              </div>
+            </div>
+            <div class="df-exp-row" style="padding:24px 0;border-top:1px solid {{ t.hairline }};">
+              <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">Jun &mdash; Jul 2021</span>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <span style="font-weight:600;font-size:20px;line-height:1.35;color:{{ t.headingText }};">UX Design Intern</span>
+                <span style="font-weight:600;font-size:16px;line-height:1.4;color:{{ t.navMenuSubtext }};">OneAD</span>
+                <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};text-wrap:pretty;">Ran a competitive analysis of live-streaming platforms, examining the engagement and retention mechanics behind streamer&ndash;audience interaction, and presented findings to the CEO.</span>
+              </div>
+            </div>
+            <div class="df-exp-row" style="padding:24px 0;border-top:1px solid {{ t.hairline }};">
+              <span style="font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.navMenuSubtext }};">2022 &mdash; 2024</span>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <span style="font-weight:600;font-size:20px;line-height:1.35;color:{{ t.headingText }};">Master of Information, UX Design</span>
+                <span style="font-weight:600;font-size:16px;line-height:1.4;color:{{ t.navMenuSubtext }};">University of Toronto</span>
+                <span style="font-weight:400;font-size:16px;line-height:1.6;color:{{ t.caseTitleText }};text-wrap:pretty;">Preceded by an Honours BA in Communication &amp; Sociology at the University of Toronto, 2018&ndash;2022.</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -803,10 +896,7 @@ class Component extends DCLogic {
   onDocMouseOut = (e) => { if (!e.relatedTarget && !e.toElement) this.leaveViewport(); };
   onWinBlur = () => this.leaveViewport();
 
-  hideNativeCursor = () => {
-    document.documentElement.style.setProperty('cursor', 'none', 'important');
-    document.body.style.setProperty('cursor', 'none', 'important');
-  };
+
 
   onCaseGridMove = (e) => {
     // Ignore moves once a navigation is underway; the grid unmounts without
@@ -901,11 +991,13 @@ class Component extends DCLogic {
     if (this.state.page === page) return;
     history.pushState(null, '', hash);
     this.stopTyping();
-    this.setState({ contentFading: true, activeCase: null, hoveringToggle: false });
+    // navSlide moves immediately so the pill tracks the click; only the
+    // content crossfade waits.
+    this.setState({ contentFading: true, activeCase: null, hoveringToggle: false, navSlide });
     setTimeout(() => {
-      this.setState({ page, navSlide, contentFading: false });
+      this.setState({ page, contentFading: false });
       window.scrollTo(0, 0);
-    }, 200);
+    }, 430);
   };
 
   goHome = (e) => {
@@ -947,6 +1039,67 @@ class Component extends DCLogic {
     return { dark };
   });
 
+  observeHero = () => {
+    if (this._io) { this._io.disconnect(); this._io = null; }
+    const el = document.querySelector('.df-chibi-box');
+    // No hero on the case-study pages, so the mini toggle is always shown there.
+    if (!el) { this.setState({ heroOff: true }); return; }
+    this._io = new IntersectionObserver(([entry]) => {
+      this.setState({ heroOff: !entry.isIntersecting });
+    }, { threshold: 0.2 });
+    this._io.observe(el);
+  };
+
+  onMiniEnter = () => this.setState({ hoveringToggle: true }, () => this.startTyping(this.state.dark ? 'Wake me up' : 'Take a break'));
+  onMiniLeave = () => { this.setState({ hoveringToggle: false }); if (!this.state.activeCase) this.stopTyping(); };
+
+  MEDIA = [
+    { src: './assets/about-fan-1.jpg', alt: 'Darren in Rome', isImg: true, isVid: false },
+    { src: './assets/about-fan-2.jpg', alt: 'Jiu-jitsu competition', isImg: true, isVid: false },
+    { src: './assets/about-fan-3.mp4', alt: 'Playing guitar', isImg: false, isVid: true },
+    { src: './assets/about-fan-4.jpg', alt: 'Mountains in British Columbia', isImg: true, isVid: false },
+    { src: './assets/about-fan-5.mp4', alt: 'Video', isImg: false, isVid: true }
+  ];
+
+  // Front card centered, the next card peeking out behind on the right and the
+  // previous one behind on the left. Anything deeper in the stack sits hidden
+  // directly behind the front card.
+  slideCard(i) {
+    const n = this.MEDIA.length;
+    const off = (i - (this.state.slide ?? 0) + n) % n;
+    const pos = off === 0 ? { x: 0, r: 0, s: 1, z: 30, o: 1 }
+      : off === 1 ? { x: 24, r: 7, s: 0.9, z: 20, o: 1 }
+      : off === n - 1 ? { x: -24, r: -7, s: 0.9, z: 20, o: 1 }
+      : { x: 0, r: 0, s: 0.82, z: 10, o: 0 };
+    return {
+      transform: 'translateX(' + pos.x + '%) rotate(' + pos.r + 'deg) scale(' + pos.s + ')',
+      z: pos.z, opacity: pos.o,
+      transition: 'transform 0.55s cubic-bezier(0.22,1,0.36,1), opacity 0.35s ease'
+    };
+  }
+
+  step = (dir) => {
+    const n = this.MEDIA.length;
+    const cur = this.state.slide ?? 0;
+    this.setState({ slideDir: dir, slide: (cur + (dir > 0 ? 1 : n - 1)) % n });
+  };
+
+  nextSlide = (e) => { if (e) e.stopPropagation(); this.step(1); };
+  prevSlide = (e) => { if (e) e.stopPropagation(); this.step(-1); };
+
+  // Click the left half to fan left, the right half to fan right.
+  onCarouselClick = (e) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    this.step(e.clientX < r.left + r.width / 2 ? -1 : 1);
+  };
+
+  toggleVideoSound = (e) => {
+    if (e) e.stopPropagation();
+    this.setState({ videoMuted: !(this.state.videoMuted ?? true) }, () => this.syncVideo());
+  };
+
+  _fanRef = React.createRef();
+
   chibiClick = () => {
     if (this.state.peeling) return;
     this.setState({ peeling: true });
@@ -961,7 +1114,8 @@ class Component extends DCLogic {
       navMenuText: 'rgb(0,100,135)', navMenuSubtext: 'rgb(116,159,174)',
       cardBg: 'rgb(254,255,255)', headingText: 'rgb(0,100,135)', navLogo: 'rgb(0,100,135)',
       caseTitleText: 'rgb(0,100,135)', tagBg: 'rgb(254,255,255)', tagText: 'rgb(0,100,135)',
-      ctaText: 'rgb(255,255,255)', footerText: 'rgb(0,100,135)', navLinkText: 'rgb(0,100,135)', contactBg: 'rgb(254,255,255)', contactText: 'rgb(0,100,135)'
+      ctaText: 'rgb(255,255,255)', footerText: 'rgb(0,100,135)', navLinkText: 'rgb(0,100,135)', contactBg: 'rgb(254,255,255)', contactText: 'rgb(0,100,135)',
+      hairline: 'rgba(0,100,135,0.18)'
     },
     dark: {
       bgPage: 'rgb(16,17,20)',
@@ -969,7 +1123,8 @@ class Component extends DCLogic {
       navMenuText: 'rgb(122,193,255)', navMenuSubtext: 'rgb(194,226,255)',
       cardBg: 'rgb(31,48,71)', headingText: '#C2E2FF', navLogo: '#C2E2FF',
       caseTitleText: 'rgb(241,241,241)', tagBg: 'rgb(254,255,255)', tagText: 'rgb(0,100,135)',
-      ctaText: 'rgb(240,240,240)', footerText: '#C2E2FF', navLinkText: '#C2E2FF', contactBg: 'rgb(31,48,71)', contactText: '#C2E2FF'
+      ctaText: 'rgb(240,240,240)', footerText: '#C2E2FF', navLinkText: '#C2E2FF', contactBg: 'rgb(31,48,71)', contactText: '#C2E2FF',
+      hairline: 'rgba(194,226,255,0.22)'
     }
   };
 
@@ -1010,21 +1165,57 @@ class Component extends DCLogic {
     window.addEventListener('mousemove', this.onGlobalMouseMove);
     document.addEventListener('mouseout', this.onDocMouseOut);
     window.addEventListener('blur', this.onWinBlur);
-    this.hideNativeCursor();
-    document.addEventListener('mouseover', this.hideNativeCursor);
-    window.addEventListener('focus', this.hideNativeCursor);
-    document.addEventListener('visibilitychange', this.hideNativeCursor);
+    this._observedPage = this.state.page;
+    this.observeHero();
+    this.syncVideo();
+  }
+
+  // The video only plays while it is the front card on the About page, and stays
+  // muted unless the user asked for sound — so a re-render can never start a
+  // second, audible playback.
+  syncVideo() {
+    const box = this._fanRef.current;
+    if (!box) return;
+    const cur = this.state.slide ?? 0;
+    box.querySelectorAll('video[data-fan-index]').forEach(v => {
+      // src is attached here, not in the template, so the streaming placeholder
+      // pass never fires a request for an unresolved hole.
+      const want = v.dataset.src;
+      if (want && !v.src.endsWith(want.replace('./', ''))) v.src = want;
+      v.loop = true;
+      v.muted = this.state.videoMuted ?? true;
+      const active = this.state.page === 'about' && Number(v.dataset.fanIndex) === cur;
+      if (active) {
+        if (v.paused) v.play().catch(() => {});
+      } else if (!v.paused) {
+        v.pause();
+        v.currentTime = 0;
+      }
+    });
+  }
+
+  componentDidUpdate() {
+    // The runtime doesn't pass React's (prevProps, prevState); track it here.
+    if (this._observedPage !== this.state.page) {
+      this._observedPage = this.state.page;
+      this.observeHero();
+    }
+    this.syncVideo();
   }
 
   componentWillUnmount() {
+    const box = this._fanRef.current;
+    if (box) box.querySelectorAll('video').forEach(v => { v.pause(); v.removeAttribute('src'); v.load(); });
+    if (this._io) this._io.disconnect();
+    clearTimeout(this._slideT);
+    clearTimeout(this._snapT);
+
     clearInterval(this._timer);
     clearInterval(this._weatherTimer);
     window.removeEventListener('mousemove', this.onGlobalMouseMove);
     document.removeEventListener('mouseout', this.onDocMouseOut);
     window.removeEventListener('blur', this.onWinBlur);
-    document.removeEventListener('mouseover', this.hideNativeCursor);
-    window.removeEventListener('focus', this.hideNativeCursor);
-    document.removeEventListener('visibilitychange', this.hideNativeCursor);
+
   }
 
   isDayTime() {
@@ -1053,7 +1244,28 @@ class Component extends DCLogic {
       timeIcon: this.isDayTime() ? '\u2600\ufe0f' : '\ud83c\udf19',
       dayOpacity: this.state.dark ? 0 : 1,
       nightOpacity: this.state.dark ? 1 : 0,
+      cards: this.MEDIA.map((m, i) => Object.assign({}, m, this.slideCard(i))),
+      fanRef: this._fanRef,
+      toggleVideoSound: this.toggleVideoSound,
+      soundIconOpacity: (this.state.videoMuted ?? true) ? 0 : 1,
+      mutedIconOpacity: (this.state.videoMuted ?? true) ? 1 : 0,
+      nextSlide: this.nextSlide,
+      prevSlide: this.prevSlide,
+      onCarouselClick: this.onCarouselClick,
       chibiClick: this.chibiClick,
+      onMiniEnter: this.onMiniEnter,
+      onMiniLeave: this.onMiniLeave,
+      miniToggleStyle: {
+        position: 'fixed', right: '47px', bottom: '47px', width: '76px', height: '76px',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        borderRadius: '999px', background: t.cardBg,
+        boxShadow: '0px 4px 20px rgba(0,0,0,0.18)',
+        opacity: this.state.heroOff ? 1 : 0,
+        transform: this.state.heroOff ? 'translateY(0) scale(1)' : 'translateY(12px) scale(0.85)',
+        pointerEvents: this.state.heroOff ? 'auto' : 'none',
+        transition: 'opacity 0.25s ease, transform 0.25s ease, background 0.3s ease',
+        zIndex: 900, overflow: 'hidden'
+      },
       chibiAnim: this.state.peeling ? 'peel-off 0.5s ease' : 'chibi-idle-jump 4s ease-in-out infinite',
       navSliderTransform: this.state.navSlide === 'work' ? 'translateX(0%)' : 'translateX(100%)',
       navHoverClassWork: this.state.navSlide === 'work' ? '' : (this.state.dark ? 'df-nav-menu-dark' : 'df-nav-menu-light'),
@@ -1062,9 +1274,10 @@ class Component extends DCLogic {
       goAbout: this.goAbout,
       isHome,
       isAbout,
-      heroGreet: isHome ? 'Nice to meet you! \ud83d\udc4b' : 'A bit about me',
-      heroHeading: isHome ? "I'm Darren, currently working as a UX Designer at BMO" : "Outside of work I'm usually sketching, gaming, or trying a new coffee shop around Toronto",
+      heroGreet: isHome ? 'Nice to meet you! \ud83d\udc4b' : "Hey, I'm Darren Ting, your UX maestro \u263b",
+      heroHeading: isHome ? "I'm Darren, currently working as a UX Designer at BMO" : "Infusing design with life's fun. When I'm not crafting interactive adventures \u273a, I'm performing music and documenting my life through videography.",
       contentOpacity: this.state.contentFading ? 0 : 1,
+      contentShift: this.state.contentFading ? 'translateX(32px)' : 'translateX(0)',
       onCaseGridMove: this.onCaseGridMove, onCaseGridLeave: this.onCaseGridLeave,
       cursorLabelStyle: this.caseLabelStyle(),
       cursorLabelText: this.cursorLabelText(),
