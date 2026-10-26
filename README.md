@@ -15,7 +15,8 @@ Static site. No build step.
 
 - `index.html` — the whole site (home, about, three case studies)
 - `support.js`, `image-slot.js` — runtime scripts, required
-- `assets/` — all images, icons, stickers, and `resume.pdf`
+- `assets/` — case-study SVGs (`pp-*.svg`), images, videos, and icons
+- `uploads/` — stickers, thumbnails, and `Resume 2026.pdf`
 - `.nojekyll` — stops GitHub Pages from running Jekyll over the folder
 
 ## Notes
