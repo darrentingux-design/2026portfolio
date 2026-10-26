@@ -24,7 +24,6 @@
     @keyframes case-fade-in{from{opacity:0;}to{opacity:1;}}
     @keyframes home-fade-in{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
     @keyframes case-fade-out{from{opacity:1;}to{opacity:0;}}
-    [data-svgslot]:hover [data-svgslot-ctl][data-on]{display:flex!important;}
     .df-cursor{display:none;}
     @media (hover:hover) and (pointer:fine){.df-cursor{display:block;}}
     body[data-dc-editor-on] .df-cursor{display:none!important;}
@@ -160,16 +159,12 @@
                 <span style="font-weight:600;font-size:18px;letter-spacing:0.02em;text-transform:uppercase;">Enterprise Product Design</span>
                 <span style="font-weight:600;font-size:clamp(26px,3.4vw,34px);line-height:1.2;text-wrap:balance;">Bringing Positive Pay to Small Business Banking</span>
               </div>
-              <div data-svgslot="pp-hero" data-src="./assets/pp-hero.svg" data-nolens="1" style="position:relative;width:100%;aspect-ratio:920 / 550;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
+              <div data-svgslot="pp-hero" data-src="./assets/pp-hero.svg" data-nolens="1" style="position:relative;width:100%;aspect-ratio:920 / 550;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:default;">
                 <img data-svgslot-img="1" alt="Hero image" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
                   <span style="font-weight:600;font-size:15px;line-height:1.35;">Hero image</span>
-                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Drop an SVG or click to upload</span>
-                </div>
-                <div data-svgslot-ctl="1" style="position:absolute;top:10px;right:10px;display:none;gap:6px;z-index:2;">
-                  <button type="button" data-svgslot-act="replace" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Replace</button>
-                  <button type="button" data-svgslot-act="remove" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Remove</button>
+                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
                 </div>
               </div>
             </div>
@@ -212,16 +207,12 @@
                 <span style="flex:1 1 200px;font-weight:700;font-size:24px;text-transform:uppercase;">Outcome</span>
                 <span style="flex:2 1 420px;font-size:16px;line-height:1.6;text-wrap:pretty;">Positive pay shipped on schedule in October 2026, delivered across all three squads. The exception slideout pattern created for the service also went live, and is now the pilot for adoption across the platform’s other payment rails.</span>
               </div>
-              <div data-svgslot="pp-outcome-legacy" data-src="./assets/pp-outcome-legacy.svg" data-nolens="1" style="position:relative;width:100%;aspect-ratio:1840 / 1000;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
+              <div data-svgslot="pp-outcome-legacy" data-src="./assets/pp-outcome-legacy.svg" data-nolens="1" style="position:relative;width:100%;aspect-ratio:1840 / 1000;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:default;">
                 <img data-svgslot-img="1" alt="Legacy corporate ‘Manage Positive Pay Exceptions’ screen" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
                   <span style="font-weight:600;font-size:15px;line-height:1.35;">Legacy corporate ‘Manage Positive Pay Exceptions’ screen</span>
-                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Drop an SVG or click to upload</span>
-                </div>
-                <div data-svgslot-ctl="1" style="position:absolute;top:10px;right:10px;display:none;gap:6px;z-index:2;">
-                  <button type="button" data-svgslot-act="replace" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Replace</button>
-                  <button type="button" data-svgslot-act="remove" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Remove</button>
+                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
                 </div>
               </div>
             </div>
@@ -238,16 +229,12 @@
                 <span style="font-weight:500;font-size:17px;line-height:1.55;text-wrap:pretty;">With access to the test environment and the live corporate product, I mapped its existing positive pay flows end to end — entitlement gates, approval states, validation rules, error paths, and edge cases. The map became the reference for conversations with developers and product owners about what to carry across, what to cut, and what to rebuild. Two changes came directly out of it: remove the exceptions summary, and change the approval structure for managing issues and voids.</span>
               </div></sc-if>
               <div style="display:flex;flex-direction:column;gap:10px;">
-                <div data-svgslot="pp-current-state" data-src="./assets/pp-current-state.svg" style="position:relative;width:100%;aspect-ratio:11360 / 2546;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
+                <div data-svgslot="pp-current-state" data-src="./assets/pp-current-state.svg" style="position:relative;width:100%;aspect-ratio:11360 / 2546;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:default;">
                 <img data-svgslot-img="1" alt="Current state map" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
                   <span style="font-weight:600;font-size:15px;line-height:1.35;">Current state map</span>
-                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Drop an SVG or click to upload</span>
-                </div>
-                <div data-svgslot-ctl="1" style="position:absolute;top:10px;right:10px;display:none;gap:6px;z-index:2;">
-                  <button type="button" data-svgslot-act="replace" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Replace</button>
-                  <button type="button" data-svgslot-act="remove" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Remove</button>
+                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
                 </div>
               </div>
               </div>
@@ -259,16 +246,12 @@
                 <span style="font-weight:500;font-size:17px;line-height:1.55;text-wrap:pretty;">I then reviewed how five other banks handle manage exceptions: Chase, Bank of Hawaii, California Bank Trust, FM Bank, and Vectra Bank.</span>
               </div></sc-if>
               <div style="display:flex;flex-direction:column;gap:10px;">
-                <div data-svgslot="pp-competitor" data-src="./assets/pp-competitor.svg" style="position:relative;width:100%;aspect-ratio:10208 / 9760;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
+                <div data-svgslot="pp-competitor" data-src="./assets/pp-competitor.svg" style="position:relative;width:100%;aspect-ratio:10208 / 9760;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:default;">
                 <img data-svgslot-img="1" alt="Competitor analysis board" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
                   <span style="font-weight:600;font-size:15px;line-height:1.35;">Competitor analysis board</span>
-                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Drop an SVG or click to upload</span>
-                </div>
-                <div data-svgslot-ctl="1" style="position:absolute;top:10px;right:10px;display:none;gap:6px;z-index:2;">
-                  <button type="button" data-svgslot-act="replace" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Replace</button>
-                  <button type="button" data-svgslot-act="remove" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Remove</button>
+                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
                 </div>
               </div>
               </div>
@@ -289,16 +272,12 @@
                   <span style="font-size:16px;line-height:1.6;text-wrap:pretty;">I ran a workshop with two other designers. I set the context and the constraint, then each of us — myself included — had five minutes to sketch independently. We brought the sketches back, critiqued them together, and narrowed to three options.</span>
                 </div>
               </div></sc-if>
-              <div data-svgslot="pp-workshop-board" data-src="./assets/pp-workshop-board.svg" style="position:relative;width:100%;aspect-ratio:920 / 520;background:transparent;cursor:pointer;">
+              <div data-svgslot="pp-workshop-board" data-src="./assets/pp-workshop-board.svg" style="position:relative;width:100%;aspect-ratio:920 / 520;background:transparent;cursor:default;">
                 <img data-svgslot-img="1" alt="Workshop board — exploration of slideout + solution options" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
                   <span style="font-weight:600;font-size:15px;line-height:1.35;">Workshop board — exploration of slideout + solution options</span>
-                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Drop an SVG or click to upload</span>
-                </div>
-                <div data-svgslot-ctl="1" style="position:absolute;top:10px;right:10px;display:none;gap:6px;z-index:2;">
-                  <button type="button" data-svgslot-act="replace" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Replace</button>
-                  <button type="button" data-svgslot-act="remove" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Remove</button>
+                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
                 </div>
               </div>
               <div style="display:flex;flex-direction:column;gap:14px;">
@@ -309,28 +288,20 @@
                 </div></sc-if>
               </div>
               <div style="display:flex;flex-direction:column;gap:16px;">
-                <div data-svgslot="pp-shipped-slideout" data-src="./assets/pp-shipped-slideout.svg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:pointer;">
+                <div data-svgslot="pp-shipped-slideout" data-src="./assets/pp-shipped-slideout.svg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:default;">
                 <img data-svgslot-img="1" alt="Exception details slideout" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
                   <span style="font-weight:600;font-size:15px;line-height:1.35;">Exception details slideout</span>
-                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Drop an SVG or click to upload</span>
-                </div>
-                <div data-svgslot-ctl="1" style="position:absolute;top:10px;right:10px;display:none;gap:6px;z-index:2;">
-                  <button type="button" data-svgslot-act="replace" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Replace</button>
-                  <button type="button" data-svgslot-act="remove" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Remove</button>
+                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
                 </div>
               </div>
-                <div data-svgslot="pp-shipped-confirm" data-src="./assets/pp-shipped-confirm.svg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:pointer;">
+                <div data-svgslot="pp-shipped-confirm" data-src="./assets/pp-shipped-confirm.svg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:default;">
                 <img data-svgslot-img="1" alt="Pay &amp; issue confirmation" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
                   <span style="font-weight:600;font-size:15px;line-height:1.35;">Pay &amp; issue confirmation</span>
-                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Drop an SVG or click to upload</span>
-                </div>
-                <div data-svgslot-ctl="1" style="position:absolute;top:10px;right:10px;display:none;gap:6px;z-index:2;">
-                  <button type="button" data-svgslot-act="replace" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Replace</button>
-                  <button type="button" data-svgslot-act="remove" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Remove</button>
+                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
                 </div>
               </div>
               </div>
@@ -347,40 +318,28 @@
                 <span style="font-size:16px;line-height:1.6;text-wrap:pretty;">This is the decision I would revisit first. The current design asks clients to reason about a requirement the system already knows the answer to.</span>
               </div></sc-if>
               <div style="display:flex;flex-direction:column;gap:16px;">
-                <div data-svgslot="pp-payee-1" data-src="./assets/pp-payee-1.svg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:pointer;">
+                <div data-svgslot="pp-payee-1" data-src="./assets/pp-payee-1.svg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:default;">
                 <img data-svgslot-img="1" alt="Add issued checks — step 1" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
                   <span style="font-weight:600;font-size:15px;line-height:1.35;">Add issued checks — step 1</span>
-                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Drop an SVG or click to upload</span>
-                </div>
-                <div data-svgslot-ctl="1" style="position:absolute;top:10px;right:10px;display:none;gap:6px;z-index:2;">
-                  <button type="button" data-svgslot-act="replace" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Replace</button>
-                  <button type="button" data-svgslot-act="remove" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Remove</button>
+                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
                 </div>
               </div>
-                <div data-svgslot="pp-payee-2" data-src="./assets/pp-payee-2.svg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:pointer;">
+                <div data-svgslot="pp-payee-2" data-src="./assets/pp-payee-2.svg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:default;">
                 <img data-svgslot-img="1" alt="Payee details — one name" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
                   <span style="font-weight:600;font-size:15px;line-height:1.35;">Payee details — one name</span>
-                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Drop an SVG or click to upload</span>
-                </div>
-                <div data-svgslot-ctl="1" style="position:absolute;top:10px;right:10px;display:none;gap:6px;z-index:2;">
-                  <button type="button" data-svgslot-act="replace" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Replace</button>
-                  <button type="button" data-svgslot-act="remove" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Remove</button>
+                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
                 </div>
               </div>
-                <div data-svgslot="pp-payee-3" data-src="./assets/pp-payee-3.svg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:pointer;">
+                <div data-svgslot="pp-payee-3" data-src="./assets/pp-payee-3.svg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:default;">
                 <img data-svgslot-img="1" alt="Payee details — two names" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
                   <span style="font-weight:600;font-size:15px;line-height:1.35;">Payee details — two names</span>
-                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Drop an SVG or click to upload</span>
-                </div>
-                <div data-svgslot-ctl="1" style="position:absolute;top:10px;right:10px;display:none;gap:6px;z-index:2;">
-                  <button type="button" data-svgslot-act="replace" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Replace</button>
-                  <button type="button" data-svgslot-act="remove" style="border:0;border-radius:999px;background:rgba(0,20,28,0.72);color:rgb(255,255,255);font:inherit;font-weight:600;font-size:12px;padding:6px 12px;cursor:pointer;">Remove</button>
+                  <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
                 </div>
               </div>
               </div>
@@ -1323,33 +1282,9 @@ class Component extends DCLogic {
     if (el) this.mapZoomApply(el, 1, 50, 50);
   };
 
-  // SVG upload slots — files are kept in this browser's IndexedDB; a data-src attribute can bake one in for everyone.
-  _slotUrls = {};
-  _slotLoads = {};
-  idb() {
-    return this._db || (this._db = new Promise((res, rej) => {
-      const r = indexedDB.open('df-svg-slots', 1);
-      r.onupgradeneeded = () => r.result.createObjectStore('s');
-      r.onsuccess = () => res(r.result);
-      r.onerror = () => rej(r.error);
-    }));
-  }
-  async slotStore(id, blob) {
-    const db = await this.idb();
-    return new Promise(res => {
-      const tx = db.transaction('s', 'readwrite');
-      if (blob) tx.objectStore('s').put(blob, id); else tx.objectStore('s').delete(id);
-      tx.oncomplete = () => res(); tx.onerror = () => res();
-    });
-  }
-  async slotGet(id) {
-    try {
-      const db = await this.idb();
-      return await new Promise(res => { const q = db.transaction('s').objectStore('s').get(id); q.onsuccess = () => res(q.result || null); q.onerror = () => res(null); });
-    } catch (e) { return null; }
-  }
+  // Case-study images are baked in with data-src; slots are read-only.
   paintSlot(el, url) {
-    const img = el.querySelector('[data-svgslot-img]'), empty = el.querySelector('[data-svgslot-empty]'), ctl = el.querySelector('[data-svgslot-ctl]');
+    const img = el.querySelector('[data-svgslot-img]'), empty = el.querySelector('[data-svgslot-empty]');
     if (!img || !empty) return;
     if (!el.dataset.ratio) el.dataset.ratio = el.style.aspectRatio;
     if (url) {
@@ -1357,83 +1292,18 @@ class Component extends DCLogic {
       if (img.getAttribute('src') !== url) img.setAttribute('src', url);
       else if (img.complete && img.naturalWidth) img.onload();
       img.style.display = 'block'; empty.style.display = 'none';
-      if (ctl) ctl.setAttribute('data-on', '');
-      el.style.cursor = 'default';
     } else {
       img.removeAttribute('src'); img.style.display = 'none'; img.style.transform = ''; el._zoom = 1;
       el.style.aspectRatio = el.dataset.ratio;
       empty.style.display = 'flex';
-      if (ctl) ctl.removeAttribute('data-on');
-      el.style.cursor = 'pointer';
     }
+    el.style.cursor = 'default';
   }
   hydrateSlots() {
-    document.querySelectorAll('[data-svgslot]').forEach(el => {
-      const id = el.dataset.svgslot;
-      if (id in this._slotUrls) { this.paintSlot(el, this._slotUrls[id]); return; }
-      if (!this._slotLoads[id]) this._slotLoads[id] = this.slotGet(id).then(b => { this._slotUrls[id] = b ? URL.createObjectURL(b) : (el.dataset.src || null); });
-      this._slotLoads[id].then(() => document.querySelectorAll('[data-svgslot="' + id + '"]').forEach(s => this.paintSlot(s, this._slotUrls[id])));
-    });
+    document.querySelectorAll('[data-svgslot]').forEach(el => this.paintSlot(el, el.dataset.src || null));
   }
-  async ingestSlot(id, file) {
-    const ok = file && (file.type === 'image/svg+xml' || /\.svg$/i.test(file.name || ''));
-    if (!ok) {
-      document.querySelectorAll('[data-svgslot="' + id + '"] [data-svgslot-msg]').forEach(m => { m.textContent = 'SVG files only, try again'; });
-      return;
-    }
-    const blob = file.type === 'image/svg+xml' ? file : new Blob([await file.arrayBuffer()], { type: 'image/svg+xml' });
-    await this.slotStore(id, blob);
-    if (this._slotUrls[id] && this._slotUrls[id].startsWith('blob:')) URL.revokeObjectURL(this._slotUrls[id]);
-    this._slotUrls[id] = URL.createObjectURL(blob);
-    document.querySelectorAll('[data-svgslot="' + id + '"]').forEach(s => this.paintSlot(s, this._slotUrls[id]));
-  }
-  pickSlot(id) {
-    if (!this._picker) {
-      this._picker = document.createElement('input');
-      this._picker.type = 'file'; this._picker.accept = '.svg,image/svg+xml'; this._picker.style.display = 'none';
-      document.body.appendChild(this._picker);
-      this._picker.addEventListener('change', () => { const file = this._picker.files[0]; if (file && this._pickId) this.ingestSlot(this._pickId, file); this._picker.value = ''; });
-    }
-    this._pickId = id;
-    this._picker.click();
-  }
-  onSlotClick = (e) => {
-    const act = e.target.closest && e.target.closest('[data-svgslot-act]');
-    const el = e.target.closest && e.target.closest('[data-svgslot]');
-    if (!el) return;
-    const id = el.dataset.svgslot;
-    if (act) {
-      e.stopPropagation();
-      if (act.dataset.svgslotAct === 'replace') this.pickSlot(id);
-      else { this.slotStore(id, null); if (this._slotUrls[id] && this._slotUrls[id].startsWith('blob:')) URL.revokeObjectURL(this._slotUrls[id]); this._slotUrls[id] = el.dataset.src || null; document.querySelectorAll('[data-svgslot="' + id + '"]').forEach(s => this.paintSlot(s, this._slotUrls[id])); }
-      return;
-    }
-    if (!this._slotUrls[id]) this.pickSlot(id);
-  };
-  onSlotDragOver = (e) => {
-    const el = e.target.closest && e.target.closest('[data-svgslot]');
-    if (!el) return;
-    e.preventDefault();
-    el.style.outline = '2px solid rgb(0,100,135)'; el.style.outlineOffset = '2px';
-  };
-  onSlotDragLeave = (e) => {
-    const el = e.target.closest && e.target.closest('[data-svgslot]');
-    if (el && !el.contains(e.relatedTarget)) el.style.outline = '';
-  };
-  onSlotDrop = (e) => {
-    const el = e.target.closest && e.target.closest('[data-svgslot]');
-    if (!el) return;
-    e.preventDefault();
-    el.style.outline = '';
-    const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
-    if (file) this.ingestSlot(el.dataset.svgslot, file);
-  };
 
   componentDidMount() {
-    document.addEventListener('click', this.onSlotClick);
-    document.addEventListener('dragover', this.onSlotDragOver);
-    document.addEventListener('dragleave', this.onSlotDragLeave);
-    document.addEventListener('drop', this.onSlotDrop);
     this._timer = setInterval(() => this.setState({ clockTime: this.formatTime() }), 1000);
     this.fetchWeather();
     this._wTimer = setInterval(() => this.fetchWeather(), 15 * 60 * 1000);
@@ -1452,10 +1322,6 @@ class Component extends DCLogic {
   componentWillUnmount() {
     clearInterval(this._timer); clearInterval(this._wTimer); clearTimeout(this._closeT);
     window.removeEventListener('popstate', this.onPop);
-    document.removeEventListener('click', this.onSlotClick);
-    document.removeEventListener('dragover', this.onSlotDragOver);
-    document.removeEventListener('dragleave', this.onSlotDragLeave);
-    document.removeEventListener('drop', this.onSlotDrop);
     window.removeEventListener('mousemove', this.onMouse);
     document.removeEventListener('scroll', this.onLensScroll, true);
     document.removeEventListener('mouseout', this.onDocOut);
