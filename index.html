@@ -936,7 +936,6 @@ class Component extends DCLogic {
     localStorage.setItem('df-dark-mode', String(dark));
     localStorage.setItem('df-dark-mode-period', this.isDayTime() ? 'day' : 'night');
     this.setState({ dark });
-    if (this._hoverChibi) this.startTyping(dark ? 'Wake me up' : 'Take a break');
   }
   chibiClick = () => {
     if (this.state.peeling) return;
@@ -944,7 +943,7 @@ class Component extends DCLogic {
     setTimeout(() => this.toggleDark(), 250);
     setTimeout(() => this.setState({ peeling: false }), 500);
   };
-  onChibiEnter = () => { this._hoverChibi = true; this.startTyping(this.state.dark ? 'Wake me up' : 'Take a break'); };
+  onChibiEnter = () => { this._hoverChibi = true; };
   onChibiLeave = () => { this._hoverChibi = false; this.stopTyping(); };
   onCaseEnter = () => this.startTyping('View project');
   onEmailEnter = () => { this.setState({ hoverTile: 'gmail' }); this.startTyping('Copy my Email'); };
