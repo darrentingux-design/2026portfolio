@@ -14,7 +14,5 @@ window.DARREN_LLM = {
   starters: [
     'What are you working on at BMO?',
     'Walk me through the Positive Pay case study',
-    'How do you approach design problems?',
-    'What do you do outside of design?',
   ],
 };

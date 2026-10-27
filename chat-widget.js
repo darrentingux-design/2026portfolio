@@ -16,11 +16,9 @@
 
   const MAX_CHARS = 1000;
   const SEND_HISTORY = 10;
-  const STARTERS = Array.isArray(cfg.starters) && cfg.starters.length ? cfg.starters.slice(0, 4) : [
+  const STARTERS = Array.isArray(cfg.starters) && cfg.starters.length ? cfg.starters.slice(0, 2) : [
     'What are you working on at BMO?',
     'Walk me through the Positive Pay case study',
-    'How do you approach design problems?',
-    'What do you do outside of design?',
   ];
   const INTRO = "Hi, I'm Darren LLM, an AI trained on Darren's background. Ask me about my work, process, or experience.";
 
@@ -44,7 +42,7 @@
 .dllm-panel{position:fixed;right:var(--dllm-right);bottom:var(--dllm-lift);z-index:1000;width:min(420px,calc(100vw - 32px));height:min(560px,calc(100vh - var(--dllm-lift) - 24px));height:min(560px,calc(100dvh - var(--dllm-lift) - 24px));display:flex;flex-direction:column;background:var(--card);border-radius:12px;box-shadow:0 10px 28px rgba(0,60,80,.16),0 1px 5px rgba(0,0,0,.08);overflow:hidden;opacity:0;transform:translateY(12px) scale(.98);transform-origin:100% 100%;visibility:hidden;pointer-events:none;transition:opacity .25s ease,transform .25s ease,background-color .3s ease,visibility 0s linear .25s}
 .dllm-root[data-open="true"] .dllm-panel{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition-delay:0s}
 .dllm-head{display:flex;align-items:center;gap:12px;padding:16px 16px 12px 20px}
-.dllm-avatar{flex:none;width:44px;height:44px;border-radius:999px;background:var(--navBg);overflow:hidden;display:flex;align-items:center;justify-content:center;transition:background-color .3s ease}
+.dllm-avatar{flex:none;width:44px;height:44px;border-radius:999px;border:2px solid #fff;background:var(--navBg);overflow:hidden;display:flex;align-items:center;justify-content:center;transition:background-color .3s ease}
 .dllm-avatar img{width:100%;height:100%;object-fit:contain;transform:rotate(6deg) scale(1.1)}
 .dllm-avatar span{font-weight:700;font-size:18px;color:var(--text)}
 .dllm-titles{flex:1;min-width:0}
@@ -84,6 +82,7 @@
 .dllm-send:disabled{opacity:.4;cursor:default}
 .dllm-foot{margin:0;padding:6px 20px 14px;font-size:12px;line-height:1.4;font-weight:500;color:var(--sub);min-height:32px}
 .dllm-root button:focus-visible,.dllm-root a:focus-visible,.dllm-log:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+@media (hover:hover) and (pointer:fine){body:not([data-dc-editor-on]) .dllm-root,body:not([data-dc-editor-on]) .dllm-root *{cursor:none!important}}
 [data-tile="llm"][data-dllm-ready]{cursor:pointer}
 [data-tile="llm"][data-dllm-ready]:focus-visible{outline:2px solid ${THEMES.light.text};outline-offset:3px}
 @media (max-width:560px){
@@ -205,10 +204,10 @@
     if (Number.isFinite(bottom)) root.style.setProperty('--dllm-bottom', bottom + 'px');
   }
 
-  // Shown while the panel is open, and kept after closing as long as there is a conversation.
+  // Once the chat has been opened, the launcher stays on the page (open or closed) so it can be reopened from anywhere.
   function updateLauncher() {
     if (!launcher) return;
-    root.dataset.launcher = String(isOpen || history.length > 0);
+    root.dataset.launcher = 'true';
     launcher.setAttribute('aria-expanded', String(isOpen));
     launcher.setAttribute('aria-label', isOpen ? 'Close chat with Darren LLM' : 'Open chat with Darren LLM');
   }
