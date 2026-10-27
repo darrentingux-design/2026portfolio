@@ -1,0 +1,3 @@
+# Copy this file to `.dev.vars` (same folder) for local testing with `npx wrangler dev`.
+# .dev.vars is git-ignored. Never commit a real key: this repo is published publicly.
+ANTHROPIC_API_KEY=paste-your-key-here

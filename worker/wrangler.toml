@@ -1,0 +1,30 @@
+name = "darren-llm"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Lets `import knowledge from "../knowledge.md"` bundle the file as a string.
+[[rules]]
+type = "Text"
+globs = ["**/*.md"]
+fallthrough = true
+
+# Per-IP rate limiting counters. Create it with:
+#   npx wrangler kv namespace create RATE_LIMIT
+# then paste the id it prints here.
+[[kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "6b1e0ecf8ba349adba7881e47b2813e1"
+
+# Non-secret settings. The API key is NOT here: store it with
+#   npx wrangler secret put ANTHROPIC_API_KEY
+[vars]
+MODEL = "claude-haiku-5-5"
+MAX_TOKENS = "700"
+RATE_LIMIT_PER_HOUR = "20"
+MAX_MESSAGE_CHARS = "1000"
+# localhost and 127.0.0.1 (any port) are always allowed for local development.
+ALLOWED_ORIGINS = "https://darrenting.com,https://www.darrenting.com"
+
+[observability]
+enabled = true

@@ -76,7 +76,7 @@
         </div>
 
         <div data-tile="llm" onMouseEnter="{{ onLlmEnter }}" onMouseLeave="{{ onLinkLeave }}" style-hover="box-shadow:0px 10px 28px rgba(0,60,80,0.16);" style="grid-column:{{ L.llm.col }};grid-row:{{ L.llm.row }};order:{{ L.llm.order }};filter:{{ L.llm.filter }};opacity:{{ L.llm.opacity }};pointer-events:{{ L.llm.pe }};position:relative;border-radius:12px;background:{{ t.card }};box-shadow:0px 1px 5px rgba(0,0,0,0.08);overflow:hidden;transition:filter 0.4s ease, opacity 0.4s ease, box-shadow 0.2s ease;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;box-sizing:border-box;">
-          <span style="position:absolute;top:14px;right:14px;z-index:1;border-radius:999px;background:{{ t.navBg }};padding:6px 12px;font-weight:600;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.text }};opacity:{{ cornerLlm }};transform:scale({{ cornerLlm }});transition:opacity 0.2s ease, transform 0.2s ease;pointer-events:none;">Soon</span>
+          <span style="position:absolute;top:14px;right:14px;z-index:1;border-radius:999px;background:{{ t.navBg }};padding:6px 12px;font-weight:600;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.text }};opacity:{{ cornerLlm }};transform:scale({{ cornerLlm }});transition:opacity 0.2s ease, transform 0.2s ease;pointer-events:none;">Ask</span>
           <div data-chibi="1" style="position:relative;width:100%;flex:1;min-height:0;transform:rotate(6deg);">
             <div style="position:absolute;inset:0;background:url('./uploads/DayChibi-07d26d2f.png') center / contain no-repeat;opacity:{{ dayOpacity }};transition:opacity 0.2s ease;"></div>
             <div style="position:absolute;inset:0;background:url('./uploads/NightChibi-d7e40807.png') center / contain no-repeat;opacity:{{ nightOpacity }};transition:opacity 0.2s ease;"></div>
@@ -952,7 +952,7 @@ class Component extends DCLogic {
   onResumeEnter = () => { this.setState({ hoverTile: 'resume' }); this.startTyping('Check out my resume'); };
   onLinkedinEnter = () => { this.setState({ hoverTile: 'linkedin' }); this.startTyping('Check out my LinkedIn'); };
   onYoutubeEnter = () => { this.setState({ hoverTile: 'youtube' }); this.startTyping('Fun Travel & Music Stuff'); };
-  onLlmEnter = () => { this.setState({ hoverTile: 'llm' }); this.startTyping('Ask Darren LLM, coming soon'); };
+  onLlmEnter = () => { this.setState({ hoverTile: 'llm' }); this.startTyping('Ask Darren LLM'); };
   onLinkLeave = () => { this.setState({ hoverTile: null }); this.stopTyping(); };
   copyEmail = (e) => {
     e.preventDefault();
@@ -1453,5 +1453,7 @@ navBg_all: (this.state.navHover === 'all' && this.state.tab !== 'all') ? (this.s
 }
 
 </script>
+<script src="./chat-config.js"></script>
+<script src="./chat-widget.js" defer></script>
 </body>
 </html>
