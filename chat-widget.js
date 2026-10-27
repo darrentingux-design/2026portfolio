@@ -33,7 +33,15 @@
   const CSS = `
 .dllm-root{font-family:'Instrument Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
 .dllm-root *{box-sizing:border-box}
-.dllm-panel{position:fixed;right:24px;bottom:96px;z-index:1000;width:min(420px,calc(100vw - 32px));height:min(560px,calc(100vh - 150px));height:min(560px,calc(100dvh - 150px));display:flex;flex-direction:column;background:var(--card);border-radius:12px;box-shadow:0 10px 28px rgba(0,60,80,.16),0 1px 5px rgba(0,0,0,.08);overflow:hidden;opacity:0;transform:translateY(12px) scale(.98);transform-origin:100% 100%;visibility:hidden;pointer-events:none;transition:opacity .25s ease,transform .25s ease,background-color .3s ease,visibility 0s linear .25s}
+.dllm-root{--dllm-size:68px;--dllm-right:40px;--dllm-bottom:40px;--dllm-gap:16px;--dllm-lift:calc(var(--dllm-bottom) + var(--dllm-size) + var(--dllm-gap))}
+.dllm-launcher{position:fixed;z-index:150;right:calc(var(--dllm-right) + var(--dllm-size) + var(--dllm-gap));bottom:var(--dllm-bottom);width:var(--dllm-size);height:var(--dllm-size);padding:0;border:0;border-radius:999px;background:var(--card);color:var(--text);box-shadow:0 4px 20px rgba(0,0,0,.18);cursor:pointer;overflow:hidden;opacity:0;transform:translateY(12px) scale(.85);visibility:hidden;pointer-events:none;transition:opacity .25s ease,transform .25s ease,background-color .3s ease,box-shadow .2s ease,visibility 0s linear .25s}
+.dllm-root[data-launcher="true"] .dllm-launcher{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition-delay:0s}
+.dllm-root[data-launcher="true"] .dllm-launcher:hover{box-shadow:0 10px 28px rgba(0,60,80,.22)}
+.dllm-ico{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity .2s ease,transform .2s ease}
+.dllm-ico-close{opacity:0;transform:rotate(-45deg) scale(.8)}
+.dllm-root[data-open="true"] .dllm-ico-chat{opacity:0;transform:rotate(45deg) scale(.8)}
+.dllm-root[data-open="true"] .dllm-ico-close{opacity:1;transform:none}
+.dllm-panel{position:fixed;right:var(--dllm-right);bottom:var(--dllm-lift);z-index:1000;width:min(420px,calc(100vw - 32px));height:min(560px,calc(100vh - var(--dllm-lift) - 24px));height:min(560px,calc(100dvh - var(--dllm-lift) - 24px));display:flex;flex-direction:column;background:var(--card);border-radius:12px;box-shadow:0 10px 28px rgba(0,60,80,.16),0 1px 5px rgba(0,0,0,.08);overflow:hidden;opacity:0;transform:translateY(12px) scale(.98);transform-origin:100% 100%;visibility:hidden;pointer-events:none;transition:opacity .25s ease,transform .25s ease,background-color .3s ease,visibility 0s linear .25s}
 .dllm-root[data-open="true"] .dllm-panel{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition-delay:0s}
 .dllm-head{display:flex;align-items:center;gap:12px;padding:16px 16px 12px 20px}
 .dllm-avatar{flex:none;width:44px;height:44px;border-radius:999px;background:var(--navBg);overflow:hidden;display:flex;align-items:center;justify-content:center;transition:background-color .3s ease}
@@ -79,7 +87,7 @@
 [data-tile="llm"][data-dllm-ready]{cursor:pointer}
 [data-tile="llm"][data-dllm-ready]:focus-visible{outline:2px solid ${THEMES.light.text};outline-offset:3px}
 @media (max-width:560px){
-  .dllm-panel{right:0;left:0;bottom:0;width:100%;height:min(640px,86vh);height:min(640px,86dvh);border-radius:16px 16px 0 0;transform:translateY(24px)}
+  .dllm-panel{right:16px;left:16px;width:auto}
   .dllm-input{font-size:16px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -88,11 +96,13 @@
 
   const SVG = {
     close: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+    chat: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4 9 9 0 0 1-3.4-.7L3.5 21l1.9-4.8A8.3 8.3 0 0 1 3.9 11.5 8.5 8.5 0 0 1 12.4 3 8.5 8.5 0 0 1 21 11.5z"/></svg>',
+    down: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>',
     send: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5.5 11.5L12 5l6.5 6.5"/></svg>',
   };
 
   // ---------- state ----------
-  let root, panel, log, startersEl, form, input, sendBtn, countEl, footEl, avatarImg, avatarWrap;
+  let root, panel, launcher, log, startersEl, form, input, sendBtn, countEl, footEl, avatarImg, avatarWrap;
   let history = [];
   let busy = false;
   let isOpen = false;
@@ -180,6 +190,29 @@
     }
   }
 
+  // The launcher sits left of the page's light/dark switch and the panel opens
+  // above both. Read the switch's size and offsets from the page so they stay
+  // aligned if the design changes; fall back to the CSS defaults.
+  function place() {
+    if (!root) return;
+    const sw = document.querySelector('[aria-label="Toggle day and night"]');
+    if (!sw || !sw.offsetWidth) return;
+    const cs = getComputedStyle(sw);
+    const right = parseFloat(cs.right);
+    const bottom = parseFloat(cs.bottom);
+    root.style.setProperty('--dllm-size', sw.offsetWidth + 'px');
+    if (Number.isFinite(right)) root.style.setProperty('--dllm-right', right + 'px');
+    if (Number.isFinite(bottom)) root.style.setProperty('--dllm-bottom', bottom + 'px');
+  }
+
+  // Shown while the panel is open, and kept after closing as long as there is a conversation.
+  function updateLauncher() {
+    if (!launcher) return;
+    root.dataset.launcher = String(isOpen || history.length > 0);
+    launcher.setAttribute('aria-expanded', String(isOpen));
+    launcher.setAttribute('aria-label', isOpen ? 'Close chat with Darren LLM' : 'Open chat with Darren LLM');
+  }
+
   const nearBottom = () => log.scrollHeight - log.scrollTop - log.clientHeight < 80;
   const toBottom = () => { log.scrollTop = log.scrollHeight; };
 
@@ -245,6 +278,7 @@
     input.value = '';
     autosize();
     history.push({ role: 'user', content: text });
+    updateLauncher();
 
     const bot = el('div', 'dllm-msg dllm-a');
     bot.append(dots());
@@ -294,6 +328,7 @@
       }
     } finally {
       setBusy(false);
+      updateLauncher();
       toBottom();
       if (isOpen) input.focus({ preventScroll: true });
     }
@@ -308,7 +343,15 @@
     root = el('div', 'dllm-root');
     root.dataset.open = 'false';
 
-    panel = el('section', 'dllm-panel', { role: 'dialog', 'aria-label': 'Chat with Darren LLM', 'aria-hidden': 'true' });
+    launcher = el('button', 'dllm-launcher', { type: 'button', 'aria-label': 'Open chat with Darren LLM', 'aria-controls': 'dllm-panel', 'aria-expanded': 'false' });
+    const icoChat = el('span', 'dllm-ico dllm-ico-chat');
+    icoChat.innerHTML = SVG.chat;
+    const icoClose = el('span', 'dllm-ico dllm-ico-close');
+    icoClose.innerHTML = SVG.down;
+    launcher.append(icoChat, icoClose);
+    launcher.addEventListener('click', () => setOpen(!isOpen));
+
+    panel = el('section', 'dllm-panel', { id: 'dllm-panel', role: 'dialog', 'aria-label': 'Chat with Darren LLM', 'aria-hidden': 'true' });
 
     const head = el('header', 'dllm-head');
     avatarWrap = el('div', 'dllm-avatar');
@@ -358,10 +401,13 @@
 
     panel.append(head, log, startersEl, form, footEl);
     panel.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
-    root.append(panel);
-    document.body.append(root);
+    root.append(launcher, panel);
+    // Set the colours and position before the nodes are attached so nothing transitions in from unstyled.
     readChibi();
     applyTheme();
+    place();
+    updateLauncher();
+    document.body.append(root);
   }
 
   function setOpen(open) {
@@ -370,15 +416,19 @@
     isOpen = open;
     readChibi();
     applyTheme();
+    place();
     root.dataset.open = String(open);
     panel.setAttribute('aria-hidden', String(!open));
+    updateLauncher();
     const tile = document.querySelector('[data-tile="llm"]');
     if (tile) tile.setAttribute('aria-expanded', String(open));
     if (open) {
       toBottom();
       setTimeout(() => input.focus({ preventScroll: true }), 50);
-    } else if (tile && root.contains(document.activeElement)) {
-      tile.focus({ preventScroll: true });
+    } else if (panel.contains(document.activeElement)) {
+      // Hand focus back to whichever opener is still on screen.
+      const next = root.dataset.launcher === 'true' ? launcher : tile;
+      if (next) next.focus({ preventScroll: true });
     }
   }
 
@@ -415,8 +465,10 @@
       queued = false;
       prepTile();
       if (root && detectTheme() !== themeName) applyTheme();
+      place();
     }, 100);
   });
+  window.addEventListener('resize', place);
   const start = () => {
     prepTile();
     observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
