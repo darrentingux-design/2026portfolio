@@ -12,7 +12,7 @@ window.DARREN_LLM = {
   devEndpoint: 'http://localhost:8787',
   // Suggested first questions (3 or 4 works best).
   starters: [
-    'What are you working on at BMO?',
+    'What is Darren working on at BMO?',
     'Walk me through the Positive Pay case study',
   ],
 };

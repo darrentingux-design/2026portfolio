@@ -2,6 +2,10 @@
 <html>
 <head>
 <meta charset="utf-8">
+<link rel="icon" type="image/png" sizes="32x32" href="./icon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+<link rel="shortcut icon" href="./favicon.ico">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 </head>
@@ -1339,10 +1343,13 @@ class Component extends DCLogic {
       if (root) root.style.minHeight = root.offsetHeight + 'px';
       const first = this.captureCase();
       this.setState(s => ({ mode: m, fold: 'in', foldN: (s.foldN || 0) + 1 }), () => {
-        this.playCase(first);
+        // If the new view ends above the current scroll position, land on its end instead of empty space.
+        let jumped = false;
+        if (root && sc) { const at = sc.scrollTop, held = root.style.minHeight; root.style.minHeight = '0px'; void root.offsetHeight; jumped = sc.scrollTop !== at; root.style.minHeight = jumped ? '' : held; }
+        this.playCase(jumped ? new Map() : first);
         clearTimeout(this._relaxT);
         this._relaxT = setTimeout(() => {
-          if (root && sc) root.style.minHeight = Math.max(0, sc.scrollTop + sc.clientHeight - (root.getBoundingClientRect().top - sc.getBoundingClientRect().top + sc.scrollTop)) + 'px';
+          if (root && sc && !jumped) root.style.minHeight = Math.max(0, sc.scrollTop + sc.clientHeight - (root.getBoundingClientRect().top - sc.getBoundingClientRect().top + sc.scrollTop)) + 'px';
         }, 520);
       });
     }, 220);
@@ -1578,7 +1585,8 @@ navBg_all: (this.state.navHover === 'all' && this.state.tab !== 'all') ? (this.s
 }
 
 </script>
-<script src="./chat-config.js?v=23bfe66a"></script>
-<script src="./chat-widget.js?v=86ba4d46" defer></script>
+<script src="./chat-config.js?v=b76457db"></script>
+<script src="./chat-widget.js?v=f966d656" defer></script>
+<script src="./site-fixes.js?v=cf3638f0" defer></script>
 </body>
 </html>

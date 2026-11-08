@@ -17,10 +17,10 @@
   const MAX_CHARS = 1000;
   const SEND_HISTORY = 10;
   const STARTERS = Array.isArray(cfg.starters) && cfg.starters.length ? cfg.starters.slice(0, 2) : [
-    'What are you working on at BMO?',
+    'What is Darren working on at BMO?',
     'Walk me through the Positive Pay case study',
   ];
-  const INTRO = "Hi, I'm Darren LLM, an AI trained on Darren's background. Ask me about my work, process, or experience.";
+  const INTRO = "Hi, I'm Darren LLM, an AI assistant trained on Darren's background. Ask me about his work, process, or experience.";
 
   // Same tokens as the page's THEME object in index.html.
   const THEMES = {
