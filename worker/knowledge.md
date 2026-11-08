@@ -59,7 +59,7 @@ Outside of design, Darren trains Brazilian Jiu Jitsu, plays fingerstyle guitar, 
 - View on AI: unlike many of his peers, he's optimistic. What makes designers valuable isn't pushing shapes around in a tool but design thinking and problem solving, and with AI the wall between design and code has come down, so designers have more potential than ever. He's fond of a line from the documentary "AlphaGo" about how anthropomorphizing AI systems gets in the way of understanding how AI will actually affect the world.
 - Currently learning: side projects that stretch how he uses AI and his technical understanding of software.
 - Tight-deadline story: in June, two designers on the platform left and he became the sole designer, absorbing their workloads for the October release. He delivered the remaining scope and the release was successful.
-- Currently leading two efforts that will become future case studies on the site: accessibility work for the small and mid-sized business platform, and an alerts redesign for the bank's legacy product. Say they're coming soon, and don't invent details.
+- Currently leading two efforts: accessibility work for the small and mid-sized business platform (a case study for it is coming soon, don't invent details), and the alerts redesign for the bank's legacy commercial banking platform, which is now on the site as the case study "Alerts at Enterprise Scale" (see below).
 - Mistakes and lessons: for a design call he'd revisit, point to the payee-name decision in the Positive Pay case study.
 
 # What Darren is looking for next
@@ -160,6 +160,21 @@ Impact: higher stakeholder satisfaction that secured further development of the 
 
 Takeaways: coming from an academic background, Darren learned to balance feasibility with aesthetics by working with developers and business stakeholders; he gained experience collaborating across disciplines; and he learned that designing a mobile and web ecosystem means understanding who the users are and how data is shared and visualized between the two.
 
+# Case study: Alerts at Enterprise Scale (BMO, in progress)
+
+Role: UX Lead. Timeline: ongoing. Team: a Senior UX Manager, two Product Owners, and a UX Researcher. Methods: journey mapping, discovery research, and A/B testing. The project is still in progress, so only share what's here and don't invent results.
+
+What it is: a redesign of how commercial clients set up and maintain account alerts on BMO's legacy commercial banking platform. Alerts are a revenue-generating paid feature with years of accumulated friction.
+
+Goals: the redesign has to scale to 50+ incoming alert types, make setting up a new alert effortless, and protect one of the business's most important revenue features.
+- Design that scales: the framework has to absorb 50+ new alert types without new flows or one-off screens, so each new alert slots into the same structure and reuses the same components.
+- Make setup easy, even across many accounts: clients often manage 50 to 100+ accounts, so creating an alert should be fast, guided, and hard to get wrong, because a misconfigured alert fails silently.
+- Get it right for the business: alerts are a key revenue driver, so a setup experience clients trust drives adoption, and one that frustrates them puts that revenue at risk.
+
+Where it's headed: discovery research, competitive analysis, and journey mapping pointed to one insight: setting up an alert and changing one are two different jobs, and the experience should treat them that way. That direction is now being validated through A/B testing, with a second round of usability testing to follow.
+
+The case study page has a gallery of the all-actions landing page, an alert settings screen, the alert setup screen, a prioritization matrix, and an information architecture diagram. For the full story (the research, the concepts tested, and the trade-offs), point people to Darren directly.
+
 # Contact
 
 - Best ways to reach Darren: LinkedIn or email.
@@ -176,4 +191,4 @@ Takeaways: coming from an academic background, Darren learned to balance feasibi
 - Outside design: Brazilian Jiu Jitsu, fingerstyle guitar, travel filmmaking, cooking.
 - Specialty: financial workflows and high-stakes transactional UX for business clients.
 - Education: Master of Information (UX Design) and an Honours BA in Communication and Sociology, both from the University of Toronto.
-- Case studies on the site: Positive Pay at BMO, the UofT School of Graduate Studies website redesign, and the Acer Health Management Center.
+- Case studies on the site: Alerts at Enterprise Scale at BMO (in progress), Positive Pay at BMO, the Acer Health Management Center, and the UofT School of Graduate Studies website redesign.
