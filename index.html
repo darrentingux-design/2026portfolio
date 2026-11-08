@@ -106,12 +106,13 @@
           <svg width="56" height="70" viewBox="0 0 20 25" aria-hidden="true"><path d="M2.5 0H13l7 7v15.5A2.5 2.5 0 0 1 17.5 25h-15A2.5 2.5 0 0 1 0 22.5v-20A2.5 2.5 0 0 1 2.5 0z" fill="#1E7BF2"></path><path d="M13 0l7 7h-4.5A2.5 2.5 0 0 1 13 4.5z" fill="#FFFFFF"></path><rect x="4.5" y="13" width="11" height="2.2" rx="1.1" fill="#FFFFFF"></rect><rect x="4.5" y="17.5" width="11" height="2.2" rx="1.1" fill="#FFFFFF"></rect></svg>
         </a>
 
-        <div data-tile="uoft" onClick="{{ openUoft }}" onMouseEnter="{{ onCaseEnter }}" onMouseLeave="{{ onCaseLeave }}" style="grid-column:{{ L.uoft.col }};grid-row:{{ L.uoft.row }};order:{{ L.uoft.order }};filter:{{ L.uoft.filter }};opacity:{{ L.uoft.opacity }};pointer-events:{{ L.uoft.pe }};position:relative;border-radius:12px;background:rgb(238,246,253) url(./assets/case-uoft.png) center / cover no-repeat;box-shadow:0px 1px 5px rgba(0,0,0,0.08);overflow:hidden;transition:filter 0.4s ease, opacity 0.4s ease, box-shadow 0.2s ease;cursor:pointer;" style-hover="box-shadow:0px 10px 28px rgba(0,60,80,0.16);">
+        <div data-tile="alerts" onClick="{{ openAlerts }}" onMouseEnter="{{ onCaseEnter }}" onMouseLeave="{{ onCaseLeave }}" style="grid-column:{{ L.alerts.col }};grid-row:{{ L.alerts.row }};order:{{ L.alerts.order }};filter:{{ L.alerts.filter }};opacity:{{ L.alerts.opacity }};pointer-events:{{ L.alerts.pe }};position:relative;border-radius:12px;background:{{ t.tint }};box-shadow:0px 1px 5px rgba(0,0,0,0.08);overflow:hidden;transition:filter 0.4s ease, opacity 0.4s ease, box-shadow 0.2s ease;cursor:pointer;" style-hover="box-shadow:0px 10px 28px rgba(0,60,80,0.16);">
+          <img src="./uploads/Alerts thumbnail.svg" alt="Alerts case study" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
           <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,20,28,0.85), rgba(0,20,28,0.15) 55%, transparent 80%);opacity:0;transition:opacity 0.25s ease;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;box-sizing:border-box;gap:12px;" style-hover="opacity:1;">
-            <span style="font-weight:600;font-size:20px;line-height:1.25;color:rgb(255,255,255);text-wrap:pretty;">Higher Education Navigation Overhaul</span>
+            <span style="font-weight:600;font-size:20px;line-height:1.25;color:rgb(255,255,255);text-wrap:pretty;">Alerts at Enterprise Scale</span>
             <div style="display:flex;gap:6px;flex-wrap:wrap;">
-              <span style="border-radius:24px;background:rgba(255,255,255,0.16);padding:6px 14px;font-weight:600;font-size:14px;color:rgb(255,255,255);">University of Toronto</span>
-              <span style="border-radius:24px;background:rgba(255,255,255,0.16);padding:6px 14px;font-weight:600;font-size:14px;color:rgb(255,255,255);">Handed off 2023</span>
+              <span style="border-radius:24px;background:rgba(255,255,255,0.16);padding:6px 14px;font-weight:600;font-size:14px;color:rgb(255,255,255);">Bank of Montreal</span>
+              <span style="border-radius:24px;background:rgba(255,255,255,0.16);padding:6px 14px;font-weight:600;font-size:14px;color:rgb(255,255,255);">Ongoing</span>
             </div>
           </div>
         </div>
@@ -135,6 +136,16 @@
           <span style="position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:999px;background:{{ t.navBg }};display:flex;align-items:center;justify-content:center;opacity:{{ cornerYoutube }};transform:scale({{ cornerYoutube }});transition:opacity 0.2s ease, transform 0.2s ease;pointer-events:none;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{ t.text }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9"></path></svg></span>
           <svg width="90" height="64" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5.5" fill="#EE2D2D"></rect><path d="M11.2 5.6v8.8l7.4-4.4z" fill="#FFFFFF"></path></svg>
         </a>
+
+        <div data-tile="uoft" onClick="{{ openUoft }}" onMouseEnter="{{ onCaseEnter }}" onMouseLeave="{{ onCaseLeave }}" style="grid-column:{{ L.uoft.col }};grid-row:{{ L.uoft.row }};order:{{ L.uoft.order }};filter:{{ L.uoft.filter }};opacity:{{ L.uoft.opacity }};pointer-events:{{ L.uoft.pe }};position:relative;border-radius:12px;background:rgb(238,246,253) url(./assets/case-uoft.png) center / cover no-repeat;box-shadow:0px 1px 5px rgba(0,0,0,0.08);overflow:hidden;transition:filter 0.4s ease, opacity 0.4s ease, box-shadow 0.2s ease;cursor:pointer;" style-hover="box-shadow:0px 10px 28px rgba(0,60,80,0.16);">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,20,28,0.85), rgba(0,20,28,0.15) 55%, transparent 80%);opacity:0;transition:opacity 0.25s ease;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;box-sizing:border-box;gap:12px;" style-hover="opacity:1;">
+            <span style="font-weight:600;font-size:20px;line-height:1.25;color:rgb(255,255,255);text-wrap:pretty;">Higher Education Navigation Overhaul</span>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <span style="border-radius:24px;background:rgba(255,255,255,0.16);padding:6px 14px;font-weight:600;font-size:14px;color:rgb(255,255,255);">University of Toronto</span>
+              <span style="border-radius:24px;background:rgba(255,255,255,0.16);padding:6px 14px;font-weight:600;font-size:14px;color:rgb(255,255,255);">Handed off 2023</span>
+            </div>
+          </div>
+        </div>
 
       </div>
 
@@ -383,6 +394,112 @@
                 <span>The slideout structure that shipped was a merge of three designers’ five-minute sketches. I set the constraint and facilitated the critique rather than drawing the answer, and the result was better than what I had going in.</span>
               </div>
             </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isAlerts }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:72px;">
+            <div style="display:flex;flex-direction:column;gap:40px;">
+              <div style="display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;">
+                <span style="font-weight:600;font-size:18px;letter-spacing:0.02em;text-transform:uppercase;">Enterprise Product Design</span>
+                <span style="font-weight:600;font-size:clamp(26px,3.4vw,34px);line-height:1.2;text-wrap:balance;">Alerts at Enterprise Scale</span>
+              </div>
+              <img data-nolens="1" src="./uploads/Alerts thumbnail.svg" width="3245" height="2369" alt="Alerts redesign screens" style="display:block;width:100%;height:auto;border-radius:12px;box-shadow:0px 1px 5px rgba(0,0,0,0.08);">
+              <div style="display:flex;flex-wrap:wrap;gap:24px 40px;border-radius:12px;background:{{ t.card }};box-shadow:0px 1px 5px rgba(0,0,0,0.06);padding:32px;box-sizing:border-box;">
+                <div style="flex:1 1 120px;display:flex;flex-direction:column;gap:8px;"><span style="font-weight:500;font-size:15px;text-transform:uppercase;color:{{ t.sub }};">Timeline</span><div style="display:flex;flex-direction:column;gap:4px;"><span style="font-weight:600;font-size:18px;line-height:1.35;">Ongoing</span></div></div>
+                <div style="flex:1 1 120px;display:flex;flex-direction:column;gap:8px;"><span style="font-weight:500;font-size:15px;text-transform:uppercase;color:{{ t.sub }};">Role</span><div style="display:flex;flex-direction:column;gap:4px;"><span style="font-weight:600;font-size:18px;line-height:1.35;">UX Lead</span></div></div>
+                <div style="flex:1.4 1 180px;display:flex;flex-direction:column;gap:8px;"><span style="font-weight:500;font-size:15px;text-transform:uppercase;color:{{ t.sub }};">Teams</span><div style="display:flex;flex-direction:column;gap:4px;"><span style="font-weight:600;font-size:18px;line-height:1.35;">Senior UX Manager</span><span style="font-weight:600;font-size:18px;line-height:1.35;">2 Product Owners</span><span style="font-weight:600;font-size:18px;line-height:1.35;">UX Researcher</span></div></div>
+                <div style="flex:1.4 1 180px;display:flex;flex-direction:column;gap:8px;"><span style="font-weight:500;font-size:15px;text-transform:uppercase;color:{{ t.sub }};">Methods</span><div style="display:flex;flex-direction:column;gap:4px;"><span style="font-weight:600;font-size:18px;line-height:1.35;">Journey mapping</span><span style="font-weight:600;font-size:18px;line-height:1.35;">Discovery research</span><span style="font-weight:600;font-size:18px;line-height:1.35;">A/B Testing</span></div></div>
+              </div>
+            </div>
+
+            <span style="font-weight:600;font-size:clamp(20px,2.4vw,24px);line-height:1.45;text-wrap:pretty;">Redesigning how commercial clients set up and maintain account alerts on BMO’s legacy commercial banking platform, a revenue-generating paid feature with years of accumulated friction.</span>
+
+            <div style="display:flex;flex-direction:column;gap:48px;">
+              <div style="display:flex;flex-wrap:wrap;gap:16px 48px;">
+                <span style="flex:1 1 200px;font-weight:700;font-size:24px;text-transform:uppercase;">Goal</span>
+                <div style="flex:2 1 420px;display:flex;flex-direction:column;gap:28px;">
+                  <span style="font-size:16px;line-height:1.6;text-wrap:pretty;">The redesign had to scale to 50+ incoming alert types, make setting up a new alert effortless, and protect one of the business’s most important revenue features.</span>
+                  <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:16px;font-size:16px;line-height:1.6;">
+                    <li style="padding-left:10px;"><strong style="font-weight:700;">Design that Scales.</strong> The framework must absorb 50+ new alert types without new flows or one-off screens. Each new alert should slot into the same structure and reuse the same components.</li>
+                    <li style="padding-left:10px;"><strong style="font-weight:700;">Make setup easy</strong>, even across many accounts. Clients often manage 50 to 100+ accounts. Creating an alert should be fast, guided, and hard to get wrong, because a misconfigured alert fails silently.</li>
+                    <li style="padding-left:10px;"><strong style="font-weight:700;">Get it right for the business.</strong> Alerts are a key revenue driver for the platform. A setup experience clients trust drives adoption; one that frustrates them puts that revenue at risk.</li>
+                  </ol>
+                </div>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:16px 48px;">
+                <span style="flex:1 1 200px;font-weight:700;font-size:24px;text-transform:uppercase;">Where it’s headed</span>
+                <span style="flex:2 1 420px;font-size:16px;line-height:1.6;text-wrap:pretty;">Discovery research, competitive analysis and journey mapping pointed to one insight: setting up an alert and changing one are two different jobs, and the experience should treat them that way. That direction is now being validated through A/B testing, with a second round of usability testing to follow.</span>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:16px;">
+                <div data-svgslot="al-gal-1" data-src="./assets/al-gal-1.svg" style="display:{{ gal.al_gal_1 }};position:relative;width:100%;aspect-ratio:16 / 10;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
+                  <img data-svgslot-img="1" alt="Alerts — All actions" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
+                  <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
+                    <span style="font-weight:600;font-size:15px;line-height:1.35;">Alerts — All actions</span>
+                    <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
+                  </div>
+                </div>
+                <div data-svgslot="al-gal-2" data-src="./assets/al-gal-2.svg" style="display:{{ gal.al_gal_2 }};position:relative;width:100%;aspect-ratio:16 / 10;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
+                  <img data-svgslot-img="1" alt="Alert settings screen" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
+                  <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
+                    <span style="font-weight:600;font-size:15px;line-height:1.35;">Alert settings screen</span>
+                    <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
+                  </div>
+                </div>
+                <div data-svgslot="al-gal-3" data-src="./assets/al-gal-3.svg" style="display:{{ gal.al_gal_3 }};position:relative;width:100%;aspect-ratio:16 / 10;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
+                  <img data-svgslot-img="1" alt="Alert setup screen" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
+                  <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
+                    <span style="font-weight:600;font-size:15px;line-height:1.35;">Alert setup screen</span>
+                    <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
+                  </div>
+                </div>
+                <div data-svgslot="al-gal-4" data-src="./assets/al-gal-4.svg" style="display:{{ gal.al_gal_4 }};position:relative;width:100%;aspect-ratio:16 / 10;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
+                  <img data-svgslot-img="1" alt="Prioritization matrix" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
+                  <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
+                    <span style="font-weight:600;font-size:15px;line-height:1.35;">Prioritization matrix</span>
+                    <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
+                  </div>
+                </div>
+                <div data-svgslot="al-gal-5" data-src="./assets/al-gal-5.svg" style="display:{{ gal.al_gal_5 }};position:relative;width:100%;aspect-ratio:16 / 10;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
+                  <img data-svgslot-img="1" alt="Information architecture" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
+                  <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
+                    <span style="font-weight:600;font-size:15px;line-height:1.35;">Information architecture</span>
+                    <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
+                  </div>
+                </div>
+              <div style="display:grid;grid-template-columns:repeat(5, minmax(0, 1fr));gap:12px;">
+                <sc-for list="{{ galThumbs }}" as="g" hint-placeholder-count="5">
+                  <button type="button" onClick="{{ g.select }}" aria-label="{{ g.label }}" style="position:relative;aspect-ratio:16 / 10;border-radius:8px;overflow:hidden;padding:0;border:2px solid {{ g.border }};background:{{ t.card }};box-shadow:0px 1px 5px rgba(0,0,0,0.08);cursor:pointer;transition:border-color 0.2s ease;">
+                    <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;color:{{ t.sub }};">{{ g.n }}</span>
+                    <img data-nolens="1" data-svgthumb="{{ g.id }}" alt="" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top left;background:{{ t.card }};">
+                  </button>
+                </sc-for>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:24px;align-items:center;text-align:center;padding-top:24px;">
+              <span style="font-weight:700;font-size:24px;text-transform:uppercase;">Want the full story?</span>
+              <span style="max-width:760px;font-weight:600;font-size:clamp(18px,2vw,22px);line-height:1.5;text-wrap:pretty;">This project is still in progress. If you’d like to hear how it unfolds, including the research, the concepts we tested, and the trade-offs behind the direction, reach out and I’ll walk you through it!</span>
+              <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:8px;">
+                <button type="button" aria-label="Copy my email" onClick="{{ copyEmail }}" onMouseEnter="{{ onEmailEnter }}" onMouseLeave="{{ onEmailLeave }}" style="position:relative;display:flex;align-items:center;justify-content:center;gap:10px;min-width:200px;padding:16px 52px;box-sizing:border-box;border:0;border-radius:12px;background:{{ t.card }};box-shadow:0px 1px 5px rgba(0,0,0,0.08);font:inherit;font-weight:600;font-size:16px;color:{{ t.text }};text-decoration:none;transition:box-shadow 0.2s ease;" style-hover="box-shadow:0px 10px 28px rgba(0,60,80,0.16);">
+                  <span style="position:absolute;top:50%;right:12px;width:28px;height:28px;margin-top:-14px;border-radius:999px;background:{{ t.navBg }};display:flex;align-items:center;justify-content:center;opacity:{{ cornerGmail }};transform:scale({{ cornerGmail }});transition:opacity 0.2s ease, transform 0.2s ease;pointer-events:none;"><sc-if value="{{ emailCopied }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="{{ t.text }}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if><sc-if value="{{ emailNotCopied }}" hint-placeholder-val="{{ true }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="{{ t.text }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"></path></svg></sc-if></span>
+                  <svg width="22" height="17" viewBox="0 0 48 36" aria-hidden="true"><path fill="#4285F4" d="M3.3 36h7.6V17.5L0 9.3v23.4C0 34.5 1.5 36 3.3 36z"></path><path fill="#34A853" d="M37.1 36h7.6c1.8 0 3.3-1.5 3.3-3.3V9.3l-10.9 8.2z"></path><path fill="#FBBC04" d="M37.1 3.3v14.2L48 9.3V4.9c0-4.1-4.6-6.4-7.9-3.9z"></path><path fill="#EA4335" d="M10.9 17.5V3.3L24 13.1l13.1-9.8v14.2L24 27.3z"></path><path fill="#C5221F" d="M0 4.9v4.4l10.9 8.2V3.3L7.9 1C4.6-1.5 0 .8 0 4.9z"></path></svg>
+                  <span>Email</span>
+                </button>
+                <a href="https://www.linkedin.com/in/darrenting-a20000403" target="_blank" rel="noopener" aria-label="LinkedIn" onMouseEnter="{{ onLinkedinEnter }}" onMouseLeave="{{ onLinkLeave }}" style="position:relative;display:flex;align-items:center;justify-content:center;gap:10px;min-width:200px;padding:16px 52px;box-sizing:border-box;border:0;border-radius:12px;background:{{ t.card }};box-shadow:0px 1px 5px rgba(0,0,0,0.08);font:inherit;font-weight:600;font-size:16px;color:{{ t.text }};text-decoration:none;transition:box-shadow 0.2s ease;" style-hover="box-shadow:0px 10px 28px rgba(0,60,80,0.16);">
+                  <span style="position:absolute;top:50%;right:12px;width:28px;height:28px;margin-top:-14px;border-radius:999px;background:{{ t.navBg }};display:flex;align-items:center;justify-content:center;opacity:{{ cornerLinkedin }};transform:scale({{ cornerLinkedin }});transition:opacity 0.2s ease, transform 0.2s ease;pointer-events:none;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="{{ t.text }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9"></path></svg></span>
+                  <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="3" fill="#0A66C2"></rect><path fill="#FFFFFF" d="M5.3 9.2h2.9v9.4H5.3zM6.75 4.6a1.7 1.7 0 1 1 0 3.4 1.7 1.7 0 0 1 0-3.4zM10 9.2h2.8v1.3c.4-.7 1.4-1.5 2.8-1.5 3 0 3.6 2 3.6 4.6v5H16.3v-4.4c0-1.1 0-2.4-1.5-2.4s-1.7 1.1-1.7 2.3v4.5H10z"></path></svg>
+                  <span>LinkedIn</span>
+                </a>
+              </div>
             </div>
           </div>
         </sc-if>
@@ -1028,7 +1145,7 @@ class Component extends DCLogic {
   }
 
   PASSWORD = 'darrent1ngUX';
-  CASE_HASH = { pp: '#positive-pay', acer: '#acer', uoft: '#uoft', about: '#about' };
+  CASE_HASH = { pp: '#positive-pay', alerts: '#alerts', acer: '#acer', uoft: '#uoft', about: '#about' };
   MEDIA = [
     { src: './assets/about-fan-1.jpg', alt: 'Darren in Rome', isImg: true, isVid: false },
     { src: './assets/about-fan-2.jpg', alt: 'Jiu-jitsu competition', isImg: true, isVid: false },
@@ -1061,20 +1178,21 @@ class Component extends DCLogic {
       else if (!v.paused) { v.pause(); v.currentTime = 0; }
     });
   }
-  TILES = ['hero', 'llm', 'pp', 'gmail', 'resume', 'uoft', 'acer', 'linkedin', 'youtube'];
-  WIDE = { hero: 1, llm: 1, pp: 1, uoft: 1, acer: 1 };
+  TILES = ['hero', 'llm', 'pp', 'gmail', 'resume', 'alerts', 'acer', 'linkedin', 'youtube', 'uoft'];
+  WIDE = { hero: 1, llm: 1, pp: 1, alerts: 1, uoft: 1, acer: 1 };
   // [colStart, colEnd, rowStart, rowEnd] on a 12-col grid with 92px rows.
   DESK = {
-    all: { hero: [1, 9, 1, 4], llm: [9, 13, 1, 4], pp: [1, 7, 4, 8], gmail: [7, 10, 4, 6], resume: [10, 13, 4, 6], uoft: [7, 13, 6, 10], acer: [1, 7, 8, 12], linkedin: [7, 10, 10, 12], youtube: [10, 13, 10, 12] },
-    work: { pp: [1, 7, 1, 5], acer: [7, 13, 1, 5], uoft: [1, 7, 5, 9], gmail: [7, 10, 5, 7], linkedin: [10, 13, 5, 7], resume: [7, 10, 7, 9], youtube: [10, 13, 7, 9], hero: [1, 9, 9, 12], llm: [9, 13, 9, 12] },
-    about: { hero: [1, 9, 1, 4], llm: [9, 13, 1, 4], gmail: [1, 4, 4, 6], linkedin: [4, 7, 4, 6], resume: [7, 10, 4, 6], youtube: [10, 13, 4, 6], pp: [1, 7, 6, 10], uoft: [7, 13, 6, 10], acer: [1, 7, 10, 14] }
+    all: { hero: [1, 9, 1, 4], llm: [9, 13, 1, 4], alerts: [1, 7, 4, 8], gmail: [7, 10, 4, 6], resume: [10, 13, 4, 6], pp: [7, 13, 6, 10], acer: [1, 7, 8, 12], uoft: [7, 13, 10, 14], linkedin: [1, 4, 12, 14], youtube: [4, 7, 12, 14] },
+    work: { alerts: [1, 7, 1, 5], pp: [7, 13, 1, 5], acer: [1, 7, 5, 9], uoft: [7, 13, 5, 9], gmail: [1, 4, 9, 11], linkedin: [4, 7, 9, 11], resume: [7, 10, 9, 11], youtube: [10, 13, 9, 11], hero: [1, 9, 11, 14], llm: [9, 13, 11, 14] },
+    about: { hero: [1, 9, 1, 4], llm: [9, 13, 1, 4], gmail: [1, 4, 4, 6], linkedin: [4, 7, 4, 6], resume: [7, 10, 4, 6], youtube: [10, 13, 4, 6], alerts: [1, 7, 6, 10], pp: [7, 13, 6, 10], acer: [1, 7, 10, 14], uoft: [7, 13, 10, 14] }
   };
   ORDER = {
-    all: ['hero', 'llm', 'pp', 'gmail', 'resume', 'uoft', 'acer', 'linkedin', 'youtube'],
-    work: ['pp', 'acer', 'uoft', 'gmail', 'linkedin', 'resume', 'youtube', 'hero', 'llm'],
-    about: ['hero', 'llm', 'gmail', 'linkedin', 'resume', 'youtube', 'pp', 'uoft', 'acer']
+    all: ['hero', 'llm', 'alerts', 'gmail', 'resume', 'pp', 'acer', 'linkedin', 'youtube', 'uoft'],
+    work: ['alerts', 'pp', 'acer', 'uoft', 'gmail', 'linkedin', 'resume', 'youtube', 'hero', 'llm'],
+    about: ['hero', 'llm', 'gmail', 'linkedin', 'resume', 'youtube', 'alerts', 'pp', 'acer', 'uoft']
   };
-  DIM = { all: {}, work: { hero: 1, llm: 1, gmail: 1, linkedin: 1, resume: 1, youtube: 1 }, about: { pp: 1, uoft: 1, acer: 1 } };
+  DIM = { all: {}, work: { hero: 1, llm: 1, gmail: 1, linkedin: 1, resume: 1, youtube: 1 }, about: { pp: 1, alerts: 1, uoft: 1, acer: 1 } };
+  GAL = [["al-gal-1","Alerts — All actions"],["al-gal-2","Alert settings screen"],["al-gal-3","Alert setup screen"],["al-gal-4","Prioritization matrix"],["al-gal-5","Information architecture"]];
 
   WEATHER_CODES = { 0: 'Clear', 1: 'Mostly clear', 2: 'Partly cloudy', 3: 'Overcast', 45: 'Foggy', 48: 'Foggy', 51: 'Light drizzle', 53: 'Drizzle', 55: 'Heavy drizzle', 61: 'Light rain', 63: 'Rain', 65: 'Heavy rain', 71: 'Light snow', 73: 'Snow', 75: 'Heavy snow', 80: 'Rain showers', 81: 'Rain showers', 82: 'Heavy showers', 95: 'Thunderstorm', 96: 'Thunderstorm', 99: 'Thunderstorm' };
 
@@ -1160,6 +1278,7 @@ class Component extends DCLogic {
   };
   openPP = () => this.openCase('pp');
   openAcer = () => this.openCase('acer');
+  openAlerts = () => this.openCase('alerts');
   openUoft = () => this.openCase('uoft');
   openAbout = () => this.openCase('about');
   // Smoothly slide persistent content to its new position when sections appear/disappear.
@@ -1297,6 +1416,10 @@ class Component extends DCLogic {
       empty.style.display = 'flex';
     }
     el.style.cursor = 'default';
+    document.querySelectorAll('[data-svgthumb="' + el.dataset.svgslot + '"]').forEach(t => {
+      if (url) { if (t.getAttribute('src') !== url) t.setAttribute('src', url); t.style.display = 'block'; }
+      else { t.removeAttribute('src'); t.style.display = 'none'; }
+    });
   }
   hydrateSlots() {
     document.querySelectorAll('[data-svgslot]').forEach(el => this.paintSlot(el, el.dataset.src || null));
@@ -1428,7 +1551,10 @@ navBg_all: (this.state.navHover === 'all' && this.state.tab !== 'all') ? (this.s
       toggleVideoSound: this.toggleVideoSound,
       soundIconOpacity: (this.state.videoMuted ?? true) ? 0 : 1,
       mutedIconOpacity: (this.state.videoMuted ?? true) ? 1 : 0,
-      openPP: this.openPP, openAcer: this.openAcer, openUoft: this.openUoft,
+      openPP: this.openPP, openAcer: this.openAcer, openUoft: this.openUoft, openAlerts: this.openAlerts,
+      isAlerts: k === 'alerts',
+      gal: Object.fromEntries(this.GAL.map((g, i) => [g[0].replace(/-/g, '_'), (this.state.galIdx || 0) === i ? 'block' : 'none'])),
+      galThumbs: this.GAL.map((g, i) => ({ id: g[0], label: g[1], n: String(i + 1), border: (this.state.galIdx || 0) === i ? this.THEME[this.state.dark ? 'dark' : 'light'].text : 'transparent', select: () => this.setState({ galIdx: i }) })),
       hasCase: !!k,
       isPP: k === 'pp', isAcer: k === 'acer', isUoft: k === 'uoft',
       caseOpacity: this.state.caseShown ? 1 : 0,
