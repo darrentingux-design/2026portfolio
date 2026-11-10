@@ -93,6 +93,7 @@ The publish script adds the widget to `index.html` and changes the tile from "co
 - **Change what it knows or how it talks:** edit `knowledge.md`, then `npx wrangler deploy`.
 - **Change the limits or model:** edit `[vars]` in `wrangler.toml`, then `npx wrangler deploy`.
 - **Watch live logs:** `npx wrangler tail` (logs contain error events only, never messages or IPs).
+- **See what visitors asked:** `npm run questions` (add `-- --json` for raw output). Each accepted question is saved privately in the same KV namespace under the `q:` prefix: the question text, a timestamp, which turn of the conversation it was, and a short tag from the hashed IP so follow-ups can be grouped (the IP itself is never stored). Entries delete themselves after 90 days. Saving is best effort and can never break a chat. It adds one KV write per message, so the free plan's 1,000 writes a day now covers roughly 500 messages a day.
 - **Run it locally:** copy `.dev.vars.example` to `.dev.vars`, put your key in it, run `npx wrangler dev`, and open the site from `http://localhost:<port>`. The widget uses `http://localhost:8787` when the site runs on localhost.
 - **Run the tests:** `npm test`.
 

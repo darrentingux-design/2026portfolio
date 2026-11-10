@@ -9,6 +9,7 @@ import {
   validateConversation,
   hashIp,
   checkRateLimit,
+  logQuestion,
   eventsToTextStream,
 } from './lib.js';
 
@@ -96,9 +97,11 @@ export async function handle(request, env, deps) {
   // risk unmetered spend.
   const limit = num(env.RATE_LIMIT_PER_HOUR, DEFAULTS.rateLimitPerHour);
   let rl;
+  let ipHash = '';
   try {
     const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-    rl = await checkRateLimit(env.RATE_LIMIT, await hashIp(ip), { limit });
+    ipHash = await hashIp(ip);
+    rl = await checkRateLimit(env.RATE_LIMIT, ipHash, { limit });
   } catch (err) {
     console.error(JSON.stringify({ event: 'rate_limit_error', name: err?.name }));
     return fail(503, 'rate_limiter_unavailable', 'Darren LLM is unavailable right now. Please try again later.');
@@ -112,6 +115,16 @@ export async function handle(request, env, deps) {
       `You've reached the limit of ${rl.limit} messages per hour. Please try again in about ${minutes} minute${minutes === 1 ? '' : 's'}, or email Darren directly.`,
       { ...rlHeaders, 'Retry-After': String(rl.retryAfter) },
     );
+  }
+
+  // Log the question for Darren (private, best effort, never blocks or breaks the reply).
+  try {
+    const last = checked.messages[checked.messages.length - 1];
+    const turn = body.messages.filter((m) => m && m.role === 'user').length;
+    const p = logQuestion(env.RATE_LIMIT, { question: last.content, visitor: ipHash, turn }).catch(() => {});
+    if (typeof deps.waitUntil === 'function') deps.waitUntil(p);
+  } catch {
+    // logging must never affect the chat
   }
 
   // Call the model. Read the first event before responding so upstream errors

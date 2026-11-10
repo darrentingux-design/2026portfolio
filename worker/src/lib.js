@@ -111,6 +111,19 @@ export async function checkRateLimit(kv, ipHash, { limit = DEFAULTS.rateLimitPer
   return { allowed: true, limit, remaining: limit - used - 1, retryAfter };
 }
 
+// Keeps a private log of what visitors ask, in the same KV namespace under a "q:" prefix.
+// Stores only the latest question, a timestamp, which turn of the conversation it was, and a short
+// tag derived from the hashed IP (so follow-ups can be grouped; the IP itself is never stored).
+// Entries expire on their own after 90 days. Best effort: callers must not let a failure here
+// affect the chat. Read it with `npm run questions`.
+export const QUESTION_TTL_SECONDS = 90 * 24 * 60 * 60;
+export async function logQuestion(kv, { question, visitor, turn, now = Date.now() }) {
+  const key = `q:${new Date(now).toISOString()}:${crypto.randomUUID().slice(0, 6)}`;
+  const value = JSON.stringify({ t: new Date(now).toISOString(), v: String(visitor || '').slice(0, 8), n: turn, q: question });
+  await kv.put(key, value, { expirationTtl: QUESTION_TTL_SECONDS });
+  return key;
+}
+
 // Turns the SDK's event stream into a plain-text byte stream. `first` is an
 // optional already-read first result from the iterator ({ value, done }), used
 // so the caller can surface upstream errors as HTTP statuses before streaming

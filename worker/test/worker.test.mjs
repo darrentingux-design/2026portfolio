@@ -288,3 +288,47 @@ test('cancelling the response aborts the upstream stream', async () => {
   await reader.cancel();
   assert.equal(state.aborted, true);
 });
+
+// ---------- question log ----------
+test('each accepted question is logged privately with a TTL and no raw IP', async () => {
+  const env = baseEnv();
+  const puts = [];
+  const put = env.RATE_LIMIT.put;
+  env.RATE_LIMIT.put = async (k, v, o) => { puts.push({ k, v, o }); return put(k, v, o); };
+  const pending = [];
+  const d = { ...deps(fakeClient([textEvent('ok')])), waitUntil: (p) => pending.push(p) };
+  const req = post({ messages: [{ role: 'user', content: 'first' }, { role: 'assistant', content: 'a' }, { role: 'user', content: 'What is Darren working on?' }] }, { headers: { 'CF-Connecting-IP': '203.0.113.9' } });
+  assert.equal((await handle(req, env, d)).status, 200);
+  await Promise.all(pending);
+  const q = puts.find((p) => p.k.startsWith('q:'));
+  assert.ok(q, 'question was logged');
+  const row = JSON.parse(q.v);
+  assert.equal(row.q, 'What is Darren working on?');
+  assert.equal(row.n, 2);
+  assert.equal(row.v.length, 8);
+  assert.equal(q.o.expirationTtl, 90 * 24 * 60 * 60);
+  assert.equal(q.v.includes('203.0.113.9'), false);
+  assert.equal(q.k.includes('203.0.113.9'), false);
+});
+
+test('a failing log write never breaks the reply', async () => {
+  const env = baseEnv();
+  const put = env.RATE_LIMIT.put;
+  env.RATE_LIMIT.put = async (k, v, o) => { if (k.startsWith('q:')) throw new Error('kv full'); return put(k, v, o); };
+  const pending = [];
+  const res = await handle(post(ask('hi')), env, { ...deps(fakeClient([textEvent('ok')])), waitUntil: (p) => pending.push(p) });
+  await Promise.all(pending);
+  assert.equal(res.status, 200);
+  assert.equal(await res.text(), 'ok');
+});
+
+test('rate-limited and invalid requests are not logged', async () => {
+  const env = baseEnv({ RATE_LIMIT_PER_HOUR: '1' });
+  const d = deps(fakeClient([textEvent('ok')]));
+  await handle(post(ask('one')), env, d);
+  await handle(post(ask('two')), env, d); // 429
+  await handle(post(ask('x'.repeat(1001))), env, d); // 413
+  await new Promise((r) => setTimeout(r, 10));
+  const logged = [...env.RATE_LIMIT.store.keys()].filter((k) => k.startsWith('q:'));
+  assert.equal(logged.length, 1);
+});

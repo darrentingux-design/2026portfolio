@@ -32,6 +32,7 @@
     .df-cursor{display:none;}
     @media (hover:hover) and (pointer:fine){.df-cursor{display:block;}}
     body[data-dc-editor-on] .df-cursor{display:none!important;}
+    body[data-lens-on] .df-cursor, body[data-lens-on] [data-cursor-label]{opacity:0!important;transition:none!important;}
     @keyframes chibi-idle-jump{0%,80%,86%,92%,100%{transform:translateY(0) rotate(5deg);}83%,89%{transform:translateY(-8px) rotate(5deg);}}
     @keyframes peel-off{0%{transform:rotate(5deg) scale(1);}35%{transform:rotate(14deg) scale(1.08);}65%{transform:rotate(-8deg) scale(1.08);}100%{transform:rotate(5deg) scale(1);}}
   </style>
@@ -72,8 +73,8 @@
       <div data-screen-label="Bento grid" style="max-width:922px;margin:48px auto 0;display:grid;grid-template-columns:{{ gridCols }};grid-auto-rows:92px;gap:16px;">
 
         <div data-tile="hero" onClick="{{ openAbout }}" onMouseEnter="{{ onHeroEnter }}" onMouseLeave="{{ onLinkLeave }}" style-hover="box-shadow:0px 10px 28px rgba(0,60,80,0.16);" style="cursor:pointer;grid-column:{{ L.hero.col }};grid-row:{{ L.hero.row }};order:{{ L.hero.order }};filter:{{ L.hero.filter }};opacity:{{ L.hero.opacity }};pointer-events:{{ L.hero.pe }};position:relative;border-radius:12px;background:{{ t.card }};box-shadow:0px 1px 5px rgba(0,0,0,0.08);overflow:hidden;transition:filter 0.4s ease, opacity 0.4s ease, box-shadow 0.2s ease;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:32px clamp(24px,6%,52px);box-sizing:border-box;">
-          <span style="font-weight:600;font-size:20px;line-height:1.4;">Nice to meet you! 👋</span>
-          <span style="font-weight:600;font-size:20px;line-height:1.6;max-width:460px;text-wrap:pretty;">I’m Darren, currently working as a UX Designer at BMO</span>
+          <span style="font-weight: 600; font-size: 26px; line-height: 1.4">Nice to meet you! 👋</span>
+          <span style="font-weight: 600; font-size: 26px; line-height: 1.6; max-width: 460px; text-wrap: pretty">I’m Darren, currently working as a UX Designer at BMO</span>
           <div style="display:flex;flex-direction:column;gap:2px;margin-top:6px;">
             <span style="font-weight:500;font-size:15px;color:{{ t.sub }};display:flex;gap:8px;align-items:center;"><span>{{ timeIcon }}</span>{{ weatherLine }}</span>
             <span style="font-weight:600;font-size:34px;line-height:1.2;font-variant-numeric:tabular-nums;">{{ clockTime }}</span>
@@ -112,7 +113,7 @@
         </a>
 
         <div data-tile="alerts" onClick="{{ openAlerts }}" onMouseEnter="{{ onCaseEnter }}" onMouseLeave="{{ onCaseLeave }}" style="grid-column:{{ L.alerts.col }};grid-row:{{ L.alerts.row }};order:{{ L.alerts.order }};filter:{{ L.alerts.filter }};opacity:{{ L.alerts.opacity }};pointer-events:{{ L.alerts.pe }};position:relative;border-radius:12px;background:{{ t.tint }};box-shadow:0px 1px 5px rgba(0,0,0,0.08);overflow:hidden;transition:filter 0.4s ease, opacity 0.4s ease, box-shadow 0.2s ease;cursor:pointer;" style-hover="box-shadow:0px 10px 28px rgba(0,60,80,0.16);">
-          <img src="./uploads/Alerts thumbnail@2x.jpg" alt="Alerts case study" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="./assets/alerts-thumb.jpg" alt="Alerts case study" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
           <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,20,28,0.85), rgba(0,20,28,0.15) 55%, transparent 80%);opacity:0;transition:opacity 0.25s ease;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;box-sizing:border-box;gap:12px;" style-hover="opacity:1;">
             <span style="font-weight:600;font-size:20px;line-height:1.25;color:rgb(255,255,255);text-wrap:pretty;">Alerts at Enterprise Scale</span>
             <div style="display:flex;gap:6px;flex-wrap:wrap;">
@@ -122,7 +123,7 @@
           </div>
         </div>
 
-        <div data-tile="acer" onClick="{{ openAcer }}" onMouseEnter="{{ onCaseEnter }}" onMouseLeave="{{ onCaseLeave }}" style="grid-column:{{ L.acer.col }};grid-row:{{ L.acer.row }};order:{{ L.acer.order }};filter:{{ L.acer.filter }};opacity:{{ L.acer.opacity }};pointer-events:{{ L.acer.pe }};position:relative;border-radius:12px;background:rgb(238,246,253) url(./assets/case-acer.png) center / cover no-repeat;box-shadow:0px 1px 5px rgba(0,0,0,0.08);overflow:hidden;transition:filter 0.4s ease, opacity 0.4s ease, box-shadow 0.2s ease;cursor:pointer;" style-hover="box-shadow:0px 10px 28px rgba(0,60,80,0.16);">
+        <div data-tile="acer" onClick="{{ openAcer }}" onMouseEnter="{{ onCaseEnter }}" onMouseLeave="{{ onCaseLeave }}" style="grid-column:{{ L.acer.col }};grid-row:{{ L.acer.row }};order:{{ L.acer.order }};filter:{{ L.acer.filter }};opacity:{{ L.acer.opacity }};pointer-events:{{ L.acer.pe }};position:relative;border-radius:12px;background:rgb(238,246,253) url(./assets/acer-thumb-2.jpg) center / cover no-repeat;box-shadow:0px 1px 5px rgba(0,0,0,0.08);overflow:hidden;transition:filter 0.4s ease, opacity 0.4s ease, box-shadow 0.2s ease;cursor:pointer;" style-hover="box-shadow:0px 10px 28px rgba(0,60,80,0.16);">
           <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,20,28,0.85), rgba(0,20,28,0.15) 55%, transparent 80%);opacity:0;transition:opacity 0.25s ease;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;box-sizing:border-box;gap:12px;" style-hover="opacity:1;">
             <span style="font-weight:600;font-size:20px;line-height:1.25;color:rgb(255,255,255);text-wrap:pretty;">Designing a Dual-Platform Health Informatics Ecosystem</span>
             <div style="display:flex;gap:6px;flex-wrap:wrap;">
@@ -142,6 +143,7 @@
           <svg width="90" height="64" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5.5" fill="#EE2D2D"></rect><path d="M11.2 5.6v8.8l7.4-4.4z" fill="#FFFFFF"></path></svg>
         </a>
 
+        <sc-if value="{{ showUoft }}" hint-placeholder-val="{{ false }}">
         <div data-tile="uoft" onClick="{{ openUoft }}" onMouseEnter="{{ onCaseEnter }}" onMouseLeave="{{ onCaseLeave }}" style="grid-column:{{ L.uoft.col }};grid-row:{{ L.uoft.row }};order:{{ L.uoft.order }};filter:{{ L.uoft.filter }};opacity:{{ L.uoft.opacity }};pointer-events:{{ L.uoft.pe }};position:relative;border-radius:12px;background:rgb(238,246,253) url(./assets/case-uoft.png) center / cover no-repeat;box-shadow:0px 1px 5px rgba(0,0,0,0.08);overflow:hidden;transition:filter 0.4s ease, opacity 0.4s ease, box-shadow 0.2s ease;cursor:pointer;" style-hover="box-shadow:0px 10px 28px rgba(0,60,80,0.16);">
           <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,20,28,0.85), rgba(0,20,28,0.15) 55%, transparent 80%);opacity:0;transition:opacity 0.25s ease;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;box-sizing:border-box;gap:12px;" style-hover="opacity:1;">
             <span style="font-weight:600;font-size:20px;line-height:1.25;color:rgb(255,255,255);text-wrap:pretty;">Higher Education Navigation Overhaul</span>
@@ -151,6 +153,7 @@
             </div>
           </div>
         </div>
+        </sc-if>
 
       </div>
 
@@ -516,8 +519,13 @@
                 <span style="font-weight:600;font-size:18px;letter-spacing:0.02em;text-transform:uppercase;">Web and Mobile Design</span>
                 <span style="font-weight:600;font-size:clamp(26px,3.4vw,34px);line-height:1.2;text-wrap:balance;">Acer Health Management Center</span>
               </div>
-              <img src="./assets/acer-hero.png" width="2463" height="1541" alt="Acer Health Management Center" style="display:block;width:100%;height:auto;border-radius:12px;box-shadow:0px 1px 5px rgba(0,0,0,0.08);">
+              <img src="./assets/acer-cover-2.jpg" width="2400" height="1832" alt="Acer Health Management Center" style="display:block;width:100%;height:auto;border-radius:12px;box-shadow:0px 1px 5px rgba(0,0,0,0.08);">
             </div>
+              <div style="position:relative;display:flex;padding:4px;border-radius:12px;background:{{ t.navBg }};align-self:center;position:sticky;top:49px;z-index:5;margin:-32px 0;box-shadow:{{ toggleShadow }};transition:box-shadow 0.2s ease;" data-sticky-toggle="1">
+                <div style="position:absolute;top:4px;left:4px;width:112px;bottom:4px;border-radius:8px;background:{{ t.pill }};box-shadow:0px 1px 4px rgba(0,60,80,0.08);transform:{{ modeShift }};transition:transform 0.35s cubic-bezier(0.65,0,0.35,1);"></div>
+                <button type="button" onClick="{{ setDetailed }}" onMouseEnter="{{ modeEnterDetailed }}" onMouseLeave="{{ modeLeave }}" style="position:relative;z-index:1;border-radius:8px;transition:background-color 0.2s ease;width:112px;padding:11px 0;border:0;background:{{ modeBgDetailed }};font:inherit;font-weight:600;font-size:16px;color:{{ t.text }};cursor:pointer;">Detailed</button>
+                <button type="button" onClick="{{ setTldr }}" onMouseEnter="{{ modeEnterTldr }}" onMouseLeave="{{ modeLeave }}" style="position:relative;z-index:1;border-radius:8px;transition:background-color 0.2s ease;width:112px;padding:11px 0;border:0;background:{{ modeBgTldr }};font:inherit;font-weight:600;font-size:16px;color:{{ t.text }};cursor:pointer;">TLDR</button>
+              </div>
             <div style="display:flex;flex-direction:column;gap:40px;">
               <div style="display:flex;flex-wrap:wrap;gap:24px 40px;border-radius:12px;background:{{ t.card }};box-shadow:0px 1px 5px rgba(0,0,0,0.06);padding:32px;box-sizing:border-box;">
                 <div style="flex:1 1 140px;display:flex;flex-direction:column;gap:8px;"><span style="font-weight:500;font-size:15px;text-transform:uppercase;color:{{ t.sub }};">Role</span><span style="font-weight:600;font-size:18px;line-height:1.35;">Lead UX Designer</span></div>
@@ -527,8 +535,7 @@
               </div>
             </div>
             <div style="display:flex;flex-direction:column;gap:64px;">
-            <sc-if value="{{ isDetailed }}" hint-placeholder-val="{{ true }}"><div data-fade="1" style="display:flex;flex-direction:column;gap:inherit;animation:{{ detailAnim }};">
-              <div style="display:flex;flex-direction:column;gap:64px;">
+            <sc-if value="{{ isDetailed }}" hint-placeholder-val="{{ true }}"><div data-fade="1" style="display:flex;flex-direction:column;gap:64px;animation:{{ detailAnim }};">
 
 
         <div style="display:flex;flex-direction:column;gap:16px;">
@@ -539,7 +546,6 @@
 
         <div style="display:flex;flex-direction:column;gap:24px;">
           <span style="font-weight:700;font-size:26px;line-height:1.3;text-transform:uppercase;color:{{ t.text }};">Process</span>
-          <img src="./assets/acer-process.png" width="1787" height="88" alt="Design process diagram" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
             <div style="border-radius:12px;background-color:{{ t.card }};box-shadow:0px 1px 5px rgba(0,0,0,0.06);padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
               <span style="font-weight:600;font-size:20px;color:{{ t.text }};">Conceptualization</span>
@@ -574,17 +580,13 @@
           </div>
         </div>
 
-        <div style="display:flex;flex-direction:column;gap:24px;">
-          <img src="./assets/acer-showcase-mobile.png" width="996" height="948" alt="Mobile application screens" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
-          <img src="./assets/acer-showcase-web.png" width="2101" height="2274" alt="Web platform screens" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
-        </div>
-
         <div style="display:flex;flex-direction:column;gap:16px;">
           <span style="font-weight:700;font-size:26px;line-height:1.3;text-transform:uppercase;color:{{ t.text }};">Context</span>
           <span style="font-size:16px;font-weight:400;line-height:1.7;color:{{ t.text }};text-wrap:pretty;">In Taiwan, accessing personalized risk predictions and timely interventions often proves challenging for individuals. Simultaneously, healthcare institutions face hurdles in efficiently analyzing incoming data and delivering personalized care recommendations to patients.</span>
           <span style="font-size:16px;font-weight:400;line-height:1.7;color:{{ t.text }};text-wrap:pretty;">For Acer and NTUH, they recognized this as an opportunity to bridge this gap. Our solution aimed to democratize access to predictive healthcare insights while streamlining the workflow for healthcare professionals.</span>
         </div>
 
+        </div></sc-if>
         <div style="display:flex;flex-direction:column;gap:16px;">
           <span style="font-weight:700;font-size:26px;line-height:1.3;text-transform:uppercase;color:{{ t.text }};">Objective</span>
           <div style="display:flex;flex-direction:column;gap:12px;">
@@ -599,18 +601,19 @@
           </div>
         </div>
 
+        <sc-if value="{{ isDetailed }}" hint-placeholder-val="{{ true }}"><div data-fade="1" style="display:flex;flex-direction:column;gap:64px;animation:{{ detailAnim }};">
         <div style="display:flex;flex-direction:column;gap:32px;">
           <span style="font-weight:700;font-size:26px;line-height:1.3;text-transform:uppercase;color:{{ t.text }};">Conceptualize</span>
           <div style="display:flex;flex-direction:column;gap:16px;">
             <span style="font-weight:600;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.sub }};">Mobile</span>
             <span style="font-size:16px;font-weight:400;line-height:1.7;color:{{ t.text }};text-wrap:pretty;">For the mobile aspect of this ecosystem, I first started with establishing a general user flow of what logging-in would look like. This was establish through repeated iterations and communication with business stakeholders.</span>
-            <img src="./assets/acer-flow-mobile.png" width="2127" height="7820" alt="Mobile log-in user flow" loading="lazy" style="display:block;width:100%;height:auto;background:#fff;padding:16px;box-sizing:border-box;border-radius:12px;">
+            <div style="position:relative;max-height:{{ acerFlowMax }};overflow:hidden;background:#fff;border-radius:12px;transition:max-height 0.5s cubic-bezier(0.65,0,0.35,1);"><img src="./assets/acer-flow-mobile.png" width="2127" height="7820" alt="Mobile log-in user flow" loading="lazy" style="display:block;width:100%;max-width:400px;height:auto;margin:0 auto;padding:16px;box-sizing:border-box;"><span style="position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(to bottom, rgba(255,255,255,0), #fff);opacity:{{ acerFlowFade }};transition:opacity 0.3s ease;pointer-events:none;"></span></div>
+            <button type="button" onClick="{{ toggleAcerFlow }}" style="align-self:center;display:flex;align-items:center;gap:8px;border:0;border-radius:24px;padding:11px 20px;background:{{ t.card }};box-shadow:0px 1px 5px rgba(0,0,0,0.08);font:inherit;font-weight:600;font-size:15px;color:{{ t.text }};cursor:pointer;transition:box-shadow 0.2s ease;" style-hover="box-shadow:0px 6px 18px rgba(0,60,80,0.14);"><span>{{ acerFlowLabel }}</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform:{{ acerFlowChevron }};transition:transform 0.3s ease;"><path d="M6 9l6 6 6-6"></path></svg></button>
           </div>
           <div style="display:flex;flex-direction:column;gap:16px;">
             <span style="font-weight:600;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.sub }};">Web</span>
             <span style="font-size:16px;font-weight:400;line-height:1.7;color:{{ t.text }};text-wrap:pretty;">For the web aspect of this ecosystem, not only was the visualization of information important to nail but also how the user actually access the information and whether or not the information hierarchy was intuitive. This was difficult due to the sheer amount of information there is but in the end we were able to reach a structure that made sense to our stakeholders.</span>
             <a href="./assets/acer-ia-web.png" target="_blank" rel="noopener" style="display:block;"><img src="./assets/acer-ia-web.png" width="10912" height="6628" alt="Web application information architecture" loading="lazy" style="display:block;width:100%;height:auto;background:#fff;padding:16px;box-sizing:border-box;border-radius:12px;"></a>
-            <span style="font-weight:400;font-size:14px;color:{{ t.sub }};">Open the full information architecture diagram ↗</span>
           </div>
         </div>
 
@@ -628,6 +631,7 @@
           </div>
         </div>
 
+        </div></sc-if>
         <div style="display:flex;flex-direction:column;gap:24px;">
           <span style="font-weight:700;font-size:26px;line-height:1.3;text-transform:uppercase;color:{{ t.text }};">Iteration</span>
           <span style="font-size:16px;font-weight:400;line-height:1.7;color:{{ t.text }};text-wrap:pretty;">After creating the first version of the prototypes the next step is to iterate on my designs... but how? As some other UX designers may have experienced before, sometimes it is very hard push PMs and executives to allocate time and effort to usability test.</span>
@@ -643,16 +647,23 @@
           <span style="font-weight:700;font-size:26px;line-height:1.3;text-transform:uppercase;color:{{ t.text }};">Results</span>
           <span style="font-size:16px;font-weight:400;line-height:1.7;color:{{ t.text }};text-wrap:pretty;">While serving as a great tool to explain design rationale to stakeholders. Through this iterative process, I was able to get continuous feedback and improve my designs.</span>
           <span style="font-size:16px;font-weight:400;line-height:1.7;color:{{ t.text }};text-wrap:pretty;">In the end, the results look something like this...</span>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;">
-            <img src="./assets/acer-result-1.png" width="1506" height="1848" alt="Final design" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
-            <img src="./assets/acer-result-2.png" width="1506" height="1848" alt="Final design" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
-            <img src="./assets/acer-result-3.png" width="1181" height="1449" alt="Final design" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
-            <img src="./assets/acer-result-4.png" width="1905" height="2603" alt="Final design" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
-            <img src="./assets/acer-result-5.png" width="2701" height="1703" alt="Final design" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
-            <img src="./assets/acer-result-6.png" width="3817" height="2689" alt="Final design" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
+              <img src="./assets/acer-result-1.png" width="1506" height="1848" alt="Log-in and register pages" loading="lazy" style="display:block;width:100%;height:auto;aspect-ratio:1506 / 1848;object-fit:contain;background:rgb(211,229,251);border-radius:12px;">
+              <img src="./assets/acer-result-2.png" width="1506" height="1848" alt="Homepage" loading="lazy" style="display:block;width:100%;height:auto;aspect-ratio:1506 / 1848;object-fit:contain;background:rgb(211,229,251);border-radius:12px;">
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
+              <img src="./assets/acer-result-3.png" width="1181" height="1449" alt="Final design" loading="lazy" style="display:block;width:100%;height:auto;aspect-ratio:1181 / 1449;object-fit:contain;background:rgb(211,229,251);border-radius:12px;">
+              <img src="./assets/acer-result-4.jpg" width="1905" height="2603" alt="Patient registration" loading="lazy" style="display:block;width:100%;height:auto;aspect-ratio:1181 / 1449;object-fit:contain;background:rgb(211,229,251);border-radius:12px;">
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
+              <img src="./assets/acer-result-5.jpg" width="2700" height="1702" alt="Patient information display" loading="lazy" style="display:block;width:100%;height:auto;aspect-ratio:2701 / 1703;object-fit:contain;background:rgb(211,229,251);border-radius:12px;">
+              <img src="./assets/acer-result-6.jpg" width="2700" height="1902" alt="Risk prediction analysis and display" loading="lazy" style="display:block;width:100%;height:auto;aspect-ratio:2701 / 1703;object-fit:contain;background:rgb(211,229,251);border-radius:12px;">
+            </div>
           </div>
         </div>
 
+        <sc-if value="{{ isDetailed }}" hint-placeholder-val="{{ true }}"><div data-fade="1" style="display:flex;flex-direction:column;gap:64px;animation:{{ detailAnim }};">
         <div style="display:flex;flex-direction:column;gap:16px;">
           <span style="font-weight:700;font-size:26px;line-height:1.3;text-transform:uppercase;color:{{ t.text }};">Takeaways</span>
           <span style="font-size:16px;font-weight:400;line-height:1.7;color:{{ t.text }};text-wrap:pretty;">Coming from a background where most of my design skills came from an academic environment, it is very easy to go overboard and create something that is nearly impossible to implement. From working with developers and business stakeholders I've learned to create designs that balance feasibility and aesthetics.</span>
@@ -660,9 +671,7 @@
           <span style="font-size:16px;font-weight:400;line-height:1.7;color:{{ t.text }};text-wrap:pretty;">When designing an ecosystem that includes both mobile and web applications, I learned that it is very important to fully understand who the users are and think about how the data is shared and visualized between the two systems.</span>
         </div>
 
-        
-              </div>
-            </div></sc-if>
+        </div></sc-if>
             </div>
           </div>
         </sc-if>
@@ -708,7 +717,7 @@
                 <div style="display:flex;flex-wrap:wrap;gap:8px 24px;padding:24px 0;border-top:1px solid rgba(116,159,174,0.35);">
                   <span style="flex:0 0 200px;font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:{{ t.sub }};">Sep 2023 — Apr 2024</span>
                   <div style="flex:1 1 360px;display:flex;flex-direction:column;gap:8px;">
-                    <span style="font-weight:600;font-size:20px;line-height:1.35;">UX Design Intern</span>
+                    <span style="font-weight:600;font-size:20px;line-height:1.35;">UX/UI Designer</span>
                     <span style="font-weight:600;font-size:16px;line-height:1.4;color:{{ t.sub }};">Bank of Montreal, Technology &amp; Operations</span>
                     <span style="font-size:16px;line-height:1.6;text-wrap:pretty;">Designed internal tooling for BMO employees, including the platform behind Destination Digital, a bank-wide hackathon covering team registration, judging, and theme browsing. It stayed in active use for later cycles.</span>
                   </div>
@@ -1039,7 +1048,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;skipPassword&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behaviour&quot;},&quot;animateReorder&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behaviour&quot;}}">
 class Component extends DCLogic {
-  state = { unlocked: false, pwError: '', shake: 0, tab: 'all', caseKey: null, caseShown: false, mode: 'detailed', clockTime: this.formatTime(), weather: null, narrow: window.innerWidth < 760, dark: this.getInitialDark(), peeling: false, typedText: '', cursorOut: false, chibiVisible: false };
+  state = { unlocked: false, pwError: '', shake: 0, tab: 'all', caseKey: null, caseShown: false, mode: 'detailed', acerFlowOpen: false, clockTime: this.formatTime(), weather: null, narrow: window.innerWidth < 760, dark: this.getInitialDark(), peeling: false, typedText: '', cursorOut: false, chibiVisible: false };
 
   THEME = {
     light: { bg: 'rgb(243,254,255)', text: 'rgb(0,100,135)', sub: 'rgb(116,159,174)', card: 'rgb(254,255,255)', pill: 'rgb(255,255,255)', navBg: 'rgb(232,247,252)', tint: 'rgb(237,246,250)', ink: 'rgb(30,40,45)', bar: 'rgb(226,233,235)' },
@@ -1116,16 +1125,18 @@ class Component extends DCLogic {
     if (!lens) return;
     const img = target && target.closest && target.closest('[data-case-root] img');
     const src = img && img.getAttribute('src');
-    if (!img || !src || img.closest('[data-fan]') || img.closest('[data-nolens]') || img.style.display === 'none') { if (lens.style.display !== 'none') lens.style.display = 'none'; return; }
+    if (!img || !src || img.closest('[data-fan]') || img.closest('[data-nolens]') || img.style.display === 'none') { if (lens.style.display !== 'none') lens.style.display = 'none'; document.body.removeAttribute('data-lens-on'); return; }
     const r = img.getBoundingClientRect(), z = this.LENS_ZOOM, R = this.LENS_R;
     if (lens._src !== img.currentSrc) { lens._src = img.currentSrc; lens.style.backgroundImage = 'url("' + img.currentSrc + '")'; }
     lens.style.backgroundSize = (r.width * z) + 'px ' + (r.height * z) + 'px';
     lens.style.backgroundPosition = (-((x - r.left) * z - R)) + 'px ' + (-((y - r.top) * z - R)) + 'px';
     lens.style.transform = 'translate(' + (x - R) + 'px,' + (y - R) + 'px)';
     lens.style.display = 'block';
+    document.body.setAttribute('data-lens-on', '');
   }
   onLensScroll = () => {
     if (this._lens) this._lens.style.display = 'none';
+    document.body.removeAttribute('data-lens-on');
     const tg = document.querySelector('[data-sticky-toggle]');
     const stuck = !!tg && tg.getBoundingClientRect().top <= 49.5;
     if (stuck !== !!this.state.toggleStuck) this.setState({ toggleStuck: stuck });
@@ -1150,7 +1161,7 @@ class Component extends DCLogic {
   }
 
   PASSWORD = 'darrent1ngUX';
-  CASE_HASH = { pp: '#positive-pay', alerts: '#alerts', acer: '#acer', uoft: '#uoft', about: '#about' };
+  CASE_HASH = { pp: '#positive-pay', alerts: '#alerts', acer: '#acer', about: '#about' };
   MEDIA = [
     { src: './assets/about-fan-1.jpg', alt: 'Darren in Rome', isImg: true, isVid: false },
     { src: './assets/about-fan-2.jpg', alt: 'Jiu-jitsu competition', isImg: true, isVid: false },
@@ -1183,18 +1194,18 @@ class Component extends DCLogic {
       else if (!v.paused) { v.pause(); v.currentTime = 0; }
     });
   }
-  TILES = ['hero', 'llm', 'pp', 'gmail', 'resume', 'alerts', 'acer', 'linkedin', 'youtube', 'uoft'];
+  TILES = ['hero', 'llm', 'pp', 'gmail', 'resume', 'alerts', 'acer', 'linkedin', 'youtube'];
   WIDE = { hero: 1, llm: 1, pp: 1, alerts: 1, uoft: 1, acer: 1 };
   // [colStart, colEnd, rowStart, rowEnd] on a 12-col grid with 92px rows.
   DESK = {
-    all: { hero: [1, 9, 1, 4], llm: [9, 13, 1, 4], alerts: [1, 7, 4, 8], gmail: [7, 10, 4, 6], resume: [10, 13, 4, 6], pp: [7, 13, 6, 10], acer: [1, 7, 8, 12], uoft: [7, 13, 10, 14], linkedin: [1, 4, 12, 14], youtube: [4, 7, 12, 14] },
-    work: { alerts: [1, 7, 1, 5], pp: [7, 13, 1, 5], acer: [1, 7, 5, 9], uoft: [7, 13, 5, 9], gmail: [1, 4, 9, 11], linkedin: [4, 7, 9, 11], resume: [7, 10, 9, 11], youtube: [10, 13, 9, 11], hero: [1, 9, 11, 14], llm: [9, 13, 11, 14] },
-    about: { hero: [1, 9, 1, 4], llm: [9, 13, 1, 4], gmail: [1, 4, 4, 6], linkedin: [4, 7, 4, 6], resume: [7, 10, 4, 6], youtube: [10, 13, 4, 6], alerts: [1, 7, 6, 10], pp: [7, 13, 6, 10], acer: [1, 7, 10, 14], uoft: [7, 13, 10, 14] }
+    all: { hero: [1, 9, 1, 4], llm: [9, 13, 1, 4], alerts: [1, 7, 4, 8], gmail: [7, 10, 4, 6], resume: [10, 13, 4, 6], pp: [7, 13, 6, 10], acer: [1, 7, 8, 12], linkedin: [7, 10, 10, 12], youtube: [10, 13, 10, 12] },
+    work: { alerts: [1, 7, 1, 5], pp: [7, 13, 1, 5], acer: [1, 7, 5, 9], gmail: [7, 10, 5, 7], linkedin: [10, 13, 5, 7], resume: [7, 10, 7, 9], youtube: [10, 13, 7, 9], hero: [1, 9, 9, 12], llm: [9, 13, 9, 12] },
+    about: { hero: [1, 9, 1, 4], llm: [9, 13, 1, 4], gmail: [1, 4, 4, 6], linkedin: [4, 7, 4, 6], resume: [7, 10, 4, 6], youtube: [10, 13, 4, 6], alerts: [1, 7, 6, 10], pp: [7, 13, 6, 10], acer: [1, 7, 10, 14] }
   };
   ORDER = {
-    all: ['hero', 'llm', 'alerts', 'gmail', 'resume', 'pp', 'acer', 'linkedin', 'youtube', 'uoft'],
-    work: ['alerts', 'pp', 'acer', 'uoft', 'gmail', 'linkedin', 'resume', 'youtube', 'hero', 'llm'],
-    about: ['hero', 'llm', 'gmail', 'linkedin', 'resume', 'youtube', 'alerts', 'pp', 'acer', 'uoft']
+    all: ['hero', 'llm', 'alerts', 'gmail', 'resume', 'pp', 'acer', 'linkedin', 'youtube'],
+    work: ['alerts', 'pp', 'acer', 'gmail', 'linkedin', 'resume', 'youtube', 'hero', 'llm'],
+    about: ['hero', 'llm', 'gmail', 'linkedin', 'resume', 'youtube', 'alerts', 'pp', 'acer']
   };
   DIM = { all: {}, work: { hero: 1, llm: 1, gmail: 1, linkedin: 1, resume: 1, youtube: 1 }, about: { pp: 1, alerts: 1, uoft: 1, acer: 1 } };
   GAL = [["al-gal-1","Alerts — All actions"],["al-gal-2","Alert settings screen"],["al-gal-3","Alert setup screen"],["al-gal-4","Prioritization matrix"],["al-gal-5","Information architecture"]];
@@ -1564,11 +1575,16 @@ navBg_all: (this.state.navHover === 'all' && this.state.tab !== 'all') ? (this.s
       gal: Object.fromEntries(this.GAL.map((g, i) => [g[0].replace(/-/g, '_'), (this.state.galIdx || 0) === i ? 'block' : 'none'])),
       galThumbs: this.GAL.map((g, i) => ({ id: g[0], label: g[1], n: String(i + 1), border: (this.state.galIdx || 0) === i ? this.THEME[this.state.dark ? 'dark' : 'light'].text : 'transparent', select: () => this.setState({ galIdx: i }) })),
       hasCase: !!k,
-      isPP: k === 'pp', isAcer: k === 'acer', isUoft: k === 'uoft',
+      isPP: k === 'pp', isAcer: k === 'acer', isUoft: k === 'uoft', showUoft: false,
       caseOpacity: this.state.caseShown ? 1 : 0,
       caseShift: this.state.caseShown ? 'none' : 'translateY(24px)',
       closeCase: () => this.closeCase(),
       isDetailed: this.state.mode === 'detailed',
+      acerFlowMax: this.state.acerFlowOpen ? '1600px' : '560px',
+      acerFlowFade: this.state.acerFlowOpen ? 0 : 1,
+      acerFlowLabel: this.state.acerFlowOpen ? 'Collapse flow' : 'Show full flow',
+      acerFlowChevron: this.state.acerFlowOpen ? 'rotate(180deg)' : 'none',
+      toggleAcerFlow: () => this.setState(s => ({ acerFlowOpen: !s.acerFlowOpen })),
       isTldr: this.state.mode === 'tldr',
       toggleShadow: this.state.toggleStuck ? '0 4px 16px rgba(0,60,80,0.14)' : 'none',
       modeShift: (this.state.modeTarget || this.state.mode) === 'tldr' ? 'translateX(100%)' : 'translateX(0)',
@@ -1588,6 +1604,5 @@ navBg_all: (this.state.navHover === 'all' && this.state.tab !== 'all') ? (this.s
 </script>
 <script src="./chat-config.js?v=b76457db"></script>
 <script src="./chat-widget.js?v=f966d656" defer></script>
-<script src="./site-fixes.js?v=cf3638f0" defer></script>
 </body>
 </html>
