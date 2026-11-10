@@ -91,7 +91,7 @@
         </div>
 
         <div data-tile="pp" onClick="{{ openPP }}" onMouseEnter="{{ onCaseEnter }}" onMouseLeave="{{ onCaseLeave }}" style="grid-column:{{ L.pp.col }};grid-row:{{ L.pp.row }};order:{{ L.pp.order }};filter:{{ L.pp.filter }};opacity:{{ L.pp.opacity }};pointer-events:{{ L.pp.pe }};position:relative;border-radius:12px;background:{{ t.tint }};box-shadow:0px 1px 5px rgba(0,0,0,0.08);overflow:hidden;transition:filter 0.4s ease, opacity 0.4s ease, box-shadow 0.2s ease;cursor:pointer;" style-hover="box-shadow:0px 10px 28px rgba(0,60,80,0.16);">
-          <img src="./uploads/Positivepay thumbnailnew.jpg" alt="Positive Pay case study" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+          <video data-tile-video="1" src="./assets/pp-tile.mp4" poster="./uploads/Positivepay thumbnailnew.jpg" aria-label="Positive Pay case study" muted="{{ true }}" loop="{{ true }}" playsinline="" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"></video>
           <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,20,28,0.85), rgba(0,20,28,0.15) 55%, transparent 80%);opacity:0;transition:opacity 0.25s ease;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;box-sizing:border-box;gap:12px;" style-hover="opacity:1;">
             <span style="font-weight:600;font-size:20px;line-height:1.25;color:rgb(255,255,255);text-wrap:pretty;">Bringing a treasury fraud control to small business banking</span>
             <div style="display:flex;gap:6px;flex-wrap:wrap;">
@@ -113,7 +113,7 @@
         </a>
 
         <div data-tile="alerts" onClick="{{ openAlerts }}" onMouseEnter="{{ onCaseEnter }}" onMouseLeave="{{ onCaseLeave }}" style="grid-column:{{ L.alerts.col }};grid-row:{{ L.alerts.row }};order:{{ L.alerts.order }};filter:{{ L.alerts.filter }};opacity:{{ L.alerts.opacity }};pointer-events:{{ L.alerts.pe }};position:relative;border-radius:12px;background:{{ t.tint }};box-shadow:0px 1px 5px rgba(0,0,0,0.08);overflow:hidden;transition:filter 0.4s ease, opacity 0.4s ease, box-shadow 0.2s ease;cursor:pointer;" style-hover="box-shadow:0px 10px 28px rgba(0,60,80,0.16);">
-          <img src="./assets/alerts-thumb.jpg" alt="Alerts case study" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+          <video data-tile-video="1" src="./assets/alerts-tile.mp4" poster="./assets/alerts-thumb.jpg" aria-label="Alerts case study" muted="{{ true }}" loop="{{ true }}" playsinline="" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"></video>
           <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,20,28,0.85), rgba(0,20,28,0.15) 55%, transparent 80%);opacity:0;transition:opacity 0.25s ease;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;box-sizing:border-box;gap:12px;" style-hover="opacity:1;">
             <span style="font-weight:600;font-size:20px;line-height:1.25;color:rgb(255,255,255);text-wrap:pretty;">Alerts at Enterprise Scale</span>
             <div style="display:flex;gap:6px;flex-wrap:wrap;">
@@ -178,7 +178,7 @@
                 <span style="font-weight:600;font-size:18px;letter-spacing:0.02em;text-transform:uppercase;">Enterprise Product Design</span>
                 <span style="font-weight:600;font-size:clamp(26px,3.4vw,34px);line-height:1.2;text-wrap:balance;">Bringing Positive Pay to Small Business Banking</span>
               </div>
-              <div data-svgslot="pp-hero" data-src="./assets/pp-hero.svg" data-nolens="1" style="position:relative;width:100%;aspect-ratio:920 / 550;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:default;">
+              <div data-svgslot="pp-hero" data-src="./assets/pp-hero.jpg" data-nolens="1" style="position:relative;width:100%;aspect-ratio:920 / 550;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:default;">
                 <img data-svgslot-img="1" alt="Hero image" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
@@ -248,7 +248,7 @@
                 <span style="font-weight:500;font-size:17px;line-height:1.55;text-wrap:pretty;">With access to the test environment and the live corporate product, I mapped its existing positive pay flows end to end — entitlement gates, approval states, validation rules, error paths, and edge cases. The map became the reference for conversations with developers and product owners about what to carry across, what to cut, and what to rebuild. Two changes came directly out of it: remove the exceptions summary, and change the approval structure for managing issues and voids.</span>
               </div></sc-if>
               <div style="display:flex;flex-direction:column;gap:10px;">
-                <div data-svgslot="pp-current-state" data-src="./assets/pp-current-state.svg" style="position:relative;width:100%;aspect-ratio:11360 / 2546;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:default;">
+                <div data-svgslot="pp-current-state" data-src="./assets/pp-current-state.jpg" style="position:relative;width:100%;aspect-ratio:11360 / 2546;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:default;">
                 <img data-svgslot-img="1" alt="Current state map" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
@@ -265,7 +265,7 @@
                 <span style="font-weight:500;font-size:17px;line-height:1.55;text-wrap:pretty;">I then reviewed how five other banks handle manage exceptions: Chase, Bank of Hawaii, California Bank Trust, FM Bank, and Vectra Bank.</span>
               </div></sc-if>
               <div style="display:flex;flex-direction:column;gap:10px;">
-                <div data-svgslot="pp-competitor" data-src="./assets/pp-competitor.svg" style="position:relative;width:100%;aspect-ratio:10208 / 9760;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:default;">
+                <div data-svgslot="pp-competitor" data-src="./assets/pp-competitor.jpg" style="position:relative;width:100%;aspect-ratio:10208 / 9760;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:default;">
                 <img data-svgslot-img="1" alt="Competitor analysis board" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
@@ -291,7 +291,7 @@
                   <span style="font-size:16px;line-height:1.6;text-wrap:pretty;">I ran a workshop with two other designers. I set the context and the constraint, then each of us — myself included — had five minutes to sketch independently. We brought the sketches back, critiqued them together, and narrowed to three options.</span>
                 </div>
               </div></sc-if>
-              <div data-svgslot="pp-workshop-board" data-src="./assets/pp-workshop-board.svg" style="position:relative;width:100%;aspect-ratio:920 / 520;background:transparent;cursor:default;">
+              <div data-svgslot="pp-workshop-board" data-src="./assets/pp-workshop-board.jpg" style="position:relative;width:100%;aspect-ratio:920 / 520;background:transparent;cursor:default;">
                 <img data-svgslot-img="1" alt="Workshop board — exploration of slideout + solution options" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
@@ -307,7 +307,7 @@
                 </div></sc-if>
               </div>
               <div style="display:flex;flex-direction:column;gap:16px;">
-                <div data-svgslot="pp-shipped-slideout" data-src="./assets/pp-shipped-slideout.svg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:default;">
+                <div data-svgslot="pp-shipped-slideout" data-src="./assets/pp-shipped-slideout.jpg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:default;">
                 <img data-svgslot-img="1" alt="Exception details slideout" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
@@ -315,7 +315,7 @@
                   <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
                 </div>
               </div>
-                <div data-svgslot="pp-shipped-confirm" data-src="./assets/pp-shipped-confirm.svg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:default;">
+                <div data-svgslot="pp-shipped-confirm" data-src="./assets/pp-shipped-confirm.jpg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:default;">
                 <img data-svgslot-img="1" alt="Pay &amp; issue confirmation" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
@@ -337,7 +337,7 @@
                 <span style="font-size:16px;line-height:1.6;text-wrap:pretty;">This is the decision I would revisit first. The current design asks clients to reason about a requirement the system already knows the answer to.</span>
               </div></sc-if>
               <div style="display:flex;flex-direction:column;gap:16px;">
-                <div data-svgslot="pp-payee-1" data-src="./assets/pp-payee-1.svg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:default;">
+                <div data-svgslot="pp-payee-1" data-src="./assets/pp-payee-1.jpg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:default;">
                 <img data-svgslot-img="1" alt="Add issued checks — step 1" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
@@ -345,7 +345,7 @@
                   <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
                 </div>
               </div>
-                <div data-svgslot="pp-payee-2" data-src="./assets/pp-payee-2.svg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:default;">
+                <div data-svgslot="pp-payee-2" data-src="./assets/pp-payee-2.jpg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:default;">
                 <img data-svgslot-img="1" alt="Payee details — one name" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
@@ -353,7 +353,7 @@
                   <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
                 </div>
               </div>
-                <div data-svgslot="pp-payee-3" data-src="./assets/pp-payee-3.svg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:default;">
+                <div data-svgslot="pp-payee-3" data-src="./assets/pp-payee-3.jpg" style="position:relative;width:100%;aspect-ratio:16 / 10;background:transparent;cursor:default;">
                 <img data-svgslot-img="1" alt="Payee details — two names" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                 <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
@@ -443,7 +443,7 @@
             </div>
 
             <div style="display:flex;flex-direction:column;gap:16px;">
-                <div data-svgslot="al-gal-1" data-src="./assets/al-gal-1.svg" style="display:{{ gal.al_gal_1 }};position:relative;width:100%;aspect-ratio:16 / 10;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
+                <div data-svgslot="al-gal-1" data-src="./assets/al-gal-1.jpg" style="display:{{ gal.al_gal_1 }};position:relative;width:100%;aspect-ratio:16 / 10;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
                   <img data-svgslot-img="1" alt="Alerts — All actions" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                   <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
@@ -451,7 +451,7 @@
                     <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
                   </div>
                 </div>
-                <div data-svgslot="al-gal-2" data-src="./assets/al-gal-2.svg" style="display:{{ gal.al_gal_2 }};position:relative;width:100%;aspect-ratio:16 / 10;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
+                <div data-svgslot="al-gal-2" data-src="./assets/al-gal-2.jpg" style="display:{{ gal.al_gal_2 }};position:relative;width:100%;aspect-ratio:16 / 10;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
                   <img data-svgslot-img="1" alt="Alert settings screen" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                   <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
@@ -459,7 +459,7 @@
                     <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
                   </div>
                 </div>
-                <div data-svgslot="al-gal-3" data-src="./assets/al-gal-3.svg" style="display:{{ gal.al_gal_3 }};position:relative;width:100%;aspect-ratio:16 / 10;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
+                <div data-svgslot="al-gal-3" data-src="./assets/al-gal-3.jpg" style="display:{{ gal.al_gal_3 }};position:relative;width:100%;aspect-ratio:16 / 10;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
                   <img data-svgslot-img="1" alt="Alert setup screen" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                   <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
@@ -467,7 +467,7 @@
                     <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
                   </div>
                 </div>
-                <div data-svgslot="al-gal-4" data-src="./assets/al-gal-4.svg" style="display:{{ gal.al_gal_4 }};position:relative;width:100%;aspect-ratio:16 / 10;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
+                <div data-svgslot="al-gal-4" data-src="./assets/al-gal-4.jpg" style="display:{{ gal.al_gal_4 }};position:relative;width:100%;aspect-ratio:16 / 10;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
                   <img data-svgslot-img="1" alt="Prioritization matrix" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                   <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
@@ -475,7 +475,7 @@
                     <span data-svgslot-msg="1" style="font-size:13px;color:{{ t.sub }};">Image unavailable</span>
                   </div>
                 </div>
-                <div data-svgslot="al-gal-5" data-src="./assets/al-gal-5.svg" style="display:{{ gal.al_gal_5 }};position:relative;width:100%;aspect-ratio:16 / 10;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
+                <div data-svgslot="al-gal-5" data-src="./assets/al-gal-5.jpg" style="display:{{ gal.al_gal_5 }};position:relative;width:100%;aspect-ratio:16 / 10;border-radius:12px;overflow:hidden;background:{{ t.card }};cursor:pointer;">
                   <img data-svgslot-img="1" alt="Information architecture" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 50%;">
                   <div data-svgslot-empty="1" style="position:absolute;inset:0;border:1.5px dashed {{ t.sub }};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;box-sizing:border-box;text-align:center;pointer-events:none;">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ t.sub }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"></path></svg>
@@ -1604,5 +1604,6 @@ navBg_all: (this.state.navHover === 'all' && this.state.tab !== 'all') ? (this.s
 </script>
 <script src="./chat-config.js?v=b76457db"></script>
 <script src="./chat-widget.js?v=f966d656" defer></script>
+<script src="./tile-video.js?v=f044dcd4" defer></script>
 </body>
 </html>
